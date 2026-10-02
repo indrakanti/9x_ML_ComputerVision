@@ -1,15 +1,16 @@
 # 9x ML Computer Vision
 
-**From machine-learning foundations to modern multimodal and embodied vision — Python/PyTorch first, deployment-aware, production-minded.**
+**From ML foundations to modern multimodal and embodied vision — Python/PyTorch for training, C++ for production runtime, GPU-aware from day one.**
 
 This repository is the learned/deep-vision continuation of the classical C++ course in `9x_ComputerVision_-`.
 
 ## Course identity
 
-The course deliberately separates two concerns:
+The course uses three coordinated tracks:
 
-1. **Learn the model and training system in Python/PyTorch.**
-2. **Understand how the trained model is evaluated, exported, optimized, and deployed.**
+1. **Learning / training:** Python + PyTorch.
+2. **Production runtime:** C++17/20 + CMake + native inference runtimes.
+3. **Acceleration:** CUDA/GPU execution, profiling, memory movement, synchronization, and optimized inference.
 
 The default learning path is:
 
@@ -34,21 +35,26 @@ Python fundamentals for ML
 -> generative vision
 -> world / embodied models
 -> vision-language-action
--> ONNX / optimized inference / C++ deployment
+-> ONNX / optimized inference
+-> C++ runtime integration
+-> CUDA / TensorRT / edge deployment
 ~~~
 
 ## Design principles
 
-- Python/PyTorch is the primary teaching environment.
+- Python/PyTorch is the primary training and experimentation environment.
+- C++ is a first-class runtime/deployment language from Module 00 onward.
+- GPU execution is a first-class systems topic, not an end-of-course appendix.
 - Mathematical ideas are explained before framework convenience APIs.
 - Notebooks are used for visualization/exploration, not as the only implementation.
-- Reusable code lives in importable Python modules.
+- Reusable Python code lives in importable modules; reusable native code lives under the C++ track.
 - Every module should include deterministic tests where practical.
-- CPU execution remains a supported baseline.
-- GPU acceleration is optional and hardware-aware.
+- CPU execution remains the portable correctness baseline.
+- GPU correctness and GPU performance are validated separately.
 - Training, validation, and test splits remain explicit.
-- Reproducibility includes seeds, environment, preprocessing, checkpoints, and metrics.
-- Model export/deployment is part of the curriculum, not an afterthought.
+- Reproducibility includes seeds, environment, preprocessing, checkpoints, metrics, runtime version, device, and precision.
+- Model export/deployment is integrated throughout the curriculum.
+- Safety-oriented runtime topics include ownership, bounded interfaces, lifecycle, monitoring, timing, and fault handling.
 - Modern concepts are added by capability category rather than chasing every transient model release.
 
 ## Linux quick start
@@ -79,6 +85,10 @@ python -m pip install torch torchvision --index-url https://download.pytorch.org
 
 python tools/environment_check.py
 pytest
+
+cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
+cmake --build build-native --parallel
+ctest --test-dir build-native --output-on-failure
 ~~~
 
 For NVIDIA/AMD GPU installs, use the current PyTorch platform selector rather than assuming one CUDA/ROCm wheel fits every system.
@@ -88,10 +98,12 @@ For NVIDIA/AMD GPU installs, use the current PyTorch platform selector rather th
 ~~~text
 9x_ML_ComputerVision/
 ├── 00_Setup/
+├── cpp/
 ├── src/cv9x_mlcv/
 ├── tests/
 ├── tools/
 ├── requirements/
+├── CMakeLists.txt
 ├── COURSE_ROADMAP.md
 ├── VIDEO_SERIES.md
 ├── LINUX_SETUP.md
@@ -130,8 +142,41 @@ pixels -> filters -> features -> geometry -> stereo -> motion
 This repository continues with:
 
 ~~~text
-learned representation -> training -> modern vision models
--> multimodal reasoning -> embodied vision -> deployment
+learned representation
+-> Python/PyTorch training
+-> modern vision models
+-> multimodal / embodied vision
+-> ONNX export
+-> C++ runtime
+-> GPU acceleration
+-> safety-oriented production integration
 ~~~
 
 The two courses are complementary rather than duplicates.
+
+See [RUNTIME_ARCHITECTURE.md](RUNTIME_ARCHITECTURE.md) for the production runtime contract.
+
+## Runtime philosophy
+
+A model is not considered "production-ready" merely because it produces correct outputs in Python.
+
+Major course milestones will connect trained models to native execution and explicitly examine:
+
+- tensor/image layout contracts
+- host/device copies
+- pinned memory
+- asynchronous execution
+- CUDA streams and synchronization
+- warm-up
+- batching vs streaming
+- FP32 / FP16 / BF16 / INT8
+- ONNX Runtime execution providers
+- TensorRT engines/contexts
+- latency distributions and tail latency
+- memory use
+- deterministic startup/shutdown
+- model/version compatibility
+- runtime error handling
+- monitoring and fallback behavior
+
+This is especially important for automotive, robotics, and other safety-oriented systems.
