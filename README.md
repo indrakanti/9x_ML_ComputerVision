@@ -154,6 +154,8 @@ learned representation
 
 The two courses are complementary rather than duplicates.
 
+See [RUNTIME_ARCHITECTURE.md](RUNTIME_ARCHITECTURE.md) for the production runtime contract.
+
 ## Runtime philosophy
 
 A model is not considered "production-ready" merely because it produces correct outputs in Python.
