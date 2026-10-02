@@ -1,4 +1,4 @@
-# Module 00 — Linux, Python, PyTorch & Reproducible ML Vision Setup
+# Module 00 — Linux, Python/PyTorch, C++/CMake & GPU-Aware ML Vision Setup
 
 This module establishes the development contract for every later lesson.
 
@@ -11,6 +11,8 @@ System tools:
 - CMake
 - Ninja
 - pkg-config
+- GDB
+- OpenCV C++ development package
 - Python 3.10+
 - Python venv/pip
 - FFmpeg
@@ -34,24 +36,22 @@ See the full instructions in [../LINUX_SETUP.md](../LINUX_SETUP.md).
 ## Course environment model
 
 ~~~text
-Ubuntu/Linux
-  |
-Python virtual environment
-  |
-base scientific/CV packages
-  |
-PyTorch selected for CPU/CUDA/ROCm
-  |
-ONNX tooling
-  |
-editable cv9x_mlcv package
-  |
-environment checker
-  |
-pytest + lint + type checks
-  |
-GitHub Actions clean CPU runner
+                     Ubuntu/Linux
+                    /            \
+                   /              \
+          Python/PyTorch       C++17/20 + CMake
+             training             runtime
+                   \              /
+                    \            /
+                     ONNX / model contract
+                            |
+                         GPU path
+                  CUDA / ORT / TensorRT
+                            |
+                profiling + monitoring
 ~~~
+
+The portable CI baseline remains CPU-only, but C++ and GPU are first-class course tracks from the beginning.
 
 ## Quick CPU setup
 
@@ -70,6 +70,10 @@ python -m pip install -e .
 
 python tools/environment_check.py
 pytest
+
+cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
+cmake --build build-native --parallel
+ctest --test-dir build-native --output-on-failure
 ~~~
 
 ## Why PyTorch is separate
@@ -103,19 +107,40 @@ It checks:
 - autograd gradients
 - a basic OpenCV image operation
 
-## CI philosophy
+## C++ runtime philosophy
 
-CI is CPU-first.
+Python is the preferred training environment, but production lessons do not assume the Python interpreter is the final runtime.
 
-GPU availability is an acceleration feature, not a prerequisite for correctness.
-
-Later GPU-specific lessons should separate:
+The native path begins with C++17/20 + CMake and grows into:
 
 ~~~text
-algorithm correctness
-from
-accelerator performance
+native tensor/image contracts
+-> exported model
+-> ONNX Runtime C++
+-> CUDA execution provider
+-> TensorRT
+-> streaming perception runtime
 ~~~
+
+## GPU philosophy
+
+GPU is a first-class execution target.
+
+Every major deployment checkpoint separates:
+
+~~~text
+CPU correctness
+GPU correctness
+GPU performance
+~~~
+
+Topics include host/device copies, pinned memory, synchronization, CUDA streams, warm-up, precision, batching, and tail latency.
+
+## CI philosophy
+
+GitHub Actions remains CPU-first so every PR has a portable correctness gate.
+
+GPU CI/performance should be a separate runner/lab validation path rather than making basic correctness depend on scarce accelerator hardware.
 
 ## Reproducibility contract
 
@@ -131,7 +156,10 @@ Every training lesson should eventually identify:
 - metrics
 - software versions
 - device/precision
+- exported-model format/version
+- native runtime version
+- accelerator/runtime configuration
 
 ## Next
 
-Module 01 begins the ML foundation with NumPy arrays, tensors, shapes, broadcasting, vectorization, device movement, and dtype/precision.
+Module 01 begins with NumPy/PyTorch tensors **and the matching native runtime concepts**: shapes, HWC/CHW/NCHW, strides, dtype/precision, views/copies, CPU/GPU devices, and the C++ tensor/image memory contract.
