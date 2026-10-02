@@ -24,7 +24,9 @@ sudo apt install -y \
   libgl1 \
   libglib2.0-0 \
   libjpeg-dev \
-  libpng-dev
+  libpng-dev \
+  libopencv-dev \
+  gdb
 ~~~
 
 Useful optional tools:
@@ -39,6 +41,7 @@ sudo apt install -y htop tree
 git --version
 g++ --version
 cmake --version
+ninja --version
 python3 --version
 ffmpeg -version
 ~~~
@@ -155,7 +158,54 @@ The default course requirement uses CPU ONNX Runtime for portable CI.
 
 For a GPU environment, do not install both CPU and GPU ONNX Runtime variants blindly in the same environment. Follow the current ONNX Runtime compatibility guidance and replace the CPU package with the appropriate GPU package.
 
-## 10. Environment sanity check
+## 10. Native C++ sanity check
+
+The C++ runtime path is available from Module 00.
+
+~~~bash
+cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
+cmake --build build-native --parallel
+ctest --test-dir build-native --output-on-failure
+~~~
+
+Direct run:
+
+~~~bash
+./build-native/cv9x_native_sanity --self-test
+~~~
+
+Strict warnings:
+
+~~~bash
+cmake -S . -B build-native-werror \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCV9X_WARNINGS_AS_ERRORS=ON
+cmake --build build-native-werror --parallel
+~~~
+
+## 11. CUDA toolkit / nvcc path
+
+PyTorch GPU execution does not automatically require a system-wide CUDA toolkit, but native CUDA development and custom CUDA code do.
+
+If a CUDA toolkit is installed:
+
+~~~bash
+nvcc --version
+~~~
+
+Probe it through the course build:
+
+~~~bash
+cmake -S . -B build-cuda \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCV9X_ENABLE_CUDA=ON
+~~~
+
+This fails intentionally when CUDA is requested but no CUDA compiler is present.
+
+Later lessons will add real CUDA, ONNX Runtime GPU, and TensorRT C++ targets behind explicit build/runtime checks.
+
+## 12. Environment sanity check
 
 ~~~bash
 python tools/environment_check.py
@@ -177,7 +227,7 @@ autograd
 OpenCV operation
 ~~~
 
-## 11. Run tests
+## 13. Run Python tests
 
 ~~~bash
 pytest
@@ -189,14 +239,14 @@ Coverage:
 pytest --cov=cv9x_mlcv --cov-report=term-missing
 ~~~
 
-## 12. Lint / static checks
+## 14. Lint / static checks
 
 ~~~bash
 ruff check .
 mypy src tools
 ~~~
 
-## 13. CPU-first CI policy
+## 15. CPU-first CI policy
 
 GitHub Actions runs on CPU by default.
 
@@ -209,7 +259,7 @@ Why:
 
 GPU-specific modules should still provide CPU smoke paths where practical.
 
-## 14. CUDA terminology
+## 16. CUDA terminology
 
 Keep these separate:
 
@@ -221,19 +271,20 @@ A system-wide CUDA toolkit is not automatically required just to run a prebuilt 
 
 It becomes relevant when compiling custom CUDA code/extensions or using tools that require nvcc.
 
-## 15. Optional native deployment tools
+## 17. Native inference dependencies
 
-Later deployment modules may additionally use:
+The base C++ compiler/CMake/OpenCV/debugger toolchain is installed on day one.
 
-~~~bash
-sudo apt install -y \
-  libopencv-dev \
-  gdb
-~~~
+Large native ML runtimes remain lesson-scoped so students do not need every deployment SDK immediately:
 
-C++ ONNX Runtime binaries/headers will be introduced in the deployment section rather than required on day one.
+- LibTorch when teaching native PyTorch tensor/module execution
+- ONNX Runtime C++ for portable exported-model inference
+- CUDA execution providers on supported NVIDIA systems
+- TensorRT for NVIDIA-optimized deployment
 
-## 16. Clean environment reset
+This keeps the initial environment reproducible while making native execution a first-class course path.
+
+## 18. Clean environment reset
 
 ~~~bash
 deactivate 2>/dev/null || true
@@ -249,7 +300,7 @@ python -m pip install -r requirements/onnx.txt
 python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 ~~~
 
-## 17. Common failures
+## 19. Common failures
 
 ### Python too old
 
