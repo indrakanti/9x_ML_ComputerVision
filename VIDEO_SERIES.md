@@ -6,7 +6,7 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 
 | Episode | Topic | Status |
 |---|---|---|
-| 00 | ML Computer Vision Linux & PyTorch Setup | **Recording-ready** |
+| 00 | ML Computer Vision Setup — Python/PyTorch + C++ + GPU on Linux | **Recording-ready** |
 | 01 | NumPy to PyTorch Tensors for Vision | Planned |
 | 02 | Probability & Statistics You Actually Need for Vision ML | Planned |
 | 03 | Optimization: Losses, SGD, Momentum & Adam | Planned |
@@ -30,5 +30,7 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 ~~~
 
 The active target is intentionally contemporary: the course should reach modern multimodal and embodied vision, not end at a legacy CNN/detector boundary.
+
+Every major arc also revisits the native runtime path: Python training -> exported model -> C++ execution -> GPU acceleration -> profiling/monitoring.
 
 See [COURSE_ROADMAP.md](COURSE_ROADMAP.md) for the module-by-module plan.
