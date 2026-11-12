@@ -172,9 +172,15 @@ pytest 01_TensorsMemory/tests -q
 Native C++:
 
 ~~~bash
+# Standalone module build
+cmake -S 01_TensorsMemory -B build/module01 -DCMAKE_BUILD_TYPE=Release
+cmake --build build/module01 --parallel
+./build/module01/cv9x_tensor_contract --self-test
+ctest --test-dir build/module01 --output-on-failure
+
+# Or build/test all native modules from the repository root
 cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
 cmake --build build-native --parallel
-./build-native/cv9x_tensor_contract --self-test
 ctest --test-dir build-native --output-on-failure
 ~~~
 
