@@ -52,3 +52,14 @@ add_test(
   NAME cv9x_native_sanity_self_test
   COMMAND cv9x_native_sanity --self-test
 )
+
+
+cv9x_add_native_example(
+  cv9x_tensor_contract
+  cpp/01_TensorsMemory/tensor_contract.cpp
+)
+
+add_test(
+  NAME cv9x_tensor_contract_self_test
+  COMMAND cv9x_tensor_contract --self-test
+)
