@@ -164,7 +164,19 @@ eta
 
 Adam adapts update magnitude using recent first- and second-moment estimates.
 
-## 7. What this module implements
+## 7. Runtime applicability
+
+| Gate | Status | Why |
+|---|---|---|
+| Python formatting / lint | Required | Python optimizer implementations |
+| mypy | Required | Typed optimizer helpers |
+| pytest | Required | Optimizer math and state validation |
+| CPU PyTorch tests | Required | Manual SGD is checked against `torch.optim.SGD` |
+| ONNX tests | N/A | No exported model |
+| C++ configure/build/CTest | N/A | This module is training-side optimization |
+| Python ↔ exported-model equivalence | N/A | No exported model |
+
+## 8. What this module implements
 
 The module contains:
 
@@ -184,7 +196,7 @@ It intentionally has no C++ or ONNX component.
 
 Optimization is a training-side concept here; adding export/native-runtime code would not teach anything useful yet.
 
-## 8. Run
+## 9. Run
 
 ~~~bash
 source .venv/bin/activate
@@ -194,7 +206,7 @@ pytest 03_Optimization/tests -q
 pytest
 ~~~
 
-## 9. Experiments
+## 10. Experiments
 
 The walkthrough compares:
 
@@ -206,7 +218,7 @@ The walkthrough compares:
 
 on deterministic objectives.
 
-## 10. Failure modes
+## 11. Failure modes
 
 ### Learning rate too large
 
@@ -228,7 +240,7 @@ Momentum can carry parameters past a minimum if hyperparameters are poorly chose
 
 Adam often converges quickly, but optimization speed and final generalization are different questions.
 
-## 11. Engineering rules
+## 12. Engineering rules
 
 From this module onward:
 
@@ -240,7 +252,7 @@ From this module onward:
 6. test optimizer math on simple objectives before trusting a training stack
 7. treat NaN/Inf gradients as failures, not "training noise"
 
-## 12. Exercises
+## 13. Exercises
 
 1. Change the quadratic minimum from 3 to -5.
 2. Compare learning rates 0.001, 0.1 and 1.1.
@@ -250,18 +262,6 @@ From this module onward:
 6. Reproduce the Adam update by hand for three steps.
 7. Compare manual Adam with `torch.optim.Adam`.
 
-## Quality gate for this module
-
-~~~text
-Python formatting / lint        required
-mypy                           required
-pytest                         required
-CPU PyTorch tests              required
-ONNX tests                     N/A
-C++ configure/build/CTest      N/A
-Python ↔ exported equivalence  N/A
-~~~
-
-## Next
+ ## Next
 
 Module 04 derives automatic differentiation from scalar computation graphs and connects the chain rule directly to PyTorch autograd.
