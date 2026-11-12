@@ -38,7 +38,7 @@ jobs:
           python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
       - name: Validate helper scripts
-        run: bash -n setup.sh course.sh
+        run: bash -n setup.sh course.sh preflight.sh
 
       - name: Verify installed dependency graph
         run: python -m pip check
