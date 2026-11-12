@@ -3,7 +3,6 @@ from __future__ import annotations
 import numpy as np
 import pytest
 import torch
-
 from tensor_contract import contract_from_tensor, hwc_uint8_to_nchw_float
 
 
