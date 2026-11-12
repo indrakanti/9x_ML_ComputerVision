@@ -10,12 +10,15 @@
 
 ## Validation
 
-- [ ] `bash -n setup.sh course.sh` when setup helpers changed
-- [ ] `ruff check .`
-- [ ] `mypy src tools`
-- [ ] `pytest`
-- [ ] CMake configure/build passes
-- [ ] CTest passes
+- [ ] Python formatting / lint
+- [ ] mypy
+- [ ] pytest
+- [ ] CPU PyTorch tests
+- [ ] ONNX tests, or explicitly N/A
+- [ ] C++ configure, or explicitly N/A
+- [ ] C++ build, or explicitly N/A
+- [ ] CTest, or explicitly N/A
+- [ ] Python ↔ exported-model equivalence, or explicitly N/A
 - [ ] CPU correctness path remains available
 - [ ] Documentation/commands updated
 
