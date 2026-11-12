@@ -30,3 +30,6 @@ enable_testing()
 # Root CMake is orchestration only. Module-specific native code lives in the module.
 add_subdirectory(00_Setup)
 add_subdirectory(01_TensorsMemory)
+add_subdirectory(02_ProbabilityStatistics)
+add_subdirectory(03_Optimization)
+add_subdirectory(04_Autograd)

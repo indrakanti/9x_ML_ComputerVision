@@ -39,29 +39,29 @@ Statistics gives us tools for estimating properties from observed data.
 
 ## 2. Mean and variance
 
-For samples (x_1, x_2, ldots, x_n), the sample mean is:
+For samples $x_1, x_2, \ldots, x_n$, the sample mean is:
 
-[
-ar{x} = rac{1}{n}sum_{i=1}^{n}x_i
-]
+$
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i
+$
 
-Population variance:
+Population variance is:
 
-[
-sigma^2 = rac{1}{n}sum_{i=1}^{n}(x_i-ar{x})^2
-]
+$
+\sigma^2=\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2
+$
 
 Sample variance commonly uses Bessel's correction:
 
-[
-s^2 = rac{1}{n-1}sum_{i=1}^{n}(x_i-ar{x})^2
-]
+$
+s^2=\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2
+$
 
 Standard deviation is:
 
-[
-sigma = sqrt{sigma^2}
-]
+$
+\sigma=\sqrt{\sigma^2}
+$
 
 ### Vision example
 
@@ -71,20 +71,17 @@ Pixel intensities with the same mean can still have very different contrast beca
 
 Covariance measures how two variables vary together:
 
-[
-operatorname{Cov}(X,Y)
-=
-E[(X-E[X])(Y-E[Y])]
-]
+$
+\operatorname{Cov}(X,Y)=
+\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]
+$
 
 Correlation normalizes covariance:
 
-[
-ho_{XY}
-=
-rac{operatorname{Cov}(X,Y)}
-{sigma_Xsigma_Y}
-]
+$
+\rho_{XY}=
+\frac{\operatorname{Cov}(X,Y)}{\sigma_X\sigma_Y}
+$
 
 Correlation is bounded between -1 and 1.
 
@@ -104,15 +101,15 @@ Important distributions for this course include:
 
 For a Gaussian:
 
-[
+$
 p(x)=
-rac{1}{sqrt{2pisigma^2}}
-expleft(
--rac{(x-mu)^2}{2sigma^2}
-ight)
-]
+\frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\left(
+-\frac{(x-\mu)^2}{2\sigma^2}
+\right)
+$
 
-The parameters are mean (mu) and variance (sigma^2).
+The parameters are mean $\mu$ and variance $\sigma^2$.
 
 ## 5. Conditional probability
 
@@ -120,17 +117,15 @@ Conditional probability asks:
 
 > What is the probability of A given that B is already known?
 
-[
-P(A|B)=rac{P(Acap B)}{P(B)}
-]
+$
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+$
 
 Bayes' rule is:
 
-[
-P(A|B)
-=
-rac{P(B|A)P(A)}{P(B)}
-]
+$
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+$
 
 ### Vision example
 
@@ -218,25 +213,23 @@ Suppose a classifier is correct on 90 out of 100 test images.
 
 Measured accuracy:
 
-[
-hat{p}=0.90
-]
+$
+\hat{p}=0.90
+$
 
 But this is an estimate of an underlying probability, not absolute truth.
 
 A normal-approximation standard error is:
 
-[
-SE
-=
-sqrt{rac{hat{p}(1-hat{p})}{n}}
-]
+$
+SE=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+$
 
 An approximate 95% interval is:
 
-[
-hat{p}pm1.96SE
-]
+$
+\hat{p}\pm1.96SE
+$
 
 This becomes important when comparing two models whose metrics differ only slightly.
 
@@ -248,8 +241,9 @@ This becomes important when comparing two models whose metrics differ only sligh
 | mypy | Required | Typed statistics helpers |
 | pytest | Required | Formula and behavior validation |
 | CPU PyTorch tests | N/A | This module uses NumPy/statistics, not PyTorch behavior |
+| C++ configure/build/CTest | Required | Native statistics and metric computation is production-relevant |
+| Python ↔ C++ numerical parity | Required | Same deterministic vectors must match |
 | ONNX tests | N/A | No model artifact |
-| C++ configure/build/CTest | N/A | Native runtime adds no useful concept here |
 | Python ↔ exported-model equivalence | N/A | No exported model |
 
 ## 11. Run the demonstrations
@@ -259,10 +253,38 @@ source .venv/bin/activate
 
 python 02_ProbabilityStatistics/python/statistics_walkthrough.py
 pytest 02_ProbabilityStatistics/tests -q
-pytest -q
+
+cmake -S 02_ProbabilityStatistics -B build/module02 -DCMAKE_BUILD_TYPE=Release
+cmake --build build/module02 --parallel
+ctest --test-dir build/module02 --output-on-failure
+
+python 02_ProbabilityStatistics/python/statistics_native_parity.py \
+  build/module02/cv9x_statistics
 ~~~
 
-## 12. What the walkthrough demonstrates
+## 12. Native C++ counterpart
+
+The C++17 implementation provides deterministic native versions of:
+
+- mean
+- population variance
+- covariance
+- correlation
+- accuracy confidence interval
+
+The native executable exposes both `--self-test` and `--json`. The Python parity checker executes the compiled binary and compares every reported value against the Python reference at a strict numerical tolerance.
+
+This establishes an early course pattern:
+
+```text
+Python reference
+      ↓
+C++17 implementation
+      ↓
+numerical parity evidence
+```
+
+## 13. What the walkthrough demonstrates
 
 - image-intensity mean and variance
 - covariance and correlation
@@ -274,7 +296,7 @@ pytest -q
 - accuracy confidence intervals
 - reproducible random sampling
 
-## 13. Engineering rules
+## 14. Engineering rules
 
 From this module onward:
 
@@ -286,7 +308,7 @@ From this module onward:
 6. seed stochastic experiments when reproducibility matters
 7. do not infer causation from correlation
 
-## 14. Failure modes
+## 15. Failure modes
 
 ### Tiny validation set
 
@@ -308,7 +330,7 @@ A softmax value is not automatically a well-calibrated probability.
 
 If validation data influences training or preprocessing decisions incorrectly, measured metrics become statistically invalid.
 
-## 15. Exercises
+## 16. Exercises
 
 1. Generate two distributions with identical mean but different variance.
 2. Create two correlated variables and measure covariance/correlation.
