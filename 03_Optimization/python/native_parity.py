@@ -9,7 +9,13 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from optimization import AdamState, MomentumState, adam_step, gradient_descent_step, momentum_step
+from optimization import (
+    AdamState,
+    MomentumState,
+    adam_step,
+    gradient_descent_step,
+    momentum_step,
+)
 
 
 def quadratic_grad(value: float) -> float:
