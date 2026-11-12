@@ -36,14 +36,16 @@ def test_momentum_accumulates_state() -> None:
     assert abs(second.value - 3.0) < abs(state.value - 3.0)
 
 
-def test_adam_state_advances_and_improves_loss() -> None:
-    state = AdamState(value=10.0)
+def test_adam_state_advances_and_converges() -> None:
+    initial_value = 10.0
+    state = AdamState(value=initial_value)
 
-    for _ in range(100):
+    for _ in range(200):
         state = adam_step(state, quadratic_grad(state.value), learning_rate=0.1)
 
-    assert state.step == 100
-    assert abs(state.value - 3.0) < 0.1
+    assert state.step == 200
+    assert abs(state.value - 3.0) < abs(initial_value - 3.0)
+    assert abs(state.value - 3.0) < 0.01
 
 
 def test_manual_sgd_matches_pytorch_on_scalar_quadratic() -> None:
