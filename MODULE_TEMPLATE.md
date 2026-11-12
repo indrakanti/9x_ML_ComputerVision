@@ -59,6 +59,27 @@ Use GitHub-flavored Markdown that renders cleanly:
 - avoid pseudo-LaTeX such as `[ equation ]`
 - preview README rendering before merge
 
+## Book-quality README standard
+
+The README is both the runnable lesson and the first draft of the corresponding book chapter. A substantial module README should therefore contain:
+
+- a strong opening motivation: why the topic matters
+- explicit learning objectives
+- visual/intuitive explanation before implementation details
+- equations rendered with GitHub-supported math
+- at least one worked numerical or engineering example
+- clear Python/reference implementation discussion
+- clear C++17/native counterpart discussion
+- Python ↔ C++ parity explanation where applicable
+- deployment implications, not only training implications
+- failure modes and misleading-result examples
+- engineering rules that carry forward into later modules
+- reproducible commands
+- exercises that extend both theory and implementation
+- a short **Book takeaway** summarizing the durable principle
+
+Prefer explanations that can be reused in a technical book with minimal rewriting. Avoid README text that is only a directory listing or API reference.
+
 ## README learning sequence
 
 ```text
