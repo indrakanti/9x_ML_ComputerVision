@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import torch
-
 from optimization import AdamState, MomentumState, adam_step, momentum_step, optimize_scalar
 
 
