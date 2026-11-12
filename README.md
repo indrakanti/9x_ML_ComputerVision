@@ -91,7 +91,7 @@ The default learning path follows the three course boundaries above. Within each
 - GPU execution is a first-class systems topic, not an end-of-course appendix.
 - Mathematical ideas are explained before framework convenience APIs.
 - Notebooks are used for visualization/exploration, not as the only implementation.
-- Reusable Python code lives in importable modules; reusable native code lives under the C++ track.
+- Lesson-specific Python, C++, tests, configs and artifacts live inside the owning module. Root-level code is orchestration/shared infrastructure only.
 - Every module should include deterministic tests where practical.
 - CPU execution remains the portable correctness baseline.
 - GPU correctness and GPU performance are validated separately.
@@ -133,10 +133,16 @@ For NVIDIA/AMD GPU installs, use the current PyTorch platform selector rather th
 ~~~text
 9x_ML_ComputerVision/
 ├── 00_Setup/
-├── cpp/
-├── src/cv9x_mlcv/
-├── tests/
-├── tools/
+│   ├── python/
+│   ├── cpp/
+│   └── tests/
+├── 01_TensorsMemory/
+│   ├── python/
+│   ├── cpp/
+│   └── tests/
+├── 02_ProbabilityStatistics/
+│   ├── python/
+│   └── tests/
 ├── requirements/
 ├── CMakeLists.txt
 ├── COURSE_ROADMAP.md
