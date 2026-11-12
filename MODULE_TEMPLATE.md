@@ -13,7 +13,7 @@ XX_Topic/
 │   ├── train.py
 │   ├── evaluate.py
 │   ├── export.py
-│   └── native_parity.py
+│   └── <topic>_native_parity.py
 ├── cpp/
 │   └── native_counterpart.cpp
 ├── tests/
