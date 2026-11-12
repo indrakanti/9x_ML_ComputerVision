@@ -22,6 +22,9 @@ def main() -> None:
     loss_t = (xt * yt + xt) ** 2
     loss_t.backward()
 
+    assert xt.grad is not None
+    assert yt.grad is not None
+
     print("\nPyTorch autograd")
     print(" loss:", float(loss_t.detach()))
     print(" dL/dx:", float(xt.grad))
