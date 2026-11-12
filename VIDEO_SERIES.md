@@ -8,7 +8,7 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 |---|---|---|
 | 00 | ML Computer Vision Setup — Python/PyTorch + C++ + GPU on Linux | **Recording-ready** |
 | 01 | NumPy to PyTorch Tensors for Vision | **Implementation-ready** |
-| 02 | Probability & Statistics You Actually Need for Vision ML | Planned |
+| 02 | Probability & Statistics You Actually Need for Vision ML | **Implementation-ready** |
 | 03 | Optimization: Losses, SGD, Momentum & Adam | Planned |
 | 04 | Autograd from First Principles | Planned |
 | 05 | Datasets, Splits, Leakage, Metrics & Reproducibility | Planned |
