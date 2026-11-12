@@ -53,7 +53,6 @@ else
   python -m pip install torch torchvision
 fi
 
-python -m pip install -e .
 
 echo
 echo "Python environment installed."

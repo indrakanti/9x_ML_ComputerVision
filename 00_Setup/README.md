@@ -72,7 +72,7 @@ See the full instructions in [../LINUX_SETUP.md](../LINUX_SETUP.md).
                      Ubuntu/Linux
                     /            \
                    /              \
-          Python/PyTorch       C++17/20 + CMake
+          Python/PyTorch       C++17 + CMake
              training             runtime
                    \              /
                     \            /
@@ -99,9 +99,8 @@ python -m pip install -r requirements/onnx.txt
 
 python -m pip install torch torchvision   --index-url https://download.pytorch.org/whl/cpu
 
-python -m pip install -e .
 
-python tools/environment_check.py
+python 00_Setup/python/environment_check.py
 pytest
 
 cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
@@ -122,7 +121,7 @@ The course therefore keeps general dependencies stable while PyTorch installatio
 Run:
 
 ~~~bash
-python tools/environment_check.py
+python 00_Setup/python/environment_check.py
 ~~~
 
 It checks:

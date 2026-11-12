@@ -19,6 +19,28 @@ Run the complete portable gate:
 ./course.sh test
 ```
 
+## Module ownership
+
+Anything specific to a lesson belongs inside that module: Python, C++, tests, configs, metadata, examples and lesson artifacts. Root-level code is reserved for orchestration or infrastructure that is genuinely shared across modules.
+
+## Standard quality gate
+
+Each module PR is checked against:
+
+```text
+Python formatting / lint
+mypy
+pytest
+CPU PyTorch tests
+ONNX tests
+C++ configure
+C++ build
+CTest
+Python ↔ exported-model equivalence
+```
+
+A gate may be marked N/A only when the module genuinely has no relevant model/export/native component.
+
 ## Standard lesson contract
 
 Every major lesson should answer:

@@ -6,8 +6,7 @@ import json
 
 import numpy as np
 import torch
-
-from cv9x_mlcv.tensor_contract import contract_from_tensor
+from tensor_contract import contract_from_tensor
 
 
 def main() -> None:

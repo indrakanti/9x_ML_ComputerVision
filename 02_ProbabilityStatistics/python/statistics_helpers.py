@@ -1,4 +1,4 @@
-"""Statistical helpers used across the ML Computer Vision course."""
+"""Statistical helpers owned by Module 02."""
 
 from __future__ import annotations
 
@@ -9,7 +9,6 @@ import numpy.typing as npt
 
 
 def covariance(x: npt.ArrayLike, y: npt.ArrayLike) -> float:
-    """Return population covariance for two one-dimensional numeric arrays."""
     xa = np.asarray(x, dtype=np.float64)
     ya = np.asarray(y, dtype=np.float64)
 
@@ -24,7 +23,6 @@ def covariance(x: npt.ArrayLike, y: npt.ArrayLike) -> float:
 
 
 def correlation(x: npt.ArrayLike, y: npt.ArrayLike) -> float:
-    """Return Pearson correlation for two one-dimensional numeric arrays."""
     xa = np.asarray(x, dtype=np.float64)
     ya = np.asarray(y, dtype=np.float64)
 
@@ -39,7 +37,6 @@ def correlation(x: npt.ArrayLike, y: npt.ArrayLike) -> float:
 
 
 def bayes_posterior(*, likelihood: float, prior: float, evidence_probability: float) -> float:
-    """Compute P(A|B)=P(B|A)P(A)/P(B)."""
     for name, value in (
         ("likelihood", likelihood),
         ("prior", prior),
@@ -59,7 +56,6 @@ def bayes_posterior(*, likelihood: float, prior: float, evidence_probability: fl
 
 
 def bernoulli_nll(*, target: int, probability: float, epsilon: float = 1e-12) -> float:
-    """Return Bernoulli negative log-likelihood for target 0 or 1."""
     if target not in (0, 1):
         raise ValueError("target must be 0 or 1")
     if not 0.0 <= probability <= 1.0:
@@ -76,7 +72,6 @@ def gaussian_nll_fixed_variance(
     residuals: npt.ArrayLike,
     variance: float,
 ) -> float:
-    """Return Gaussian negative log-likelihood for zero-mean residuals."""
     if variance <= 0.0:
         raise ValueError("variance must be > 0")
 
@@ -94,11 +89,6 @@ def accuracy_confidence_interval(
     total: int,
     z_value: float = 1.96,
 ) -> tuple[float, float]:
-    """Approximate two-sided confidence interval for a binomial proportion.
-
-    This uses the simple normal approximation for teaching. Later evaluation
-    modules can compare Wilson/bootstrap intervals for small or extreme samples.
-    """
     if total <= 0:
         raise ValueError("total must be > 0")
     if correct < 0 or correct > total:

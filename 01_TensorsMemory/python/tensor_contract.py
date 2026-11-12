@@ -1,4 +1,4 @@
-"""Tensor metadata contracts shared by course examples."""
+"""Tensor metadata helpers owned by Module 01."""
 
 from __future__ import annotations
 
@@ -8,7 +8,6 @@ import torch
 
 
 def contract_from_tensor(tensor: torch.Tensor) -> dict[str, Any]:
-    """Return the metadata required to interpret a tensor across runtime boundaries."""
     return {
         "shape": list(tensor.shape),
         "strides": list(tensor.stride()),
@@ -20,7 +19,6 @@ def contract_from_tensor(tensor: torch.Tensor) -> dict[str, Any]:
 
 
 def hwc_uint8_to_nchw_float(image: torch.Tensor) -> torch.Tensor:
-    """Convert one HWC uint8 image tensor to contiguous NCHW float32 in [0, 1]."""
     if image.ndim != 3:
         raise ValueError("expected HWC tensor with rank 3")
     if image.shape[-1] not in (1, 3, 4):

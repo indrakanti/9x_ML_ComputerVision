@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import sys
 
-from cv9x_mlcv.environment import (
+from environment import (
     autograd_ok,
     environment_is_healthy,
     environment_report,

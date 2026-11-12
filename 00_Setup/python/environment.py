@@ -1,4 +1,4 @@
-"""Environment validation helpers for the 9x ML Computer Vision course."""
+"""Environment validation helpers for Module 00."""
 
 from __future__ import annotations
 
@@ -15,7 +15,6 @@ import torchvision
 
 
 def tensor_math_ok() -> bool:
-    """Return True when basic PyTorch tensor math works."""
     a = torch.tensor([[1.0, 2.0], [3.0, 4.0]])
     b = torch.tensor([[2.0, 0.0], [1.0, 2.0]])
     result = a @ b
@@ -24,7 +23,6 @@ def tensor_math_ok() -> bool:
 
 
 def autograd_ok() -> bool:
-    """Return True when a deterministic autograd calculation is correct."""
     x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
     loss = (x**2).sum()
     loss.backward()
@@ -37,10 +35,8 @@ def autograd_ok() -> bool:
 
 
 def opencv_ok() -> bool:
-    """Return True when a simple OpenCV image operation is correct."""
     image = np.zeros((16, 16), dtype=np.uint8)
     image[4:12, 4:12] = 255
-
     blurred = cv2.GaussianBlur(image, (3, 3), 0)
 
     return (
@@ -52,7 +48,6 @@ def opencv_ok() -> bool:
 
 
 def environment_report() -> dict[str, Any]:
-    """Return a compact report of the course runtime environment."""
     cuda_available = torch.cuda.is_available()
 
     return {
@@ -76,9 +71,7 @@ def environment_report() -> dict[str, Any]:
 
 
 def environment_is_healthy() -> bool:
-    """Return True when the minimum executable course environment is healthy."""
     report = environment_report()
-
     major, minor = sys.version_info[:2]
 
     return bool(

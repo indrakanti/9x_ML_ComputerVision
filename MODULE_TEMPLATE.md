@@ -6,6 +6,7 @@ Use this structure as a target for substantial ML Computer Vision lessons.
 XX_Topic/
 ├── README.md
 ├── VIDEO.md
+├── CMakeLists.txt            # when native C++ exists
 ├── python/
 │   ├── from_scratch.py
 │   ├── model.py
@@ -13,11 +14,12 @@ XX_Topic/
 │   ├── evaluate.py
 │   └── export.py
 ├── cpp/
-│   ├── CMakeLists.txt
 │   └── inference.cpp
 ├── tests/
+│   ├── conftest.py
 │   ├── test_math.py
 │   ├── test_model.py
+│   ├── test_onnx.py
 │   └── test_equivalence.py
 ├── configs/
 │   └── default.yml
@@ -83,3 +85,26 @@ GPU / optimized runtime
 ```
 
 Each transition should have an equivalence tolerance and test evidence rather than assuming export correctness.
+
+
+## Module ownership rule
+
+Anything that exists specifically to teach one module belongs inside that module: Python, C++, tests, configs, metadata and lesson artifacts. Root-level code is reserved for orchestration or genuinely shared infrastructure.
+
+## Standard module quality gate
+
+Every module PR is evaluated against:
+
+~~~text
+Python formatting / lint
+mypy
+pytest
+CPU PyTorch tests
+ONNX tests
+C++ configure
+C++ build
+CTest
+Python ↔ exported-model equivalence
+~~~
+
+A gate may be explicitly **N/A** when the module genuinely has no model/export/native component. Do not create artificial ONNX or C++ work merely to satisfy a checkbox.

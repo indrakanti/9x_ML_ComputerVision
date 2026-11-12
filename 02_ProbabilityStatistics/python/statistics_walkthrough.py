@@ -5,8 +5,7 @@ from __future__ import annotations
 import math
 
 import numpy as np
-
-from cv9x_mlcv.statistics import (
+from statistics_helpers import (
     accuracy_confidence_interval,
     bayes_posterior,
     bernoulli_nll,

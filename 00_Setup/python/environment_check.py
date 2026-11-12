@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import json
 
-from cv9x_mlcv.environment import environment_is_healthy, environment_report
+from environment import environment_is_healthy, environment_report
 
 
 def main() -> int:
@@ -41,7 +41,6 @@ def main() -> int:
 
     healthy = environment_is_healthy()
     print(f"\nOverall status: {'PASS' if healthy else 'FAIL'}")
-
     return 0 if healthy else 1
 
 

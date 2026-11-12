@@ -15,7 +15,7 @@ activate_venv() {
 case "$COMMAND" in
   doctor)
     activate_venv
-    python tools/environment_check.py
+    python 00_Setup/python/environment_check.py
     echo
     echo "Native toolchain:"
     cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
@@ -27,8 +27,8 @@ case "$COMMAND" in
   test)
     activate_venv
     ruff check .
-    mypy src tools
-    pytest --cov=cv9x_mlcv --cov-report=term-missing
+    mypy [0-9][0-9]_*/python
+    pytest
     cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
     cmake --build build-native --parallel
     ctest --test-dir build-native --output-on-failure
