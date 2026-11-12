@@ -49,7 +49,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 02 | Probability/statistics essentials for vision ML | **Implemented** |
 | 03 | Optimization: losses, gradients, SGD, momentum, Adam | **Implemented** |
 | 04 | Autograd from scalar graph intuition to PyTorch | **Implemented** |
-| 05 | Dataset splits, leakage, metrics, reproducibility | Planned |
+| 05 | Dataset splits, leakage, metrics, reproducibility | **Implemented** |
 
 ## Part II — From Classical Features to Learned Features
 
