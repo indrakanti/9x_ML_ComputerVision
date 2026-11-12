@@ -48,7 +48,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 01 | NumPy/PyTorch tensors + image/tensor memory contracts + C++ tensor/runtime concepts | **Implemented** |
 | 02 | Probability/statistics essentials for vision ML | **Implemented** |
 | 03 | Optimization: losses, gradients, SGD, momentum, Adam | **Implemented** |
-| 04 | Autograd from scalar graph intuition to PyTorch | Planned |
+| 04 | Autograd from scalar graph intuition to PyTorch | **Implemented** |
 | 05 | Dataset splits, leakage, metrics, reproducibility | Planned |
 
 ## Part II — From Classical Features to Learned Features
