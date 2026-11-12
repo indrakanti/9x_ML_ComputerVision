@@ -233,7 +233,7 @@ Later lessons will add real CUDA, ONNX Runtime GPU, and TensorRT C++ targets beh
 ## 13. Environment sanity check
 
 ~~~bash
-python tools/environment_check.py
+python 00_Setup/python/environment_check.py
 ~~~
 
 Expected categories:
@@ -261,14 +261,14 @@ pytest
 Coverage:
 
 ~~~bash
-pytest --cov=cv9x_mlcv --cov-report=term-missing
+pytest
 ~~~
 
 ## 15. Lint / static checks
 
 ~~~bash
 ruff check .
-mypy src tools
+mypy 00_Setup/python 01_TensorsMemory/python 02_ProbabilityStatistics/python
 ~~~
 
 ## 16. CPU-first CI policy
