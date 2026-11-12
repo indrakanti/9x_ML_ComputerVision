@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(cv9x_ml_computer_vision LANGUAGES CXX)
+project(cv9x_ml_computer_vision VERSION 0.1.0 LANGUAGES CXX)
 
 option(CV9X_ENABLE_CUDA "Enable CUDA language and GPU-native examples when toolkit is available" OFF)
 option(CV9X_WARNINGS_AS_ERRORS "Treat C++ warnings as errors" OFF)
 
+# C++17 is the portable course baseline. Optional future examples may explicitly opt into C++20.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
