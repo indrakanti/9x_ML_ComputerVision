@@ -141,8 +141,9 @@ Numerical gradients are slower and approximate, but they are extremely useful fo
 | mypy | Required | Typed scalar graph implementation |
 | pytest | Required | Graph, accumulation and gradient checks |
 | CPU PyTorch tests | Required | First-principles gradients are checked against PyTorch |
+| C++ configure/build/CTest | Required | Reverse-mode autodiff is implemented as a native graph |
+| Python ↔ C++ numerical parity | Required | Forward value and gradients must match |
 | ONNX tests | N/A | No exported model artifact |
-| C++ configure/build/CTest | N/A | Native runtime is not the learning objective here |
 | Python ↔ exported-model equivalence | N/A | No exported model |
 
 ## 7. What this module implements
@@ -151,9 +152,13 @@ Numerical gradients are slower and approximate, but they are extremely useful fo
 04_Autograd/
 ├── README.md
 ├── VIDEO.md
+├── CMakeLists.txt
 ├── python/
 │   ├── autodiff.py
-│   └── autograd_walkthrough.py
+│   ├── autograd_walkthrough.py
+│   └── native_parity.py
+├── cpp/
+│   └── autodiff.cpp
 └── tests/
     ├── conftest.py
     └── test_autodiff.py
@@ -175,10 +180,32 @@ source .venv/bin/activate
 
 python 04_Autograd/python/autograd_walkthrough.py
 pytest 04_Autograd/tests -q
-pytest
+
+cmake -S 04_Autograd -B build/module04 -DCMAKE_BUILD_TYPE=Release
+cmake --build build/module04 --parallel
+ctest --test-dir build/module04 --output-on-failure
+
+python 04_Autograd/python/native_parity.py \
+  build/module04/cv9x_autodiff
 ~~~
 
-## 9. PyTorch mapping
+## 9. Native C++ counterpart
+
+The C++17 implementation builds the same reverse-mode graph using native nodes, parent edges, local backward functions, topological traversal and gradient accumulation.
+
+The proof chain for this module is:
+
+```text
+first-principles Python autodiff
+          ↕ parity
+first-principles C++17 autodiff
+          ↕ gradient equivalence
+PyTorch autograd
+```
+
+This is not yet model deployment, but it demonstrates that the mathematical engine can be reproduced and verified outside Python.
+
+## 10. PyTorch mapping
 
 The tiny engine maps directly to PyTorch concepts:
 
@@ -191,7 +218,7 @@ The tiny engine maps directly to PyTorch concepts:
 | `.grad` | `.grad` |
 | `backward()` | `Tensor.backward()` |
 
-## 10. Common failure modes
+## 11. Common failure modes
 
 ### Forgetting gradient accumulation
 
@@ -213,7 +240,7 @@ Some in-place operations can invalidate values autograd needs for backward.
 
 Numerical gradients depend on step size and floating-point precision; they are a test oracle, not the training mechanism.
 
-## 11. Engineering rules
+## 12. Engineering rules
 
 From this module onward:
 
@@ -224,7 +251,7 @@ From this module onward:
 5. use numerical gradient checks for custom math when practical
 6. treat NaN/Inf gradients as defects requiring investigation
 
-## 12. Exercises
+## 13. Exercises
 
 1. Add division support.
 2. Add an `exp()` node.
