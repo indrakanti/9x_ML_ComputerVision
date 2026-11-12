@@ -189,7 +189,7 @@ The module contains:
 ├── python/
 │   ├── optimization.py
 │   ├── optimization_walkthrough.py
-│   └── native_parity.py
+│   └── optimization_native_parity.py
 ├── cpp/
 │   └── optimizer_state.cpp
 └── tests/
@@ -211,7 +211,7 @@ cmake -S 03_Optimization -B build/module03 -DCMAKE_BUILD_TYPE=Release
 cmake --build build/module03 --parallel
 ctest --test-dir build/module03 --output-on-failure
 
-python 03_Optimization/python/native_parity.py \
+python 03_Optimization/python/optimization_native_parity.py \
   build/module03/cv9x_optimizer_state
 ~~~
 
