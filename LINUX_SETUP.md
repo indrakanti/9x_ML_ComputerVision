@@ -48,7 +48,32 @@ ffmpeg -version
 
 The course requires Python 3.10 or newer.
 
-## 3. Clone and create a virtual environment
+## 3. Recommended beginner setup
+
+The easiest supported path is CPU-only. A GPU is not required to start.
+
+~~~bash
+git clone https://github.com/indrakanti/9x_ML_ComputerVision.git
+cd 9x_ML_ComputerVision
+
+bash setup.sh --cpu
+source .venv/bin/activate
+bash course.sh doctor
+~~~
+
+If the final output contains `COURSE ENVIRONMENT READY`, continue to Module 01.
+
+For an NVIDIA system:
+
+~~~bash
+bash setup.sh --nvidia
+source .venv/bin/activate
+bash course.sh doctor
+~~~
+
+The helper never modifies GPU drivers and does not silently install a system CUDA toolkit.
+
+## 4. Manual setup — clone and create a virtual environment
 
 ~~~bash
 git clone https://github.com/indrakanti/9x_ML_ComputerVision.git
@@ -67,7 +92,7 @@ cd 9x_ML_ComputerVision
 source .venv/bin/activate
 ~~~
 
-## 4. Install course Python packages
+## 5. Manual setup — install course Python packages
 
 ~~~bash
 python -m pip install -r requirements/base.txt
@@ -77,7 +102,7 @@ python -m pip install -r requirements/onnx.txt
 
 PyTorch is intentionally installed separately because the correct wheel depends on the compute platform.
 
-## 5. PyTorch — CPU-only path
+## 6. PyTorch — CPU-only path
 
 For a machine without an NVIDIA/AMD accelerator, or when learning on CPU:
 
@@ -87,7 +112,7 @@ python -m pip install \
   --index-url https://download.pytorch.org/whl/cpu
 ~~~
 
-## 6. PyTorch — NVIDIA GPU path
+## 7. PyTorch — NVIDIA GPU path
 
 First inspect the system:
 
@@ -121,13 +146,13 @@ if torch.cuda.is_available():
 PY
 ~~~
 
-## 7. AMD ROCm path
+## 8. AMD ROCm path
 
 On supported AMD GPUs, use the current PyTorch selector and the ROCm package appropriate for the installed platform.
 
 ROCm support is hardware/OS specific; verify support before changing the course environment.
 
-## 8. Jupyter
+## 9. Jupyter
 
 Jupyter is installed through requirements/dev.txt.
 
@@ -146,7 +171,7 @@ python -m ipykernel install \
   --display-name "9x ML Computer Vision"
 ~~~
 
-## 9. ONNX and ONNX Runtime
+## 10. ONNX and ONNX Runtime
 
 CPU:
 
@@ -158,9 +183,9 @@ The default course requirement uses CPU ONNX Runtime for portable CI.
 
 For a GPU environment, do not install both CPU and GPU ONNX Runtime variants blindly in the same environment. Follow the current ONNX Runtime compatibility guidance and replace the CPU package with the appropriate GPU package.
 
-## 10. Native C++ sanity check
+## 11. Native C++ sanity check
 
-The C++ runtime path is available from Module 00.
+The C++ runtime path is available from Module 00. **C++17 is the portable baseline**; optional C++20 examples must opt in explicitly.
 
 ~~~bash
 cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
@@ -183,7 +208,7 @@ cmake -S . -B build-native-werror \
 cmake --build build-native-werror --parallel
 ~~~
 
-## 11. CUDA toolkit / nvcc path
+## 12. CUDA toolkit / nvcc path
 
 PyTorch GPU execution does not automatically require a system-wide CUDA toolkit, but native CUDA development and custom CUDA code do.
 
@@ -205,7 +230,7 @@ This fails intentionally when CUDA is requested but no CUDA compiler is present.
 
 Later lessons will add real CUDA, ONNX Runtime GPU, and TensorRT C++ targets behind explicit build/runtime checks.
 
-## 12. Environment sanity check
+## 13. Environment sanity check
 
 ~~~bash
 python tools/environment_check.py
@@ -227,7 +252,7 @@ autograd
 OpenCV operation
 ~~~
 
-## 13. Run Python tests
+## 14. Run Python tests
 
 ~~~bash
 pytest
@@ -239,14 +264,14 @@ Coverage:
 pytest --cov=cv9x_mlcv --cov-report=term-missing
 ~~~
 
-## 14. Lint / static checks
+## 15. Lint / static checks
 
 ~~~bash
 ruff check .
 mypy src tools
 ~~~
 
-## 15. CPU-first CI policy
+## 16. CPU-first CI policy
 
 GitHub Actions runs on CPU by default.
 
@@ -259,7 +284,7 @@ Why:
 
 GPU-specific modules should still provide CPU smoke paths where practical.
 
-## 16. CUDA terminology
+## 17. CUDA terminology
 
 Keep these separate:
 
@@ -271,7 +296,7 @@ A system-wide CUDA toolkit is not automatically required just to run a prebuilt 
 
 It becomes relevant when compiling custom CUDA code/extensions or using tools that require nvcc.
 
-## 17. Native inference dependencies
+## 18. Native inference dependencies
 
 The base C++ compiler/CMake/OpenCV/debugger toolchain is installed on day one.
 
@@ -284,7 +309,7 @@ Large native ML runtimes remain lesson-scoped so students do not need every depl
 
 This keeps the initial environment reproducible while making native execution a first-class course path.
 
-## 18. Clean environment reset
+## 19. Clean environment reset
 
 ~~~bash
 deactivate 2>/dev/null || true
@@ -300,7 +325,7 @@ python -m pip install -r requirements/onnx.txt
 python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 ~~~
 
-## 19. Common failures
+## 20. Common failures
 
 ### Python too old
 

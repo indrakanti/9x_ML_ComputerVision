@@ -17,3 +17,9 @@ checkpoints/
 *.pt
 *.pth
 *.onnx
+
+build-native/
+build-native-*/
+build-cuda/
+Testing/
+.cache/

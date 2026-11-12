@@ -12,11 +12,39 @@ The course has three synchronized tracks:
 
 CPU remains the portable correctness baseline. C++ and GPU are introduced early and revisited at every major model family rather than postponed until the end.
 
+## Three-course structure
+
+The roadmap is intentionally split into three independently completable courses:
+
+| Course | Modules | Completion outcome |
+|---|---:|---|
+| **ML-CV Part 1 — Foundations to Modern Perception** | 00–31 | Understand ML fundamentals; train CNN/Transformer models; build detection/segmentation/pose systems; export and optimize models |
+| **ML-CV Part 2 — Foundation, Multimodal, Video & Generative Vision** | 32–60 | Build with vision-language, open-vocabulary, video, 3-D/neural rendering and generative vision concepts |
+| **ML-CV Part 3 — Embodied AI & Production Vision Systems** | 61–85 | Understand world/VLA models, training systems and full native/accelerated production inference |
+
+### Completion rule
+
+A learner may stop after any part and still have a coherent completed course. The numbering remains global so references stay stable across the series.
+
+### Module 00 promise
+
+Before Module 01, a beginner should be able to run:
+
+~~~bash
+bash setup.sh --cpu
+source .venv/bin/activate
+bash course.sh doctor
+~~~
+
+and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a native C++ build/test pass.
+
+# ML Computer Vision — Part 1: Foundations to Modern Perception
+
 ## Part I — ML Foundations for Vision
 
 | Module | Topic | Status |
 |---|---|---|
-| 00 | Linux, Python/PyTorch, C++/CMake, GPU toolchain, testing, CI | **Foundation PR** |
+| 00 | Beginner-ready Linux workstation: Python/PyTorch, C++/CMake, GPU awareness, tests, CI, course doctor | **Foundation implemented** |
 | 01 | NumPy/PyTorch tensors + image/tensor memory contracts + C++ tensor/runtime concepts | Planned |
 | 02 | Probability/statistics essentials for vision ML | Planned |
 | 03 | Optimization: losses, gradients, SGD, momentum, Adam | Planned |
@@ -69,6 +97,8 @@ CPU remains the portable correctness baseline. C++ and GPU are introduced early 
 | 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | Planned |
 | 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | Planned |
 
+# ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision
+
 ## Part VI — Vision-Language and Open-Vocabulary Vision
 
 | Module | Topic | Status |
@@ -117,6 +147,8 @@ CPU remains the portable correctness baseline. C++ and GPU are introduced early 
 | 58 | Flow matching / rectified-flow concepts | Planned |
 | 59 | Image editing, inpainting, control/conditioning | Planned |
 | 60 | Video generation concepts and temporal consistency | Planned |
+
+# ML Computer Vision — Part 3: Embodied AI & Production Vision Systems
 
 ## Part X — World Models, Embodied Vision and VLA
 
@@ -226,3 +258,34 @@ For example, a module on self-supervised foundation backbones should teach:
 rather than depending on one model release forever.
 
 That lets the course stay current as model families change.
+
+
+## Standard major-model lifecycle
+
+Major model modules should progressively prove the same contract:
+
+~~~text
+math / first principles
+        ↓
+PyTorch reference
+        ↓
+train + evaluate
+        ↓
+export + metadata
+        ↓
+ONNX Runtime Python
+        ↓
+ONNX Runtime C++
+        ↓
+GPU / TensorRT where applicable
+        ↓
+latency + memory + monitoring evidence
+~~~
+
+The course does not treat successful Python inference as the end of the engineering problem.
+
+## Reproducibility levels
+
+1. **Supported environment:** version ranges in `requirements/`.
+2. **Known-good release environment:** exact snapshots in `locks/`, committed only after the full course gate passes.
+3. **Experiment provenance:** seed, data revision, split, transforms, model/config, optimizer, precision, device, software versions and metrics.

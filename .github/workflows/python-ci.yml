@@ -38,6 +38,12 @@ jobs:
           python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
           python -m pip install -e .
 
+      - name: Validate helper scripts
+        run: bash -n setup.sh course.sh
+
+      - name: Verify installed dependency graph
+        run: python -m pip check
+
       - name: Environment sanity
         run: python tools/environment_check.py
 
@@ -51,7 +57,10 @@ jobs:
         run: pytest --cov=cv9x_mlcv --cov-report=term-missing
 
       - name: Configure native C++
-        run: cmake -S . -B build-native -G Ninja -DCMAKE_BUILD_TYPE=Release
+        run: |
+          cmake -S . -B build-native -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCV9X_WARNINGS_AS_ERRORS=ON
 
       - name: Build native C++
         run: cmake --build build-native --parallel

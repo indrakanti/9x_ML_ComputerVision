@@ -2,6 +2,39 @@
 
 This module establishes the development contract for every later lesson.
 
+## Beginner promise
+
+You do **not** need a GPU to start this course.
+
+For the supported CPU path:
+
+~~~bash
+git clone https://github.com/indrakanti/9x_ML_ComputerVision.git
+cd 9x_ML_ComputerVision
+
+bash setup.sh --cpu
+source .venv/bin/activate
+bash course.sh doctor
+~~~
+
+When the final line reports:
+
+~~~text
+COURSE ENVIRONMENT READY
+~~~
+
+the machine is ready for Module 01.
+
+On a machine with an NVIDIA GPU:
+
+~~~bash
+bash setup.sh --nvidia
+source .venv/bin/activate
+bash course.sh doctor
+~~~
+
+The setup script never modifies system GPU drivers and never silently installs a CUDA toolkit.
+
 ## What students install
 
 System tools:
@@ -107,11 +140,22 @@ It checks:
 - autograd gradients
 - a basic OpenCV image operation
 
+## One-command health checks
+
+~~~bash
+bash course.sh doctor
+bash course.sh test
+~~~
+
+`doctor` verifies that the learning workstation can execute the Python ML stack and compile/run the native C++ sanity target.
+
+`test` runs the full portable development gate: Ruff, mypy, pytest, CMake build and CTest.
+
 ## C++ runtime philosophy
 
 Python is the preferred training environment, but production lessons do not assume the Python interpreter is the final runtime.
 
-The native path begins with C++17/20 + CMake and grows into:
+The native path uses a C++17 baseline + CMake and grows into:
 
 ~~~text
 native tensor/image contracts
