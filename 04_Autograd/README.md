@@ -156,7 +156,7 @@ Numerical gradients are slower and approximate, but they are extremely useful fo
 ├── python/
 │   ├── autodiff.py
 │   ├── autograd_walkthrough.py
-│   └── native_parity.py
+│   └── autodiff_native_parity.py
 ├── cpp/
 │   └── autodiff.cpp
 └── tests/
@@ -185,7 +185,7 @@ cmake -S 04_Autograd -B build/module04 -DCMAKE_BUILD_TYPE=Release
 cmake --build build/module04 --parallel
 ctest --test-dir build/module04 --output-on-failure
 
-python 04_Autograd/python/native_parity.py \
+python 04_Autograd/python/autodiff_native_parity.py \
   build/module04/cv9x_autodiff
 ~~~
 
