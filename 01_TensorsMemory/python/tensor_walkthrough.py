@@ -6,7 +6,6 @@ import json
 
 import numpy as np
 import torch
-
 from tensor_contract import contract_from_tensor
 
 
