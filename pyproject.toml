@@ -1,31 +1,11 @@
-[build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "cv9x-mlcv"
-version = "0.1.0"
-description = "9x ML Computer Vision course utilities"
-readme = "README.md"
-requires-python = ">=3.10"
-authors = [
-  { name = "9x ML Computer Vision" }
-]
-
-[tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["00_Setup/tests", "01_TensorsMemory/tests", "02_ProbabilityStatistics/tests"]
 addopts = "-ra"
 
 [tool.ruff]
 target-version = "py310"
 line-length = 100
-exclude = [".venv", "build", "dist"]
+exclude = [".venv", "build", "build-native", "dist"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
