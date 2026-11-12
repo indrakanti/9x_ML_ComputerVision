@@ -66,11 +66,11 @@ jobs:
 
       - name: Python ↔ C++ numerical parity
         run: |
-          python 02_ProbabilityStatistics/python/native_parity.py \
+          python 02_ProbabilityStatistics/python/statistics_native_parity.py \
             build-native/02_ProbabilityStatistics/cv9x_statistics
-          python 03_Optimization/python/native_parity.py \
+          python 03_Optimization/python/optimization_native_parity.py \
             build-native/03_Optimization/cv9x_optimizer_state
-          python 04_Autograd/python/native_parity.py \
+          python 04_Autograd/python/autodiff_native_parity.py \
             build-native/04_Autograd/cv9x_autodiff
 
       - name: Test native C++
