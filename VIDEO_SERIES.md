@@ -11,7 +11,7 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 02 | Probability & Statistics You Actually Need for Vision ML | **Implementation-ready** |
 | 03 | Optimization: Losses, SGD, Momentum & Adam | **Implementation-ready** |
 | 04 | Autograd from First Principles | **Implementation-ready** |
-| 05 | Datasets, Splits, Leakage, Metrics & Reproducibility | Planned |
+| 05 | Datasets, Splits, Leakage, Metrics & Reproducibility | **Implementation-ready** |
 
 ## Major series arcs
 

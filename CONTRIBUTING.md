@@ -94,3 +94,14 @@ A result is not reproducible unless the relevant dataset version, preprocessing,
 ## Contribution licensing
 
 Unless explicitly stated otherwise, contributions intentionally submitted for inclusion are provided under Apache License 2.0, consistent with Section 5 of the license.
+
+
+## Pre-PR validation
+
+Before opening or updating a pull request, run the same end-to-end gate used by CI:
+
+```bash
+bash preflight.sh
+```
+
+The preflight runs Ruff, mypy, pytest, native CMake configure/build, Python ↔ C++ parity, and CTest. A module PR should not be described as ready until this gate passes locally or in an equivalent clean environment.
