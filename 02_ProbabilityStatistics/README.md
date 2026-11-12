@@ -258,7 +258,7 @@ cmake -S 02_ProbabilityStatistics -B build/module02 -DCMAKE_BUILD_TYPE=Release
 cmake --build build/module02 --parallel
 ctest --test-dir build/module02 --output-on-failure
 
-python 02_ProbabilityStatistics/python/native_parity.py \
+python 02_ProbabilityStatistics/python/statistics_native_parity.py \
   build/module02/cv9x_statistics
 ~~~
 
