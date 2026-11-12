@@ -13,7 +13,7 @@ Equivalent manual commands:
 
 ```bash
 ruff check .
-mypy 00_Setup/python 01_TensorsMemory/python 02_ProbabilityStatistics/python
+mypy [0-9][0-9]_*/python
 pytest
 
 cmake -S . -B build-native \
@@ -50,7 +50,7 @@ Python:
 
 ```bash
 ruff check .
-mypy 00_Setup/python 01_TensorsMemory/python 02_ProbabilityStatistics/python
+mypy [0-9][0-9]_*/python
 ```
 
 C++:
