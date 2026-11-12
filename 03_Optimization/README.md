@@ -43,15 +43,15 @@ The optimizer does not "understand" the task. It only receives gradients and upd
 
 Suppose:
 
-[
-f(w) = (w-3)^2
-]
+$
+f(w)=(w-3)^2
+$
 
 The minimum is at:
 
-[
+$
 w^*=3
-]
+$
 
 The derivative is:
 
@@ -66,7 +66,7 @@ w_{t+1}=w_t-eta
 abla f(w_t)
 ]
 
-where (eta) is the learning rate.
+where $\eta$ is the learning rate.
 
 ## 3. Learning rate
 
@@ -172,8 +172,9 @@ Adam adapts update magnitude using recent first- and second-moment estimates.
 | mypy | Required | Typed optimizer helpers |
 | pytest | Required | Optimizer math and state validation |
 | CPU PyTorch tests | Required | Manual SGD is checked against `torch.optim.SGD` |
+| C++ configure/build/CTest | Required | Optimizer state/update math is implemented natively |
+| Python ↔ C++ numerical parity | Required | SGD, Momentum and Adam deterministic outputs must match |
 | ONNX tests | N/A | No exported model |
-| C++ configure/build/CTest | N/A | This module is training-side optimization |
 | Python ↔ exported-model equivalence | N/A | No exported model |
 
 ## 8. What this module implements
@@ -184,17 +185,19 @@ The module contains:
 03_Optimization/
 ├── README.md
 ├── VIDEO.md
+├── CMakeLists.txt
 ├── python/
 │   ├── optimization.py
-│   └── optimization_walkthrough.py
+│   ├── optimization_walkthrough.py
+│   └── native_parity.py
+├── cpp/
+│   └── optimizer_state.cpp
 └── tests/
     ├── conftest.py
     └── test_optimization.py
 ~~~
 
-It intentionally has no C++ or ONNX component.
-
-Optimization is a training-side concept here; adding export/native-runtime code would not teach anything useful yet.
+The module implements the same optimizer-state mathematics in Python and C++17. ONNX remains N/A because there is no model artifact yet.
 
 ## 9. Run
 
@@ -203,10 +206,29 @@ source .venv/bin/activate
 
 python 03_Optimization/python/optimization_walkthrough.py
 pytest 03_Optimization/tests -q
-pytest
+
+cmake -S 03_Optimization -B build/module03 -DCMAKE_BUILD_TYPE=Release
+cmake --build build/module03 --parallel
+ctest --test-dir build/module03 --output-on-failure
+
+python 03_Optimization/python/native_parity.py \
+  build/module03/cv9x_optimizer_state
 ~~~
 
-## 10. Experiments
+## 10. Native C++ counterpart
+
+The C++17 implementation mirrors the first-principles Python optimizer state:
+
+- gradient-descent update
+- momentum velocity accumulation
+- Adam first moment
+- Adam second moment
+- bias correction
+- epsilon stabilization
+
+The parity checker runs both implementations over the same deterministic quadratic objective and compares the resulting values.
+
+## 11. Experiments
 
 The walkthrough compares:
 
@@ -218,7 +240,7 @@ The walkthrough compares:
 
 on deterministic objectives.
 
-## 11. Failure modes
+## 12. Failure modes
 
 ### Learning rate too large
 
@@ -240,7 +262,7 @@ Momentum can carry parameters past a minimum if hyperparameters are poorly chose
 
 Adam often converges quickly, but optimization speed and final generalization are different questions.
 
-## 12. Engineering rules
+## 13. Engineering rules
 
 From this module onward:
 
@@ -252,7 +274,7 @@ From this module onward:
 6. test optimizer math on simple objectives before trusting a training stack
 7. treat NaN/Inf gradients as failures, not "training noise"
 
-## 13. Exercises
+## 14. Exercises
 
 1. Change the quadratic minimum from 3 to -5.
 2. Compare learning rates 0.001, 0.1 and 1.1.
@@ -262,6 +284,6 @@ From this module onward:
 6. Reproduce the Adam update by hand for three steps.
 7. Compare manual Adam with `torch.optim.Adam`.
 
- ## Next
+## Next
 
 Module 04 derives automatic differentiation from scalar computation graphs and connects the chain rule directly to PyTorch autograd.
