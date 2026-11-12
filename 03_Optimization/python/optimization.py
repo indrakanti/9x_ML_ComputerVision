@@ -6,7 +6,6 @@ import math
 from collections.abc import Callable
 from dataclasses import dataclass
 
-
 ScalarFn = Callable[[float], float]
 
 
