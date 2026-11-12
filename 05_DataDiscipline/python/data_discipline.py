@@ -5,7 +5,6 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 
-
 FNV_OFFSET_BASIS_64 = 14695981039346656037
 FNV_PRIME_64 = 1099511628211
 UINT64_MASK = (1 << 64) - 1
