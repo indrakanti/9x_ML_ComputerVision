@@ -5,7 +5,6 @@ from __future__ import annotations
 import math
 
 import numpy as np
-
 from statistics_helpers import (
     accuracy_confidence_interval,
     bayes_posterior,
