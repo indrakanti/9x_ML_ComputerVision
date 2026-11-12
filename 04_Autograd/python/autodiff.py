@@ -6,7 +6,6 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
 
-
 BackwardFn = Callable[[], None]
 
 
@@ -15,11 +14,11 @@ class Value:
     data: float
     label: str = ""
     grad: float = 0.0
-    _prev: tuple["Value", ...] = field(default_factory=tuple, repr=False)
+    _prev: tuple[Value, ...] = field(default_factory=tuple, repr=False)
     _backward: BackwardFn = field(default=lambda: None, repr=False)
     _op: str = field(default="", repr=False)
 
-    def __add__(self, other: float | "Value") -> "Value":
+    def __add__(self, other: float | Value) -> Value:
         rhs = other if isinstance(other, Value) else Value(float(other))
         out = Value(self.data + rhs.data, _prev=(self, rhs), _op="+")
 
@@ -30,10 +29,10 @@ class Value:
         out._backward = backward
         return out
 
-    def __radd__(self, other: float | "Value") -> "Value":
+    def __radd__(self, other: float | Value) -> Value:
         return self + other
 
-    def __mul__(self, other: float | "Value") -> "Value":
+    def __mul__(self, other: float | Value) -> Value:
         rhs = other if isinstance(other, Value) else Value(float(other))
         out = Value(self.data * rhs.data, _prev=(self, rhs), _op="*")
 
@@ -44,10 +43,10 @@ class Value:
         out._backward = backward
         return out
 
-    def __rmul__(self, other: float | "Value") -> "Value":
+    def __rmul__(self, other: float | Value) -> Value:
         return self * other
 
-    def __pow__(self, exponent: int | float) -> "Value":
+    def __pow__(self, exponent: int | float) -> Value:
         out = Value(self.data**exponent, _prev=(self,), _op=f"**{exponent}")
 
         def backward() -> None:
@@ -56,13 +55,13 @@ class Value:
         out._backward = backward
         return out
 
-    def __neg__(self) -> "Value":
+    def __neg__(self) -> Value:
         return self * -1.0
 
-    def __sub__(self, other: float | "Value") -> "Value":
+    def __sub__(self, other: float | Value) -> Value:
         return self + (-other if isinstance(other, Value) else -float(other))
 
-    def __rsub__(self, other: float | "Value") -> "Value":
+    def __rsub__(self, other: float | Value) -> Value:
         lhs = other if isinstance(other, Value) else Value(float(other))
         return lhs - self
 
