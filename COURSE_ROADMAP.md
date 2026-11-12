@@ -46,7 +46,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 |---|---|---|
 | 00 | Beginner-ready Linux workstation: Python/PyTorch, C++/CMake, GPU awareness, tests, CI, course doctor | **Foundation implemented** |
 | 01 | NumPy/PyTorch tensors + image/tensor memory contracts + C++ tensor/runtime concepts | **Implemented** |
-| 02 | Probability/statistics essentials for vision ML | Planned |
+| 02 | Probability/statistics essentials for vision ML | **Implemented** |
 | 03 | Optimization: losses, gradients, SGD, momentum, Adam | Planned |
 | 04 | Autograd from scalar graph intuition to PyTorch | Planned |
 | 05 | Dataset splits, leakage, metrics, reproducibility | Planned |
