@@ -16,6 +16,64 @@ The 86 planned modules are intentionally split into three independently completa
 
 Each part has a defined completion point. Learners do not need to finish all 86 modules before gaining a complete, useful skill set.
 
+## Course flow
+
+The complete 9x vision learning path is designed as a progression rather than a collection of disconnected topics.
+
+~~~text
+9x Computer Vision — Classical CV
+pixels → filtering → features → geometry → stereo → motion → tracking
+                              │
+                              ▼
+9x ML Computer Vision — Part 1
+ML foundations → tensors → optimization → MLPs → CNNs → ViTs
+→ detection → segmentation → pose → self-supervised learning
+                              │
+                              ▼
+9x ML Computer Vision — Part 2
+vision-language → open-vocabulary vision → video understanding
+→ learned depth / 3-D → NeRF / Gaussian Splatting → generative vision
+                              │
+                              ▼
+9x ML Computer Vision — Part 3
+world models → embodied perception → VLA
+→ training systems → ONNX → C++ runtime
+→ CUDA / TensorRT → edge deployment → monitoring
+~~~
+
+### What you can do after each part
+
+| Stage | What the learner should be able to do |
+|---|---|
+| **Classical CV** | Understand image formation, features, geometry, motion and tracking from first principles |
+| **ML-CV Part 1** | Train, evaluate, export and deploy modern image classifiers, detectors, segmenters and pose models |
+| **ML-CV Part 2** | Build with foundation representations, VLMs, open-vocabulary vision, video, learned 3-D and generative models |
+| **ML-CV Part 3** | Integrate ML vision into production C++/GPU/edge systems and reason about runtime, performance, monitoring and embodied-AI interfaces |
+
+The course deliberately repeats the same engineering pattern as models become more advanced:
+
+~~~text
+UNDERSTAND
+   ↓
+BUILD THE CORE IDEA
+   ↓
+TRAIN
+   ↓
+MEASURE
+   ↓
+EXPORT
+   ↓
+VERIFY EQUIVALENCE
+   ↓
+RUN NATIVELY
+   ↓
+ACCELERATE
+   ↓
+MONITOR IN A SYSTEM
+~~~
+
+This repeated pattern is intended to make the progression predictable even when the models become much more complex.
+
 ## Course identity
 
 The course uses three coordinated tracks:
@@ -24,33 +82,7 @@ The course uses three coordinated tracks:
 2. **Production runtime:** C++17 baseline + CMake + native inference runtimes. Optional examples may use C++20 only when explicitly enabled.
 3. **Acceleration:** CUDA/GPU execution, profiling, memory movement, synchronization, and optimized inference.
 
-The default learning path is:
-
-~~~text
-Python fundamentals for ML
--> tensors + autograd
--> datasets + augmentation
--> linear/MLP classifiers
--> convolution from first principles
--> CNNs
--> transfer learning
--> modern backbones
--> detection
--> segmentation
--> pose/keypoints
--> self-supervised learning
--> vision transformers
--> multimodal / vision-language models
--> open-vocabulary + grounding
--> video understanding
--> 3-D / neural rendering
--> generative vision
--> world / embodied models
--> vision-language-action
--> ONNX / optimized inference
--> C++ runtime integration
--> CUDA / TensorRT / edge deployment
-~~~
+The default learning path follows the three course boundaries above. Within each part, lessons progress from concepts and mathematics to implementation, evaluation, export, native runtime and deployment evidence.
 
 ## Design principles
 
