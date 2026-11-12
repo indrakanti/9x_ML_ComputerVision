@@ -5,7 +5,7 @@ import math
 import numpy as np
 import pytest
 
-from cv9x_mlcv.statistics import (
+from statistics_helpers import (
     accuracy_confidence_interval,
     bayes_posterior,
     bernoulli_nll,
