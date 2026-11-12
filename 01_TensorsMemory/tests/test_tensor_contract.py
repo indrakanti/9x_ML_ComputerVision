@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 import torch
 
-from cv9x_mlcv.tensor_contract import contract_from_tensor, hwc_uint8_to_nchw_float
+from tensor_contract import contract_from_tensor, hwc_uint8_to_nchw_float
 
 
 def test_from_numpy_shares_cpu_memory() -> None:
