@@ -4,12 +4,24 @@
 
 This repository is the learned/deep-vision continuation of the classical C++ course in `9x_ComputerVision_-`.
 
+## Course series and completion boundaries
+
+The 86 planned modules are intentionally split into three independently completable courses:
+
+| Course | Modules | Student outcome |
+|---|---:|---|
+| **ML Computer Vision — Part 1: Foundations to Modern Perception** | 00–31 | Train, evaluate, export and deploy modern image models |
+| **ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision** | 32–60 | Work with VLMs, open-vocabulary vision, video, learned 3-D and generative vision |
+| **ML Computer Vision — Part 3: Embodied AI & Production Vision Systems** | 61–85 | Understand world/VLA models and build production inference/runtime systems |
+
+Each part has a defined completion point. Learners do not need to finish all 86 modules before gaining a complete, useful skill set.
+
 ## Course identity
 
 The course uses three coordinated tracks:
 
 1. **Learning / training:** Python + PyTorch.
-2. **Production runtime:** C++17/20 + CMake + native inference runtimes.
+2. **Production runtime:** C++17 baseline + CMake + native inference runtimes. Optional examples may use C++20 only when explicitly enabled.
 3. **Acceleration:** CUDA/GPU execution, profiling, memory movement, synchronization, and optimized inference.
 
 The default learning path is:
@@ -61,35 +73,26 @@ Python fundamentals for ML
 
 See [LINUX_SETUP.md](LINUX_SETUP.md).
 
-Minimal CPU path:
+Beginner CPU path:
 
 ~~~bash
 sudo apt update
 sudo apt install -y \
   git build-essential cmake ninja-build pkg-config \
   python3 python3-dev python3-pip python3-venv \
-  curl wget unzip ffmpeg libgl1 libglib2.0-0
+  curl wget unzip ffmpeg libgl1 libglib2.0-0 libopencv-dev
 
 git clone https://github.com/indrakanti/9x_ML_ComputerVision.git
 cd 9x_ML_ComputerVision
 
-python3 -m venv .venv
+bash setup.sh --cpu
 source .venv/bin/activate
-
-python -m pip install --upgrade pip setuptools wheel
-python -m pip install -r requirements/base.txt
-python -m pip install -r requirements/dev.txt
-python -m pip install -r requirements/onnx.txt
-
-python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-
-python tools/environment_check.py
-pytest
-
-cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
-cmake --build build-native --parallel
-ctest --test-dir build-native --output-on-failure
+bash course.sh doctor
 ~~~
+
+A learner with no GPU is fully supported. For an NVIDIA machine, use `bash setup.sh --nvidia`; the script detects the driver but never modifies system GPU drivers or installs a CUDA toolkit behind the user's back.
+
+After `course.sh doctor` reports **COURSE ENVIRONMENT READY**, the workstation is ready for Module 01.
 
 For NVIDIA/AMD GPU installs, use the current PyTorch platform selector rather than assuming one CUDA/ROCm wheel fits every system.
 
@@ -112,6 +115,35 @@ For NVIDIA/AMD GPU installs, use the current PyTorch platform selector rather th
 ~~~
 
 Future course modules will be added as focused pull requests.
+
+## Course resources
+
+- [Course roadmap](COURSE_ROADMAP.md)
+- [Linux setup](LINUX_SETUP.md)
+- [Runtime architecture](RUNTIME_ARCHITECTURE.md)
+- [Standard module template](MODULE_TEMPLATE.md)
+- [Contributing](CONTRIBUTING.md)
+- [Apache License 2.0](LICENSE)
+
+The standard major-model lifecycle is:
+
+~~~text
+PyTorch reference
+      ↓
+training + evaluation
+      ↓
+exported artifact
+      ↓
+ONNX Runtime Python
+      ↓
+ONNX Runtime C++
+      ↓
+GPU / optimized runtime
+      ↓
+profiling + monitoring
+~~~
+
+Each transition should be verified, not assumed.
 
 ## Course roadmap
 
