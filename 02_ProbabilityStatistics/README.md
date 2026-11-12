@@ -178,15 +178,15 @@ because sums are numerically easier than long products.
 
 If residual errors are assumed Gaussian:
 
-[
-e_i sim mathcal{N}(0,sigma^2)
-]
+$
+e_i \sim \mathcal{N}(0,\sigma^2)
+$
 
 maximizing likelihood leads to minimizing squared error:
 
-[
-sum_i e_i^2
-]
+$
+\sum_i e_i^2
+$
 
 This statistical assumption explains why MSE appears so often.
 
@@ -194,19 +194,19 @@ Loss functions are not arbitrary formulas. They often correspond to probabilisti
 
 ## 8. Bernoulli likelihood and binary cross-entropy
 
-For a binary target (yin{0,1}) and predicted probability (p):
+For a binary target $y\in\{0,1\}$ and predicted probability $p$:
 
-[
+$
 P(y|p)=p^y(1-p)^{1-y}
-]
+$
 
 Negative log-likelihood gives:
 
-[
--log P(y|p)
+$
+-\log P(y|p)
 =
--ylog p -(1-y)log(1-p)
-]
+-y\log p -(1-y)\log(1-p)
+$
 
 This is binary cross-entropy.
 
@@ -240,7 +240,19 @@ hat{p}pm1.96SE
 
 This becomes important when comparing two models whose metrics differ only slightly.
 
-## 10. Run the demonstrations
+## 10. Runtime applicability
+
+| Gate | Status | Why |
+|---|---|---|
+| Python formatting / lint | Required | Python implementation |
+| mypy | Required | Typed statistics helpers |
+| pytest | Required | Formula and behavior validation |
+| CPU PyTorch tests | N/A | This module uses NumPy/statistics, not PyTorch behavior |
+| ONNX tests | N/A | No model artifact |
+| C++ configure/build/CTest | N/A | Native runtime adds no useful concept here |
+| Python ↔ exported-model equivalence | N/A | No exported model |
+
+## 11. Run the demonstrations
 
 ~~~bash
 source .venv/bin/activate
@@ -250,7 +262,7 @@ pytest 02_ProbabilityStatistics/tests -q
 pytest -q
 ~~~
 
-## 11. What the walkthrough demonstrates
+## 12. What the walkthrough demonstrates
 
 - image-intensity mean and variance
 - covariance and correlation
@@ -262,7 +274,7 @@ pytest -q
 - accuracy confidence intervals
 - reproducible random sampling
 
-## 12. Engineering rules
+## 13. Engineering rules
 
 From this module onward:
 
@@ -274,7 +286,7 @@ From this module onward:
 6. seed stochastic experiments when reproducibility matters
 7. do not infer causation from correlation
 
-## 13. Failure modes
+## 14. Failure modes
 
 ### Tiny validation set
 
@@ -296,7 +308,7 @@ A softmax value is not automatically a well-calibrated probability.
 
 If validation data influences training or preprocessing decisions incorrectly, measured metrics become statistically invalid.
 
-## 14. Exercises
+## 15. Exercises
 
 1. Generate two distributions with identical mean but different variance.
 2. Create two correlated variables and measure covariance/correlation.

@@ -160,7 +160,19 @@ synchronization
 
 This module uses CPU as the correctness baseline. GPU-specific performance comes later.
 
-## 7. Run the demonstrations
+## 7. Runtime applicability
+
+| Gate | Status | Why |
+|---|---|---|
+| Python formatting / lint | Required | Python walkthrough and helpers |
+| mypy | Required | Typed Python helpers |
+| pytest | Required | Module correctness |
+| CPU PyTorch tests | Required | Tensor behavior is part of the lesson |
+| ONNX tests | N/A | No exported model yet |
+| C++ configure/build/CTest | Required | Native tensor contract is a core learning objective |
+| Python ↔ exported-model equivalence | N/A | No exported model yet |
+
+## 8. Run the demonstrations
 
 ~~~bash
 source .venv/bin/activate
@@ -184,7 +196,7 @@ cmake --build build-native --parallel
 ctest --test-dir build-native --output-on-failure
 ~~~
 
-## 8. What the walkthrough demonstrates
+## 9. What the walkthrough demonstrates
 
 The Python walkthrough shows:
 
@@ -199,7 +211,7 @@ The Python walkthrough shows:
 - CPU/GPU device discovery
 - a serializable tensor contract
 
-## 9. C++ tensor contract
+## 10. C++ tensor contract
 
 The native example intentionally does **not** depend on LibTorch yet.
 
@@ -217,7 +229,7 @@ TensorContract
 
 Later ONNX Runtime/TensorRT modules will bind this contract to real runtime tensors.
 
-## 10. Common failure modes
+## 11. Common failure modes
 
 ### HWC passed to a model expecting NCHW
 
@@ -243,7 +255,7 @@ A tensor/view can reference memory owned elsewhere. Native code must not outlive
 
 Python and C++ may both "work" while using different resize, channel order, normalization or dtype rules.
 
-## 11. Engineering invariant
+## 12. Engineering invariant
 
 From this module onward, never describe model input only as:
 
@@ -263,7 +275,7 @@ normalization:
   std:  [0.229, 0.224, 0.225]
 ~~~
 
-## 12. Exercises
+## 13. Exercises
 
 1. Create an HWC image and manually calculate its contiguous strides.
 2. Permute it to CHW and explain why the tensor becomes non-contiguous.
