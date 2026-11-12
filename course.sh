@@ -27,7 +27,7 @@ case "$COMMAND" in
   test)
     activate_venv
     ruff check .
-    mypy 00_Setup/python 01_TensorsMemory/python 02_ProbabilityStatistics/python
+    mypy [0-9][0-9]_*/python
     pytest
     cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
     cmake --build build-native --parallel
