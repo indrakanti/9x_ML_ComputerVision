@@ -4,7 +4,6 @@ import math
 
 import numpy as np
 import pytest
-
 from statistics_helpers import (
     accuracy_confidence_interval,
     bayes_posterior,
