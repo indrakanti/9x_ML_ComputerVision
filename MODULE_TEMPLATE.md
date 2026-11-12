@@ -29,6 +29,49 @@ XX_Topic/
 
 Early conceptual modules do not need every file. The structure grows with the lesson.
 
+## README formatting standard
+
+Use GitHub-flavored Markdown that renders cleanly in the repository:
+
+- use `$ ... $` for display equations
+- use `$...# Standard Module Template
+
+Use this structure as a target for substantial ML Computer Vision lessons.
+
+```text
+XX_Topic/
+├── README.md
+├── VIDEO.md
+├── CMakeLists.txt            # when native C++ exists
+├── python/
+│   ├── from_scratch.py
+│   ├── model.py
+│   ├── train.py
+│   ├── evaluate.py
+│   └── export.py
+├── cpp/
+│   └── inference.cpp
+├── tests/
+│   ├── conftest.py
+│   ├── test_math.py
+│   ├── test_model.py
+│   ├── test_onnx.py
+│   └── test_equivalence.py
+├── configs/
+│   └── default.yml
+└── artifacts/
+    └── metadata.example.yml
+```
+
+Early conceptual modules do not need every file. The structure grows with the lesson.
+
+ for inline math
+- use fenced code blocks with a language such as `bash`, `python`, `cpp`, or `text`
+- keep headings sequential and descriptive
+- use tables for runtime applicability / gate status
+- avoid raw bracketed pseudo-LaTeX such as `[ equation ]`
+- preview the README on GitHub before merging
+
 ## README learning sequence
 
 Each module should follow this narrative:
