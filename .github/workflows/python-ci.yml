@@ -50,9 +50,9 @@ jobs:
         run: ruff check .
 
       - name: Mypy
-        run: mypy 00_Setup/python 01_TensorsMemory/python 02_ProbabilityStatistics/python
+        run: mypy [0-9][0-9]_*/python
 
-      - name: Pytest
+      - name: Pytest / CPU PyTorch correctness
         run: pytest
 
       - name: Configure native C++
