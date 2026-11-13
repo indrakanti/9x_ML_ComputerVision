@@ -4,7 +4,15 @@ from pathlib import Path
 
 import pytest
 import torch
-from mlp import forward_logit, he_initialize, load_model, normalize, relu
+from mlp import (
+    batch_norm_inference,
+    forward_logit,
+    he_initialize,
+    layer_norm,
+    load_model,
+    normalize,
+    relu,
+)
 
 
 def artifact_path() -> Path:
@@ -22,6 +30,29 @@ def test_normalize() -> None:
 
 def test_he_initialization_is_deterministic() -> None:
     assert he_initialize(4, 3, seed=7) == he_initialize(4, 3, seed=7)
+
+
+def test_layer_norm_matches_pytorch() -> None:
+    values = [1.0, 2.0, 4.0]
+    actual = layer_norm(values)
+    expected = torch.nn.functional.layer_norm(
+        torch.tensor(values, dtype=torch.float64),
+        normalized_shape=(3,),
+        eps=1e-5,
+    )
+    assert actual == pytest.approx(expected.tolist())
+
+
+def test_batch_norm_inference_matches_formula() -> None:
+    actual = batch_norm_inference(
+        [3.0, 5.0],
+        running_mean=(1.0, 1.0),
+        running_var=(4.0, 16.0),
+        gamma=(2.0, 0.5),
+        beta=(0.0, 1.0),
+    )
+    assert actual[0] == pytest.approx(2.0 / (4.0 + 1e-5) ** 0.5 * 2.0)
+    assert actual[1] == pytest.approx(4.0 / (16.0 + 1e-5) ** 0.5 * 0.5 + 1.0)
 
 
 def test_reference_matches_pytorch() -> None:
