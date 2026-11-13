@@ -77,6 +77,9 @@ jobs:
           python 06_LinearClassifiers/python/linear_classifier_native_parity.py \
             build-native/06_LinearClassifiers/cv9x_linear_classifier \
             06_LinearClassifiers/artifacts/linear_binary_model.txt
+          python 07_MLPs/python/mlp_native_parity.py \
+            build-native/07_MLPs/cv9x_mlp \
+            07_MLPs/artifacts/mlp_binary_model.txt
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
