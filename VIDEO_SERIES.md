@@ -14,6 +14,7 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 05 | Datasets, Splits, Leakage, Metrics & Reproducibility | **Implementation-ready** |
 | 06 | Linear Classifiers for Images — Math to C++ Deployment | **Implementation-ready** |
 | 07 | MLPs, Activations, Initialization & Normalization | **Implementation-ready** |
+| 08 | Convolution from First Principles — Python, C++ & GPU Execution | **Implementation-ready** |
 
 ## Major series arcs
 

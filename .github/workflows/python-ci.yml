@@ -80,6 +80,8 @@ jobs:
           python 07_MLPs/python/mlp_native_parity.py \
             build-native/07_MLPs/cv9x_mlp \
             07_MLPs/artifacts/mlp_binary_model.txt
+          python 08_Convolution/python/convolution_native_parity.py \
+            build-native/08_Convolution/cv9x_convolution
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure

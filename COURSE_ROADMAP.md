@@ -57,7 +57,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 |---|---|---|
 | 06 | Linear classifiers for images | **Implemented** |
 | 07 | MLPs, activations, initialization, normalization | **Implemented** |
-| 08 | Convolution from first principles: NumPy, PyTorch and native/GPU execution concepts | Planned |
+| 08 | Convolution from first principles: NumPy, PyTorch and native/GPU execution concepts | **Implemented** |
 | 09 | CNN training loop from scratch + C++ inference smoke path | Planned |
 | 10 | Regularization, augmentation, schedulers, checkpointing | Planned |
 | 11 | Transfer learning + first ONNX export / native inference checkpoint | Planned |

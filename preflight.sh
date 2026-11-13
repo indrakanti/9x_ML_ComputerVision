@@ -35,6 +35,8 @@ python 06_LinearClassifiers/python/linear_classifier_native_parity.py \
 python 07_MLPs/python/mlp_native_parity.py \
   "${BUILD_DIR}/07_MLPs/cv9x_mlp" \
   07_MLPs/artifacts/mlp_binary_model.txt
+python 08_Convolution/python/convolution_native_parity.py \
+  "${BUILD_DIR}/08_Convolution/cv9x_convolution"
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
