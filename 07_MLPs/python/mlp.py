@@ -64,6 +64,38 @@ def predict(model: MLPModel, features: list[float]) -> int:
     return int(predict_probability(model, features) >= model.threshold)
 
 
+def layer_norm(values: list[float], epsilon: float = 1e-5) -> list[float]:
+    if not values:
+        raise ValueError("values must be non-empty")
+    if epsilon <= 0.0:
+        raise ValueError("epsilon must be > 0")
+    mean = sum(values) / len(values)
+    variance = sum((value - mean) ** 2 for value in values) / len(values)
+    denominator = math.sqrt(variance + epsilon)
+    return [(value - mean) / denominator for value in values]
+
+
+def batch_norm_inference(
+    values: list[float],
+    running_mean: tuple[float, ...],
+    running_var: tuple[float, ...],
+    gamma: tuple[float, ...],
+    beta: tuple[float, ...],
+    epsilon: float = 1e-5,
+) -> list[float]:
+    size = len(values)
+    if not all(len(item) == size for item in (running_mean, running_var, gamma, beta)):
+        raise ValueError("batch normalization shape mismatch")
+    if epsilon <= 0.0 or any(value < 0.0 for value in running_var):
+        raise ValueError("invalid batch normalization parameters")
+    return [
+        scale * ((value - mean) / math.sqrt(variance + epsilon)) + shift
+        for value, mean, variance, scale, shift in zip(
+            values, running_mean, running_var, gamma, beta, strict=True
+        )
+    ]
+
+
 def he_initialize(fan_in: int, fan_out: int, seed: int = 7) -> tuple[tuple[float, ...], ...]:
     if fan_in <= 0 or fan_out <= 0:
         raise ValueError("fan sizes must be > 0")
