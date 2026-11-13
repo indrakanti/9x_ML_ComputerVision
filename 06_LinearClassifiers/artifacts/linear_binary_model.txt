@@ -1,0 +1,6 @@
+# Minimal language-neutral linear classifier artifact
+version=1
+input_size=4
+weights=0.8,-0.4,1.1,0.6
+bias=-0.25
+threshold=0.5
