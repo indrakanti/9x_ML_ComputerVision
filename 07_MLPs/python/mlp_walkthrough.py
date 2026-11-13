@@ -20,16 +20,18 @@ def main() -> None:
     print(" logit:", forward_logit(model, sample))
     print(" probability:", predict_probability(model, sample))
 
+    hidden_layer = torch.nn.Linear(4, 3, dtype=torch.float64)
+    output_layer = torch.nn.Linear(3, 1, dtype=torch.float64)
     network = torch.nn.Sequential(
-        torch.nn.Linear(4, 3, dtype=torch.float64),
+        hidden_layer,
         torch.nn.ReLU(),
-        torch.nn.Linear(3, 1, dtype=torch.float64),
+        output_layer,
     )
     with torch.no_grad():
-        network[0].weight.copy_(torch.tensor(model.w1, dtype=torch.float64))
-        network[0].bias.copy_(torch.tensor(model.b1, dtype=torch.float64))
-        network[2].weight.copy_(torch.tensor([model.w2], dtype=torch.float64))
-        network[2].bias.copy_(torch.tensor([model.b2], dtype=torch.float64))
+        hidden_layer.weight.copy_(torch.tensor(model.w1, dtype=torch.float64))
+        hidden_layer.bias.copy_(torch.tensor(model.b1, dtype=torch.float64))
+        output_layer.weight.copy_(torch.tensor([model.w2], dtype=torch.float64))
+        output_layer.bias.copy_(torch.tensor([model.b2], dtype=torch.float64))
 
     normalized = torch.tensor(
         [
