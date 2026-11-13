@@ -74,6 +74,9 @@ jobs:
             build-native/04_Autograd/cv9x_autodiff
           python 05_DataDiscipline/python/data_discipline_native_parity.py \
             build-native/05_DataDiscipline/cv9x_data_discipline
+          python 06_LinearClassifiers/python/linear_classifier_native_parity.py \
+            build-native/06_LinearClassifiers/cv9x_linear_classifier \
+            06_LinearClassifiers/artifacts/linear_binary_model.txt
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
