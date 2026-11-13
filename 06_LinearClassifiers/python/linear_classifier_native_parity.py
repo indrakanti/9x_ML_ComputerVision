@@ -9,8 +9,12 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from linear_classifier import linear_logit, load_model, predict, predict_probability
-
+from linear_classifier import (
+    linear_logit,
+    load_model,
+    predict,
+    predict_probability,
+)
 
 SAMPLE = [0.5, 0.2, 0.7, 0.1]
 
