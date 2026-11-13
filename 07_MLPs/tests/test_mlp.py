@@ -4,7 +4,6 @@ from pathlib import Path
 
 import pytest
 import torch
-
 from mlp import (
     batch_norm_inference,
     forward_logit,
