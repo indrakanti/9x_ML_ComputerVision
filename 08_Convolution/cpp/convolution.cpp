@@ -119,7 +119,7 @@ Tensor3D example_output() {
       example_image(),
       example_weights(),
       {0.25, -0.5},
-      Config{},
+      Config{}
   );
 }
 
