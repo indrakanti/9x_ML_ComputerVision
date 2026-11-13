@@ -29,6 +29,9 @@ python 04_Autograd/python/autodiff_native_parity.py \
   "${BUILD_DIR}/04_Autograd/cv9x_autodiff"
 python 05_DataDiscipline/python/data_discipline_native_parity.py \
   "${BUILD_DIR}/05_DataDiscipline/cv9x_data_discipline"
+python 06_LinearClassifiers/python/linear_classifier_native_parity.py \
+  "${BUILD_DIR}/06_LinearClassifiers/cv9x_linear_classifier" \
+  06_LinearClassifiers/artifacts/linear_binary_model.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
