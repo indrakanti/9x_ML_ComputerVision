@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 import torch
+
 from mlp import (
     batch_norm_inference,
     forward_logit,
@@ -71,7 +72,12 @@ def test_reference_matches_pytorch() -> None:
         network[2].bias.copy_(torch.tensor([model.b2], dtype=torch.float64))
 
     normalized = torch.tensor(
-        [[(x - m) / s for x, m, s in zip(sample, model.mean, model.std, strict=True)]],
+        [
+            [
+                (x - m) / s
+                for x, m, s in zip(sample, model.mean, model.std, strict=True)
+            ]
+        ],
         dtype=torch.float64,
     )
     assert network(normalized).item() == pytest.approx(forward_logit(model, sample))
