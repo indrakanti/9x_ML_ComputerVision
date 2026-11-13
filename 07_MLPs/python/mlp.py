@@ -34,12 +34,19 @@ def sigmoid(value: float) -> float:
     return exp_pos / (1.0 + exp_pos)
 
 
-def normalize(features: list[float], mean: tuple[float, ...], std: tuple[float, ...]) -> list[float]:
+def normalize(
+    features: list[float],
+    mean: tuple[float, ...],
+    std: tuple[float, ...],
+) -> list[float]:
     if len(features) != len(mean) or len(features) != len(std):
         raise ValueError("normalization shape mismatch")
     if any(value <= 0.0 for value in std):
         raise ValueError("standard deviations must be > 0")
-    return [(value - mu) / sigma for value, mu, sigma in zip(features, mean, std, strict=True)]
+    return [
+        (value - mu) / sigma
+        for value, mu, sigma in zip(features, mean, std, strict=True)
+    ]
 
 
 def forward_logit(model: MLPModel, features: list[float]) -> float:
@@ -50,7 +57,9 @@ def forward_logit(model: MLPModel, features: list[float]) -> float:
     for row, bias in zip(model.w1, model.b1, strict=True):
         if len(row) != model.input_size:
             raise ValueError("w1 shape mismatch")
-        hidden.append(relu(sum(w * x for w, x in zip(row, normalized, strict=True)) + bias))
+        hidden.append(
+            relu(sum(w * x for w, x in zip(row, normalized, strict=True)) + bias)
+        )
     if len(hidden) != model.hidden_size or len(model.w2) != model.hidden_size:
         raise ValueError("hidden shape mismatch")
     return sum(w * h for w, h in zip(model.w2, hidden, strict=True)) + model.b2
@@ -84,7 +93,10 @@ def batch_norm_inference(
     epsilon: float = 1e-5,
 ) -> list[float]:
     size = len(values)
-    if not all(len(item) == size for item in (running_mean, running_var, gamma, beta)):
+    if not all(
+        len(item) == size
+        for item in (running_mean, running_var, gamma, beta)
+    ):
         raise ValueError("batch normalization shape mismatch")
     if epsilon <= 0.0 or any(value < 0.0 for value in running_var):
         raise ValueError("invalid batch normalization parameters")
@@ -96,7 +108,11 @@ def batch_norm_inference(
     ]
 
 
-def he_initialize(fan_in: int, fan_out: int, seed: int = 7) -> tuple[tuple[float, ...], ...]:
+def he_initialize(
+    fan_in: int,
+    fan_out: int,
+    seed: int = 7,
+) -> tuple[tuple[float, ...], ...]:
     if fan_in <= 0 or fan_out <= 0:
         raise ValueError("fan sizes must be > 0")
     rng = random.Random(seed)
@@ -119,8 +135,16 @@ def load_model(path: Path) -> MLPModel:
         values[key.strip()] = value.strip()
 
     required = {
-        "version", "input_size", "hidden_size", "mean", "std",
-        "w1", "b1", "w2", "b2", "threshold",
+        "version",
+        "input_size",
+        "hidden_size",
+        "mean",
+        "std",
+        "w1",
+        "b1",
+        "w2",
+        "b2",
+        "threshold",
     }
     missing = required - values.keys()
     if missing:
