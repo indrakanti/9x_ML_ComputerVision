@@ -87,15 +87,41 @@ The goal is not a magical constant. The goal is to preserve useful signal scale 
 
 ## 4. Normalization
 
-This module uses fixed feature normalization:
+"Normalization" can refer to different operations, and they should not be conflated.
 
-$$
+### 4.1 Input / feature normalization
+
+This module's deployable artifact uses fixed feature normalization:
+
+$
 x_i' = \frac{x_i-\mu_i}{\sigma_i}
-$$
+$
 
-The same normalization must be used in training and deployment.
+The same training-derived $\mu_i$ and $\sigma_i$ must be used during deployment.
 
-That makes preprocessing part of the model contract.
+### 4.2 Batch normalization
+
+BatchNorm normalizes intermediate activations using batch statistics during training and running statistics during inference. Conceptually:
+
+$
+\hat{x}=\frac{x-\mu_B}{\sqrt{\sigma_B^2+\epsilon}}
+$
+
+followed by learned scale and shift:
+
+$
+y=\gamma\hat{x}+\beta
+$
+
+Training-mode and inference-mode behavior are different, which makes runtime state part of the deployment contract.
+
+### 4.3 Layer normalization
+
+LayerNorm normalizes across features of an individual sample rather than across a batch. This makes it common in Transformer-style architectures.
+
+### 4.4 Why the distinction matters
+
+Input normalization, BatchNorm, and LayerNorm solve related but different problems. A production implementation must preserve the exact normalization semantics used by the trained model.
 
 ## 5. Forward pass
 
