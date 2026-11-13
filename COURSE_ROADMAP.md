@@ -55,7 +55,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 
 | Module | Topic | Status |
 |---|---|---|
-| 06 | Linear classifiers for images | Planned |
+| 06 | Linear classifiers for images | **Implemented** |
 | 07 | MLPs, activations, initialization, normalization | Planned |
 | 08 | Convolution from first principles: NumPy, PyTorch and native/GPU execution concepts | Planned |
 | 09 | CNN training loop from scratch + C++ inference smoke path | Planned |
@@ -226,6 +226,60 @@ system-level safety argument
 This thread is especially relevant to automotive and robotics deployment.
 
 ## Applied Projects
+
+### Capstone A — Surround Camera + LiDAR Fusion Detection & Tracking
+
+This project grows progressively through the perception modules:
+
+~~~text
+multi-camera + LiDAR
+        ↓
+calibration / synchronization
+        ↓
+camera and LiDAR feature extraction
+        ↓
+BEV / feature-level fusion
+        ↓
+3-D object detection
+        ↓
+data association
+        ↓
+multi-object tracking
+        ↓
+position / velocity / class / confidence
+~~~
+
+Planned maturity checkpoints:
+
+- after Modules 18–19: camera detection + native streaming baseline
+- after Modules 45–49: tracking, temporal association, LiDAR and multi-view geometry
+- after Modules 76–85: ONNX Runtime / TensorRT C++ production pipeline, profiling and monitoring
+
+### Capstone B — Camera + LiDAR Path / Trajectory Prediction
+
+This project reuses tracked objects from Capstone A:
+
+~~~text
+surround perception
+      ↓
+tracked-agent histories
+      +
+BEV scene / lanes / free space
+      ↓
+temporal prediction model
+      ↓
+multiple future trajectories + probabilities
+~~~
+
+Planned outputs include ADE, FDE, miss rate, collision/off-road checks and native streaming inference.
+
+The capstones intentionally form one progressive autonomous-driving stack:
+
+~~~text
+Sensors → Perception → Fusion → Tracking → Prediction
+~~~
+
+### Additional applied projects
 
 - image classifier with reproducible training/evaluation
 - transfer-learning classifier
