@@ -5,7 +5,6 @@ from __future__ import annotations
 from pathlib import Path
 
 import torch
-
 from mlp import forward_logit, he_initialize, load_model, predict_probability
 
 
