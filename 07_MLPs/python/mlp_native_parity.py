@@ -39,7 +39,12 @@ def main() -> None:
     actual = run_native(args.executable, args.artifact)
 
     for key in ("logit", "probability"):
-        if not math.isclose(float(actual[key]), float(expected[key]), rel_tol=1e-12, abs_tol=1e-12):
+        if not math.isclose(
+            float(actual[key]),
+            float(expected[key]),
+            rel_tol=1e-12,
+            abs_tol=1e-12,
+        ):
             raise AssertionError(f"{key}: C++={actual[key]} Python={expected[key]}")
     if int(actual["prediction"]) != int(expected["prediction"]):
         raise AssertionError("prediction mismatch")
