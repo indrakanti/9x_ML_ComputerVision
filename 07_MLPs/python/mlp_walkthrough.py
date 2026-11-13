@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import torch
+
 from mlp import forward_logit, he_initialize, load_model, predict_probability
 
 
@@ -32,7 +33,12 @@ def main() -> None:
         network[2].bias.copy_(torch.tensor([model.b2], dtype=torch.float64))
 
     normalized = torch.tensor(
-        [[(x - m) / s for x, m, s in zip(sample, model.mean, model.std, strict=True)]],
+        [
+            [
+                (x - m) / s
+                for x, m, s in zip(sample, model.mean, model.std, strict=True)
+            ]
+        ],
         dtype=torch.float64,
     )
     print(" PyTorch logit:", network(normalized).item())
