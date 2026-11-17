@@ -37,6 +37,9 @@ python 07_MLPs/python/mlp_native_parity.py \
   07_MLPs/artifacts/mlp_binary_model.txt
 python 08_Convolution/python/convolution_native_parity.py \
   "${BUILD_DIR}/08_Convolution/cv9x_convolution"
+python 09_CNNTraining/python/cnn_training_native_parity.py \
+  "${BUILD_DIR}/09_CNNTraining/cv9x_tiny_cnn" \
+  09_CNNTraining/artifacts/tiny_cnn_smoke.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
