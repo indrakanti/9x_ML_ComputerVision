@@ -1,0 +1,13 @@
+version=1
+image_h=4
+image_w=4
+kernel=2
+stride=2
+embed=2
+conv_weight=1,0,0,-1
+conv_bias=0.1
+proj_weight=1,0.5
+proj_bias=0,-0.1
+wq=1,0,0,1
+wk=0.5,0.5,-0.5,0.5
+wv=1,0,0,1
