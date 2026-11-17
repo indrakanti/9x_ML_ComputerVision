@@ -60,7 +60,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 08 | Convolution from first principles: NumPy, PyTorch and native/GPU execution concepts | **Implemented** |
 | 09 | CNN training loop from scratch + C++ inference smoke path | **Implemented** |
 | 10 | Regularization, augmentation, schedulers, checkpointing | **Implemented** |
-| 11 | Transfer learning + first ONNX export / native inference checkpoint | Planned |
+| 11 | Transfer learning + first ONNX export / native inference checkpoint | **Implemented** |
 
 ## Part III — Modern Image Backbones
 
