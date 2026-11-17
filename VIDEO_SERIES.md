@@ -16,6 +16,7 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 07 | MLPs, Activations, Initialization & Normalization | **Implementation-ready** |
 | 08 | Convolution from First Principles — Python, C++ & GPU Execution | **Implementation-ready** |
 | 09 | CNN Training Loop — Forward, Backward, Optimizer, Checkpoint & C++ | **Implementation-ready** |
+| 10 | Regularization, Augmentation, Schedulers & Checkpointing | **Implementation-ready** |
 
 ## Major series arcs
 

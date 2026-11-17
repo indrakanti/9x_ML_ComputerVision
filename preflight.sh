@@ -40,6 +40,9 @@ python 08_Convolution/python/convolution_native_parity.py \
 python 09_CNNTraining/python/cnn_training_native_parity.py \
   "${BUILD_DIR}/09_CNNTraining/cv9x_tiny_cnn" \
   09_CNNTraining/artifacts/tiny_cnn_smoke.txt
+python 10_TrainingRobustness/python/training_robustness_native_parity.py \
+  "${BUILD_DIR}/10_TrainingRobustness/cv9x_deployment_manifest" \
+  10_TrainingRobustness/artifacts/deployment_manifest.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
