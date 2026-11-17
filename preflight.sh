@@ -43,6 +43,9 @@ python 09_CNNTraining/python/cnn_training_native_parity.py \
 python 10_TrainingRobustness/python/training_robustness_native_parity.py \
   "${BUILD_DIR}/10_TrainingRobustness/cv9x_deployment_manifest" \
   10_TrainingRobustness/artifacts/deployment_manifest.txt
+python 11_TransferLearningONNX/python/transfer_learning_native_parity.py \
+  "${BUILD_DIR}/11_TransferLearningONNX/cv9x_transfer_model" \
+  11_TransferLearningONNX/artifacts/transfer_model_smoke.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
