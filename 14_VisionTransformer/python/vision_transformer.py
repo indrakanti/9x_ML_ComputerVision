@@ -64,7 +64,8 @@ def load_artifact(path: Path) -> ViTArtifact:
     if len(artifact.position) != tokens * artifact.embed:
         raise ValueError("position count mismatch")
     matrix_size = artifact.embed * artifact.embed
-    if any(len(matrix) != matrix_size for matrix in (artifact.wq, artifact.wk, artifact.wv)):
+    matrices = (artifact.wq, artifact.wk, artifact.wv)
+    if any(len(matrix) != matrix_size for matrix in matrices):
         raise ValueError("attention matrix size mismatch")
     return artifact
 
@@ -72,7 +73,10 @@ def load_artifact(path: Path) -> ViTArtifact:
 def patchify(artifact: ViTArtifact, image: list[float]) -> list[list[float]]:
     if len(image) != artifact.image_h * artifact.image_w:
         raise ValueError("image size mismatch")
-    if artifact.image_h % artifact.patch != 0 or artifact.image_w % artifact.patch != 0:
+    if (
+        artifact.image_h % artifact.patch != 0
+        or artifact.image_w % artifact.patch != 0
+    ):
         raise ValueError("image dimensions must be divisible by patch size")
 
     patches: list[list[float]] = []
