@@ -1,0 +1,5 @@
+version=1
+weights=accuracy:0.45,latency:0.25,params:0.15,readiness:0.15
+backbone=resnet18,accuracy:0.84,latency_ms:7.5,params_m:11.7,readiness:1.0
+backbone=mobilenetv3,accuracy:0.80,latency_ms:4.2,params_m:5.4,readiness:1.0
+backbone=tinyvit,accuracy:0.86,latency_ms:9.0,params_m:8.0,readiness:0.8

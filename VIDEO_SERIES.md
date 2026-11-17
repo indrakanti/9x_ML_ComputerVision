@@ -21,6 +21,9 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 12 | ResNet and Residual Learning | **Implementation-ready** |
 | 13 | Efficient CNNs — Depthwise Separable Convolution | **Implementation-ready** |
 | 14 | Vision Transformer Fundamentals | **Implementation-ready** |
+| 15 | Hierarchical and Windowed Transformers | **Implementation-ready** |
+| 16 | Hybrid CNN–Transformer Backbones | **Implementation-ready** |
+| 17 | Backbone Evaluation and Engineering Trade-Space | **Implementation-ready** |
 
 ## Major series arcs
 

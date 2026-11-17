@@ -69,9 +69,9 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 12 | ResNet and residual learning | **Implemented** |
 | 13 | Efficient CNNs: MobileNet/EfficientNet-style ideas | **Implemented** |
 | 14 | Vision Transformer fundamentals | **Implemented** |
-| 15 | Hierarchical/windowed transformers | Planned |
-| 16 | ConvNet/Transformer hybrid design patterns | Planned |
-| 17 | Modern backbone evaluation: accuracy + C++/GPU latency, memory and synchronization | Planned |
+| 15 | Hierarchical/windowed transformers | **Implemented** |
+| 16 | ConvNet/Transformer hybrid design patterns | **Implemented** |
+| 17 | Modern backbone evaluation: accuracy + C++/GPU latency, memory and synchronization | **Implemented** |
 
 ## Part IV — Detection, Segmentation and Pose
 
