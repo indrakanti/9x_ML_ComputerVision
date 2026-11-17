@@ -234,7 +234,7 @@ def export_onnx(
     example = torch.zeros((1, 1, 4, 4), dtype=torch.float32)
     torch.onnx.export(
         model,
-        example,
+        (example,),
         str(path),
         input_names=["input"],
         output_names=["logits"],
