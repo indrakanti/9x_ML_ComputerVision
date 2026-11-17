@@ -18,6 +18,9 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 09 | CNN Training Loop — Forward, Backward, Optimizer, Checkpoint & C++ | **Implementation-ready** |
 | 10 | Regularization, Augmentation, Schedulers & Checkpointing | **Implementation-ready** |
 | 11 | Transfer Learning + First ONNX Export / Native Parity | **Implementation-ready** |
+| 12 | ResNet and Residual Learning | **Implementation-ready** |
+| 13 | Efficient CNNs — Depthwise Separable Convolution | **Implementation-ready** |
+| 14 | Vision Transformer Fundamentals | **Implementation-ready** |
 
 ## Major series arcs
 
