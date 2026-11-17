@@ -10,7 +10,10 @@ import numpy as np
 import onnx
 import onnxruntime as ort
 import torch
+from numpy.typing import NDArray
 from torch import Tensor, nn
+
+Float32Array = NDArray[np.float32]
 
 
 @dataclass(frozen=True)
@@ -232,7 +235,7 @@ def export_onnx(
     torch.onnx.export(
         model,
         example,
-        path,
+        str(path),
         input_names=["input"],
         output_names=["logits"],
         dynamic_axes={
@@ -242,18 +245,18 @@ def export_onnx(
         opset_version=18,
         dynamo=False,
     )
-    onnx_model = onnx.load(path)
+    onnx_model = onnx.load(str(path))
     onnx.checker.check_model(onnx_model)
 
 
-def onnx_runtime_logits(path: Path, inputs: Tensor) -> np.ndarray:
+def onnx_runtime_logits(path: Path, inputs: Tensor) -> Float32Array:
     session = ort.InferenceSession(
         str(path),
         providers=["CPUExecutionProvider"],
     )
     input_array = inputs.detach().cpu().numpy().astype(np.float32)
     outputs = session.run(["logits"], {"input": input_array})
-    return cast(np.ndarray, outputs[0])
+    return cast(Float32Array, outputs[0])
 
 
 def vertical_example_tensor() -> Tensor:
