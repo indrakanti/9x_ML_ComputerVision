@@ -9,7 +9,11 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from residual_learning import example_input, load_artifact, manual_residual_forward
+from residual_learning import (
+    example_input,
+    load_artifact,
+    manual_residual_forward,
+)
 
 
 def run_native(executable: Path, artifact: Path) -> dict[str, Any]:
