@@ -1,0 +1,7 @@
+# Deterministic pretrained-style backbone used for offline CI.
+version=1
+conv_out=2
+kernel=3
+padding=1
+conv_weights=0,1,0,0,1,0,0,1,0,0,0,0,1,1,1,0,0,0
+conv_bias=0,0

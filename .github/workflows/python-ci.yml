@@ -88,6 +88,9 @@ jobs:
           python 10_TrainingRobustness/python/training_robustness_native_parity.py \
             build-native/10_TrainingRobustness/cv9x_deployment_manifest \
             10_TrainingRobustness/artifacts/deployment_manifest.txt
+          python 11_TransferLearningONNX/python/transfer_learning_native_parity.py \
+            build-native/11_TransferLearningONNX/cv9x_transfer_model \
+            11_TransferLearningONNX/artifacts/transfer_model_smoke.txt
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
