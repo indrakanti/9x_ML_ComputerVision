@@ -68,7 +68,9 @@ def test_checkpoint_restores_optimizer_and_scheduler(tmp_path: Path) -> None:
     )
 
     restored = RegularizedTinyCNN()
-    restored_optimizer, restored_scheduler = build_optimizer_and_scheduler(restored)
+    restored_optimizer, restored_scheduler = build_optimizer_and_scheduler(
+        restored
+    )
     epoch, best_accuracy, config = load_training_checkpoint(
         path,
         model=restored,
