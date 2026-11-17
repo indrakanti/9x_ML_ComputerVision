@@ -64,9 +64,11 @@ def augment_batch(
 
     output = images.clone()
     for index in range(output.shape[0]):
-        if torch.rand((), generator=generator).item() < config.horizontal_flip_probability:
+        horizontal_sample = torch.rand((), generator=generator).item()
+        if horizontal_sample < config.horizontal_flip_probability:
             output[index] = torch.flip(output[index], dims=(2,))
-        if torch.rand((), generator=generator).item() < config.vertical_flip_probability:
+        vertical_sample = torch.rand((), generator=generator).item()
+        if vertical_sample < config.vertical_flip_probability:
             output[index] = torch.flip(output[index], dims=(1,))
 
     if config.noise_amplitude > 0.0:
