@@ -1,0 +1,7 @@
+# Deployment policy associated with the selected model artifact.
+version=1
+selected_checkpoint=best
+dropout_inference=disabled
+augmentation_inference=disabled
+preprocessing_revision=synthetic-v1
+class_count=2
