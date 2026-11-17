@@ -46,6 +46,15 @@ python 10_TrainingRobustness/python/training_robustness_native_parity.py \
 python 11_TransferLearningONNX/python/transfer_learning_native_parity.py \
   "${BUILD_DIR}/11_TransferLearningONNX/cv9x_transfer_model" \
   11_TransferLearningONNX/artifacts/transfer_model_smoke.txt
+python 12_ResNet/python/residual_learning_native_parity.py \
+  "${BUILD_DIR}/12_ResNet/cv9x_residual_block" \
+  12_ResNet/artifacts/residual_block.txt
+python 13_EfficientCNN/python/efficient_cnn_native_parity.py \
+  "${BUILD_DIR}/13_EfficientCNN/cv9x_depthwise_separable" \
+  13_EfficientCNN/artifacts/depthwise_separable.txt
+python 14_VisionTransformer/python/vision_transformer_native_parity.py \
+  "${BUILD_DIR}/14_VisionTransformer/cv9x_tiny_vit" \
+  14_VisionTransformer/artifacts/tiny_vit.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
