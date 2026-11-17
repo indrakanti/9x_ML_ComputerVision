@@ -196,11 +196,11 @@ def load_native_artifact(path: Path) -> dict[str, list[float] | int]:
 
 
 def artifact_inference(artifact: dict[str, list[float] | int], image: list[float]) -> list[float]:
-    input_h = int(artifact["input_h"])
-    input_w = int(artifact["input_w"])
-    conv_out = int(artifact["conv_out"])
-    kernel = int(artifact["kernel"])
-    padding = int(artifact["padding"])
+    input_h = cast(int, artifact["input_h"])
+    input_w = cast(int, artifact["input_w"])
+    conv_out = cast(int, artifact["conv_out"])
+    kernel = cast(int, artifact["kernel"])
+    padding = cast(int, artifact["padding"])
     conv_weights = cast(list[float], artifact["conv_weights"])
     conv_bias = cast(list[float], artifact["conv_bias"])
     fc_weights = cast(list[float], artifact["fc_weights"])
@@ -226,7 +226,11 @@ def artifact_inference(artifact: dict[str, list[float] | int], image: list[float
                         iy = y + ky - padding
                         ix = x + kx - padding
                         if 0 <= iy < input_h and 0 <= ix < input_w:
-                            weight_index = out_channel * kernel * kernel + ky * kernel + kx
+                            weight_index = (
+                                out_channel * kernel * kernel
+                                + ky * kernel
+                                + kx
+                            )
                             value += image[iy * input_w + ix] * conv_weights[weight_index]
                 total += max(0.0, value)
         pooled.append(total / (input_h * input_w))
