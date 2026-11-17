@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 import torch
 from residual_learning import (
+    ResidualArtifact,
     TinyResidualBlock,
     apply_artifact,
     example_input,
