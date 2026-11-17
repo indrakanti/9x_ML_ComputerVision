@@ -131,6 +131,9 @@ def load_checkpoint(path: Path, model: TinyCNN, optimizer: torch.optim.Optimizer
 
 
 def export_native_artifact(model: TinyCNN, path: Path) -> None:
+    if model.conv.bias is None or model.classifier.bias is None:
+        raise ValueError("native artifact export requires bias-enabled layers")
+
     conv_w = model.conv.weight.detach().cpu().double().reshape(-1).tolist()
     conv_b = model.conv.bias.detach().cpu().double().tolist()
     fc_w = model.classifier.weight.detach().cpu().double().reshape(-1).tolist()
