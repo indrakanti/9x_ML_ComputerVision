@@ -55,6 +55,15 @@ python 13_EfficientCNN/python/efficient_cnn_native_parity.py \
 python 14_VisionTransformer/python/vision_transformer_native_parity.py \
   "${BUILD_DIR}/14_VisionTransformer/cv9x_tiny_vit" \
   14_VisionTransformer/artifacts/tiny_vit.txt
+python 15_WindowedTransformers/python/window_attention_native_parity.py \
+  "${BUILD_DIR}/15_WindowedTransformers/cv9x_window_attention" \
+  15_WindowedTransformers/artifacts/window_attention.txt
+python 16_HybridBackbones/python/hybrid_backbone_native_parity.py \
+  "${BUILD_DIR}/16_HybridBackbones/cv9x_hybrid_backbone" \
+  16_HybridBackbones/artifacts/hybrid.txt
+python 17_BackboneEvaluation/python/backbone_eval_native_parity.py \
+  "${BUILD_DIR}/17_BackboneEvaluation/cv9x_backbone_eval" \
+  17_BackboneEvaluation/artifacts/backbones.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
