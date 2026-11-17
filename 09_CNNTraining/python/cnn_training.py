@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import torch
 from torch import Tensor, nn
@@ -54,7 +54,7 @@ def train_one_epoch(
     images: Tensor,
     labels: Tensor,
     optimizer: torch.optim.Optimizer,
-    criterion: nn.Module,
+    criterion: nn.CrossEntropyLoss,
 ) -> EpochMetrics:
     model.train()
     optimizer.zero_grad()
@@ -72,7 +72,7 @@ def evaluate(
     model: TinyCNN,
     images: Tensor,
     labels: Tensor,
-    criterion: nn.Module,
+    criterion: nn.CrossEntropyLoss,
 ) -> EpochMetrics:
     model.eval()
     with torch.no_grad():
@@ -201,10 +201,10 @@ def artifact_inference(artifact: dict[str, list[float] | int], image: list[float
     conv_out = int(artifact["conv_out"])
     kernel = int(artifact["kernel"])
     padding = int(artifact["padding"])
-    conv_weights = list(artifact["conv_weights"])
-    conv_bias = list(artifact["conv_bias"])
-    fc_weights = list(artifact["fc_weights"])
-    fc_bias = list(artifact["fc_bias"])
+    conv_weights = cast(list[float], artifact["conv_weights"])
+    conv_bias = cast(list[float], artifact["conv_bias"])
+    fc_weights = cast(list[float], artifact["fc_weights"])
+    fc_bias = cast(list[float], artifact["fc_bias"])
 
     if len(image) != input_h * input_w:
         raise ValueError("image size mismatch")
