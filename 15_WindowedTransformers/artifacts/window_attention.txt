@@ -1,0 +1,8 @@
+version=1
+grid_h=4
+grid_w=4
+embed=2
+window=2
+wq=1,0,0,1
+wk=0.5,0.5,-0.5,0.5
+wv=1,0.25,-0.25,0.75
