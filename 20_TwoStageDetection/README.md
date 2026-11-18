@@ -161,6 +161,20 @@ Two-stage detection is useful for understanding the accuracy/latency trade-space
 
 > **Two-stage detection spends computation selectively: first decide where to look, then classify and refine those regions. That selectivity introduces its own dynamic-runtime contract.**
 
+## Reproducible commands
+
+```bash
+python 20_TwoStageDetection/python/two_stage_walkthrough.py
+pytest 20_TwoStageDetection/tests
+cmake -S 20_TwoStageDetection -B build-m20 -G Ninja \
+  -DCV9X_WARNINGS_AS_ERRORS=ON
+cmake --build build-m20
+ctest --test-dir build-m20 --output-on-failure
+python 20_TwoStageDetection/python/two_stage_native_parity.py \
+  build-m20/cv9x_two_stage \
+  20_TwoStageDetection/artifacts/proposals.txt
+```
+
 ## Next
 
 Module 21 introduces DETR-style set prediction and transformer detection.
