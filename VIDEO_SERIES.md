@@ -33,6 +33,9 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 24 | Promptable / Foundation Segmentation | **Implementation-ready** |
 | 25 | Keypoints and Pose Estimation | **Implementation-ready** |
 | 26 | Contrastive Learning and CLIP | **Implementation-ready** |
+| 27 | Masked Image Modeling | **Implementation-ready** |
+| 28 | DINO-Style Self-Supervised Learning | **Implementation-ready** |
+| 29 | Universal / Foundation Backbones | **Implementation-ready** |
 
 ## Major series arcs
 
