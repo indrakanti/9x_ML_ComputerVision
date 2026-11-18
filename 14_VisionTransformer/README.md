@@ -254,6 +254,14 @@ which can become a substantial compute and memory load.
 7. Implement an output projection.
 8. Add a residual connection around attention.
 
+## Stage 1.5 applied lab
+
+The deterministic module above remains the mechanics reference. For a real-data run, continue with:
+
+- [Applied Lab 01 — CIFAR-10 Backbones](../applied_labs/01_CIFAR10Backbones/README.md)
+
+That lab trains actual CIFAR-10 models, records held-out accuracy, writes checkpoints/plots, and keeps the dataset download optional.
+
 ## Next
 
 Module 15 introduces hierarchical and windowed transformers.
