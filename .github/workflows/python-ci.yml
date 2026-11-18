@@ -136,6 +136,15 @@ jobs:
           python 26_ContrastiveCLIP/python/clip_native_parity.py \
             build-native/26_ContrastiveCLIP/cv9x_clip_similarity \
             26_ContrastiveCLIP/artifacts/embeddings.txt
+          python 27_MaskedImageModeling/python/mim_native_parity.py \
+            build-native/27_MaskedImageModeling/cv9x_mim_reconstruct \
+            27_MaskedImageModeling/artifacts/mim.txt
+          python 28_DINO/python/dino_native_parity.py \
+            build-native/28_DINO/cv9x_dino_math \
+            28_DINO/artifacts/dino.txt
+          python 29_FoundationBackbones/python/foundation_native_parity.py \
+            build-native/29_FoundationBackbones/cv9x_foundation_adapters \
+            29_FoundationBackbones/artifacts/foundation.txt
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
