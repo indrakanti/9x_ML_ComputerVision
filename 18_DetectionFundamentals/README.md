@@ -154,6 +154,20 @@ For autonomous perception, metric quality must be connected to operational failu
 
 > **Detection quality is inseparable from geometry and evaluation policy. Box convention, matching, NMS, and AP definition are part of the model contract.**
 
+## Reproducible commands
+
+```bash
+python 18_DetectionFundamentals/python/detection_walkthrough.py
+pytest 18_DetectionFundamentals/tests
+cmake -S 18_DetectionFundamentals -B build-m18 -G Ninja \
+  -DCV9X_WARNINGS_AS_ERRORS=ON
+cmake --build build-m18
+ctest --test-dir build-m18 --output-on-failure
+python 18_DetectionFundamentals/python/detection_native_parity.py \
+  build-m18/cv9x_detection_fundamentals \
+  18_DetectionFundamentals/artifacts/detections.txt
+```
+
 ## Next
 
 Module 19 builds a YOLO-style one-stage detector decode path.
