@@ -73,6 +73,15 @@ python 19_YOLOOneStage/python/yolo_native_parity.py \
 python 20_TwoStageDetection/python/two_stage_native_parity.py \
   "${BUILD_DIR}/20_TwoStageDetection/cv9x_two_stage" \
   20_TwoStageDetection/artifacts/proposals.txt
+python 21_DETR/python/detr_native_parity.py \
+  "${BUILD_DIR}/21_DETR/cv9x_detr_match" \
+  21_DETR/artifacts/matching.txt
+python 22_SemanticSegmentation/python/semantic_native_parity.py \
+  "${BUILD_DIR}/22_SemanticSegmentation/cv9x_semantic_metrics" \
+  22_SemanticSegmentation/artifacts/segmentation.txt
+python 23_InstancePanoptic/python/panoptic_native_parity.py \
+  "${BUILD_DIR}/23_InstancePanoptic/cv9x_panoptic_compose" \
+  23_InstancePanoptic/artifacts/panoptic.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
