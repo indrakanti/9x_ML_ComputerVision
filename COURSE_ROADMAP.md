@@ -77,9 +77,9 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 
 | Module | Topic | Status |
 |---|---|---|
-| 18 | Detection fundamentals: boxes, anchors, IoU, mAP | Planned |
-| 19 | YOLO-family one-stage detection + native GPU inference checkpoint | Planned |
-| 20 | Two-stage detection and region proposals | Planned |
+| 18 | Detection fundamentals: boxes, anchors, IoU, mAP | **Implemented** |
+| 19 | YOLO-family one-stage detection + native GPU inference checkpoint | **Implemented** |
+| 20 | Two-stage detection and region proposals | **Implemented** |
 | 21 | DETR-family set prediction and transformer detection | Planned |
 | 22 | Semantic segmentation | Planned |
 | 23 | Instance/panoptic segmentation | Planned |
