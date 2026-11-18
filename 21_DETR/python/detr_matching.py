@@ -56,10 +56,16 @@ def load_artifact(path: Path) -> MatchingArtifact:
         raise ValueError("unsupported artifact version")
 
     classes = int(values["classes"])
-    pred_boxes = tuple(_box(item) for item in values["pred_boxes"].split(";"))
+    pred_boxes = tuple(
+        _box(item)
+        for item in values["pred_boxes"].split(";")
+    )
     pred_probs = _rows(values["pred_probs"])
     gt_boxes = tuple(_box(item) for item in values["gt_boxes"].split(";"))
-    gt_classes = tuple(int(value) for value in values["gt_classes"].split(","))
+    gt_classes = tuple(
+        int(value)
+        for value in values["gt_classes"].split(",")
+    )
 
     if len(pred_boxes) != len(pred_probs):
         raise ValueError("prediction arrays must have equal length")
@@ -129,7 +135,10 @@ def optimal_assignment(
 
     best_cost = float("inf")
     best: list[tuple[int, int]] = []
-    for chosen_predictions in itertools.permutations(range(predictions), targets):
+    for chosen_predictions in itertools.permutations(
+        range(predictions),
+        targets,
+    ):
         total = sum(
             matrix[pred_index][target_index]
             for target_index, pred_index in enumerate(chosen_predictions)
