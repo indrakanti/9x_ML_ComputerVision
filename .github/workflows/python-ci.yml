@@ -145,6 +145,12 @@ jobs:
           python 29_FoundationBackbones/python/foundation_native_parity.py \
             build-native/29_FoundationBackbones/cv9x_foundation_adapters \
             29_FoundationBackbones/artifacts/foundation.txt
+          python 30_PEFT/python/peft_native_parity.py \
+            build-native/30_PEFT/cv9x_peft_math \
+            30_PEFT/artifacts/peft.txt
+          python 31_Compression/python/compression_native_parity.py \
+            build-native/31_Compression/cv9x_compression_math \
+            31_Compression/artifacts/compression.txt
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
