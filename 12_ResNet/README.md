@@ -181,6 +181,14 @@ detection / BEV / fusion
 5. Measure skip-tensor memory lifetime.
 6. Explain why a zero residual branch still produces a meaningful result.
 
+## Stage 1.5 applied lab
+
+The deterministic module above remains the mechanics reference. For a real-data run, continue with:
+
+- [Applied Lab 01 — CIFAR-10 Backbones](../applied_labs/01_CIFAR10Backbones/README.md)
+
+That lab trains actual CIFAR-10 models, records held-out accuracy, writes checkpoints/plots, and keeps the dataset download optional.
+
 ## Next
 
 Module 13 studies efficient CNN building blocks and depthwise separable convolution.
