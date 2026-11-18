@@ -109,6 +109,15 @@ jobs:
           python 17_BackboneEvaluation/python/backbone_eval_native_parity.py \
             build-native/17_BackboneEvaluation/cv9x_backbone_eval \
             17_BackboneEvaluation/artifacts/backbones.txt
+          python 18_DetectionFundamentals/python/detection_native_parity.py \
+            build-native/18_DetectionFundamentals/cv9x_detection_fundamentals \
+            18_DetectionFundamentals/artifacts/detections.txt
+          python 19_YOLOOneStage/python/yolo_native_parity.py \
+            build-native/19_YOLOOneStage/cv9x_yolo_decode \
+            19_YOLOOneStage/artifacts/yolo_head.txt
+          python 20_TwoStageDetection/python/two_stage_native_parity.py \
+            build-native/20_TwoStageDetection/cv9x_two_stage \
+            20_TwoStageDetection/artifacts/proposals.txt
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
