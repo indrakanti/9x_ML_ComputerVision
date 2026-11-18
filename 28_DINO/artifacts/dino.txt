@@ -1,0 +1,12 @@
+version=1
+dimension=3
+student_temperature=0.2
+teacher_temperature=0.1
+center=0.2,-0.1,0.05
+student_view_a=1.2,0.3,-0.4
+student_view_b=0.2,1.1,-0.3
+teacher_view_a=1.0,0.1,-0.2
+teacher_view_b=0.1,0.9,-0.1
+student_params=1.0,2.0,3.0,4.0
+teacher_params=0.8,2.2,2.7,4.3
+teacher_momentum=0.9
