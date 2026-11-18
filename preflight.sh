@@ -64,6 +64,15 @@ python 16_HybridBackbones/python/hybrid_backbone_native_parity.py \
 python 17_BackboneEvaluation/python/backbone_eval_native_parity.py \
   "${BUILD_DIR}/17_BackboneEvaluation/cv9x_backbone_eval" \
   17_BackboneEvaluation/artifacts/backbones.txt
+python 18_DetectionFundamentals/python/detection_native_parity.py \
+  "${BUILD_DIR}/18_DetectionFundamentals/cv9x_detection_fundamentals" \
+  18_DetectionFundamentals/artifacts/detections.txt
+python 19_YOLOOneStage/python/yolo_native_parity.py \
+  "${BUILD_DIR}/19_YOLOOneStage/cv9x_yolo_decode" \
+  19_YOLOOneStage/artifacts/yolo_head.txt
+python 20_TwoStageDetection/python/two_stage_native_parity.py \
+  "${BUILD_DIR}/20_TwoStageDetection/cv9x_two_stage" \
+  20_TwoStageDetection/artifacts/proposals.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure

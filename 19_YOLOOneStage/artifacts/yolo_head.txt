@@ -1,0 +1,11 @@
+version=1
+image_w=4
+image_h=4
+grid_w=2
+grid_h=2
+anchor_w=2
+anchor_h=2
+classes=2
+score_threshold=0.25
+nms_iou=0.5
+predictions=0,0,0,0,3,3,-2;0,0,0,0,2.5,2.5,-2;0,0,-0.2,-0.2,2.5,-2,3;0,0,-0.2,-0.2,-2,3,-2
