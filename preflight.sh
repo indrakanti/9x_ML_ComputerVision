@@ -100,6 +100,12 @@ python 28_DINO/python/dino_native_parity.py \
 python 29_FoundationBackbones/python/foundation_native_parity.py \
   "${BUILD_DIR}/29_FoundationBackbones/cv9x_foundation_adapters" \
   29_FoundationBackbones/artifacts/foundation.txt
+python 30_PEFT/python/peft_native_parity.py \
+  "${BUILD_DIR}/30_PEFT/cv9x_peft_math" \
+  30_PEFT/artifacts/peft.txt
+python 31_Compression/python/compression_native_parity.py \
+  "${BUILD_DIR}/31_Compression/cv9x_compression_math" \
+  31_Compression/artifacts/compression.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure

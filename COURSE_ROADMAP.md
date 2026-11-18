@@ -91,11 +91,11 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | Module | Topic | Status |
 |---|---|---|
 | 26 | Contrastive learning and CLIP-style image/text alignment | **Implemented** |
-| 27 | Masked-image modeling | Planned |
-| 28 | Self-supervised distillation and DINO-family ideas | Planned |
-| 29 | Universal/foundation visual backbones and dense features | Planned |
-| 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | Planned |
-| 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | Planned |
+| 27 | Masked-image modeling | **Implemented** |
+| 28 | Self-supervised distillation and DINO-family ideas | **Implemented** |
+| 29 | Universal/foundation visual backbones and dense features | **Implemented** |
+| 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Implemented** |
+| 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Implemented** |
 
 # ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision
 

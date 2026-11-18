@@ -1,0 +1,7 @@
+version=1
+temperature=2.0
+teacher_logits=2.0,1.0,-0.5
+student_logits=1.2,0.8,-0.2
+prune_threshold=0.25
+weights=0.05,-0.2,0.3,-0.8,1.2,-0.1,0.6,0.02
+quant_values=0.9,-1.7,0.25,2.5,-0.4
