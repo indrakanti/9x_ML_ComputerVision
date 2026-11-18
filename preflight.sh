@@ -91,6 +91,15 @@ python 25_PoseEstimation/python/pose_native_parity.py \
 python 26_ContrastiveCLIP/python/clip_native_parity.py \
   "${BUILD_DIR}/26_ContrastiveCLIP/cv9x_clip_similarity" \
   26_ContrastiveCLIP/artifacts/embeddings.txt
+python 27_MaskedImageModeling/python/mim_native_parity.py \
+  "${BUILD_DIR}/27_MaskedImageModeling/cv9x_mim_reconstruct" \
+  27_MaskedImageModeling/artifacts/mim.txt
+python 28_DINO/python/dino_native_parity.py \
+  "${BUILD_DIR}/28_DINO/cv9x_dino_math" \
+  28_DINO/artifacts/dino.txt
+python 29_FoundationBackbones/python/foundation_native_parity.py \
+  "${BUILD_DIR}/29_FoundationBackbones/cv9x_foundation_adapters" \
+  29_FoundationBackbones/artifacts/foundation.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure
