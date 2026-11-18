@@ -157,6 +157,7 @@ Future course modules will be added as focused pull requests.
 ## Course resources
 
 - [Course roadmap](COURSE_ROADMAP.md)
+- [Stage 1 completion review](STAGE1_REVIEW.md)
 - [Linux setup](LINUX_SETUP.md)
 - [Building and testing](BUILDING.md)
 - [Runtime architecture](RUNTIME_ARCHITECTURE.md)
