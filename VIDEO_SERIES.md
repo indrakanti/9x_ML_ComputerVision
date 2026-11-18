@@ -24,6 +24,9 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 15 | Hierarchical and Windowed Transformers | **Implementation-ready** |
 | 16 | Hybrid CNN–Transformer Backbones | **Implementation-ready** |
 | 17 | Backbone Evaluation and Engineering Trade-Space | **Implementation-ready** |
+| 18 | Detection Fundamentals — Boxes, IoU, NMS & mAP | **Implementation-ready** |
+| 19 | YOLO-Style One-Stage Detection + GPU Checkpoint | **Implementation-ready** |
+| 20 | Two-Stage Detection and Region Proposals | **Implementation-ready** |
 
 ## Major series arcs
 
