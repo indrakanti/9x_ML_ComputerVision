@@ -40,7 +40,10 @@ def load_artifact(path: Path) -> PanopticArtifact:
     height = int(values["height"])
     width = int(values["width"])
     pixels = height * width
-    semantic = tuple(int(value) for value in values["semantic"].split(","))
+    semantic = tuple(
+        int(value)
+        for value in values["semantic"].split(",")
+    )
     classes = tuple(
         int(value) for value in values["instance_classes"].split(",")
     )
