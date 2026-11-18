@@ -14,7 +14,10 @@ def test_decode_produces_candidates() -> None:
     detections = decode(artifact)
 
     assert len(detections) >= 3
-    assert all(detection.score >= artifact.score_threshold for detection in detections)
+    assert all(
+        detection.score >= artifact.score_threshold
+        for detection in detections
+    )
 
 
 def test_final_detections_are_score_sorted() -> None:
