@@ -168,6 +168,29 @@ In surround perception, detector post-processing runs repeatedly across cameras.
 
 > **A one-stage detector is not complete when the neural network returns a tensor. Decode, confidence composition, NMS, memory movement, and synchronization are part of the deployed detector.**
 
+## Reproducible commands
+
+CPU reference and parity:
+
+```bash
+python 19_YOLOOneStage/python/yolo_walkthrough.py
+pytest 19_YOLOOneStage/tests
+cmake -S 19_YOLOOneStage -B build-m19 -G Ninja \
+  -DCV9X_WARNINGS_AS_ERRORS=ON
+cmake --build build-m19
+ctest --test-dir build-m19 --output-on-failure
+python 19_YOLOOneStage/python/yolo_native_parity.py \
+  build-m19/cv9x_yolo_decode \
+  19_YOLOOneStage/artifacts/yolo_head.txt
+```
+
+From the repository root, the optional CUDA checkpoint can be enabled on a CUDA-capable machine:
+
+```bash
+cmake -S . -B build-cuda -G Ninja -DCV9X_ENABLE_CUDA=ON
+cmake --build build-cuda --target cv9x_yolo_decode_cuda
+```
+
 ## Next
 
 Module 20 introduces region proposals and two-stage detection.
