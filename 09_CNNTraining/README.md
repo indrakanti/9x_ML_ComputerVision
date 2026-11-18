@@ -466,6 +466,14 @@ Module 09 is the first complete miniature of that production path.
 9. Add device selection for CUDA.
 10. Explain what changes when the network is deployed at 30 FPS.
 
+## Stage 1.5 applied lab
+
+The deterministic module above remains the mechanics reference. For a real-data run, continue with:
+
+- [Applied Lab 01 — CIFAR-10 Backbones](../applied_labs/01_CIFAR10Backbones/README.md)
+
+That lab trains actual CIFAR-10 models, records held-out accuracy, writes checkpoints/plots, and keeps the dataset download optional.
+
 ## Next
 
 Module 10 adds regularization, augmentation, learning-rate scheduling, and robust checkpoint policy.
