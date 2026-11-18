@@ -36,6 +36,8 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 27 | Masked Image Modeling | **Implementation-ready** |
 | 28 | DINO-Style Self-Supervised Learning | **Implementation-ready** |
 | 29 | Universal / Foundation Backbones | **Implementation-ready** |
+| 30 | Probing, Adapters, LoRA and PEFT | **Implementation-ready** |
+| 31 | Distillation, Pruning and Quantization | **Implementation-ready** |
 
 ## Major series arcs
 
