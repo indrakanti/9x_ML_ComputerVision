@@ -8,8 +8,10 @@ The word **public** here means publicly downloadable for research/education. Dat
 
 Used by Applied Lab 01 and potentially later representation-learning labs.
 
+- Canonical source: https://cave.cs.toronto.edu/kriz/cifar.html
 - Source: University of Toronto CIFAR dataset
 - Loader: `torchvision.datasets.CIFAR10`
+- Torchvision API: https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.CIFAR10.html
 - Contents: 60,000 32×32 color images across 10 classes
 - Standard split: 50,000 train / 10,000 test
 - Download behavior: the lab uses torchvision's `download=True` path when requested
