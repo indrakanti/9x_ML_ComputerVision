@@ -45,57 +45,57 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | Module | Topic | Status |
 |---|---|---|
 | 00 | Beginner-ready Linux workstation: Python/PyTorch, C++/CMake, GPU awareness, tests, CI, course doctor | **Foundation implemented** |
-| 01 | NumPy/PyTorch tensors + image/tensor memory contracts + C++ tensor/runtime concepts | **Implemented** |
-| 02 | Probability/statistics essentials for vision ML | **Implemented** |
-| 03 | Optimization: losses, gradients, SGD, momentum, Adam | **Implemented** |
-| 04 | Autograd from scalar graph intuition to PyTorch | **Implemented** |
-| 05 | Dataset splits, leakage, metrics, reproducibility | **Implemented** |
+| 01 | NumPy/PyTorch tensors + image/tensor memory contracts + C++ tensor/runtime concepts | **Mechanics implemented** |
+| 02 | Probability/statistics essentials for vision ML | **Mechanics implemented** |
+| 03 | Optimization: losses, gradients, SGD, momentum, Adam | **Mechanics implemented** |
+| 04 | Autograd from scalar graph intuition to PyTorch | **Mechanics implemented** |
+| 05 | Dataset splits, leakage, metrics, reproducibility | **Mechanics implemented** |
 
 ## Part II — From Classical Features to Learned Features
 
 | Module | Topic | Status |
 |---|---|---|
-| 06 | Linear classifiers for images | **Implemented** |
-| 07 | MLPs, activations, initialization, normalization | **Implemented** |
-| 08 | Convolution from first principles: NumPy, PyTorch and native/GPU execution concepts | **Implemented** |
-| 09 | CNN training loop from scratch + C++ inference smoke path | **Implemented** |
-| 10 | Regularization, augmentation, schedulers, checkpointing | **Implemented** |
-| 11 | Transfer learning + first ONNX export / native inference checkpoint | **Implemented** |
+| 06 | Linear classifiers for images | **Mechanics implemented** |
+| 07 | MLPs, activations, initialization, normalization | **Mechanics implemented** |
+| 08 | Convolution from first principles: NumPy, PyTorch and native/GPU execution concepts | **Mechanics implemented** |
+| 09 | CNN training loop from scratch + C++ inference smoke path | **Mechanics + Applied Lab 01** |
+| 10 | Regularization, augmentation, schedulers, checkpointing | **Mechanics implemented** |
+| 11 | Transfer learning + first ONNX export / native inference checkpoint | **Mechanics implemented** |
 
 ## Part III — Modern Image Backbones
 
 | Module | Topic | Status |
 |---|---|---|
-| 12 | ResNet and residual learning | **Implemented** |
-| 13 | Efficient CNNs: MobileNet/EfficientNet-style ideas | **Implemented** |
-| 14 | Vision Transformer fundamentals | **Implemented** |
-| 15 | Hierarchical/windowed transformers | **Implemented** |
-| 16 | ConvNet/Transformer hybrid design patterns | **Implemented** |
-| 17 | Modern backbone evaluation: accuracy + C++/GPU latency, memory and synchronization | **Implemented** |
+| 12 | ResNet and residual learning | **Mechanics + Applied Lab 01** |
+| 13 | Efficient CNNs: MobileNet/EfficientNet-style ideas | **Mechanics implemented** |
+| 14 | Vision Transformer fundamentals | **Mechanics + Applied Lab 01** |
+| 15 | Hierarchical/windowed transformers | **Mechanics implemented** |
+| 16 | ConvNet/Transformer hybrid design patterns | **Mechanics implemented** |
+| 17 | Modern backbone evaluation: accuracy + C++/GPU latency, memory and synchronization | **Mechanics + Applied Lab 01** |
 
 ## Part IV — Detection, Segmentation and Pose
 
 | Module | Topic | Status |
 |---|---|---|
-| 18 | Detection fundamentals: boxes, anchors, IoU, mAP | **Implemented** |
-| 19 | YOLO-family one-stage detection + native GPU inference checkpoint | **Implemented** |
-| 20 | Two-stage detection and region proposals | **Implemented** |
-| 21 | DETR-family set prediction and transformer detection | **Implemented** |
-| 22 | Semantic segmentation | **Implemented** |
-| 23 | Instance/panoptic segmentation | **Implemented** |
-| 24 | Promptable/foundation segmentation concepts + deployment constraints | **Implemented** |
-| 25 | Keypoints and human/object pose estimation | **Implemented** |
+| 18 | Detection fundamentals: boxes, anchors, IoU, mAP | **Mechanics implemented** |
+| 19 | YOLO-family one-stage detection + native GPU inference checkpoint | **Mechanics implemented** |
+| 20 | Two-stage detection and region proposals | **Mechanics implemented** |
+| 21 | DETR-family set prediction and transformer detection | **Mechanics implemented** |
+| 22 | Semantic segmentation | **Mechanics implemented** |
+| 23 | Instance/panoptic segmentation | **Mechanics implemented** |
+| 24 | Promptable/foundation segmentation concepts + deployment constraints | **Mechanics implemented** |
+| 25 | Keypoints and human/object pose estimation | **Mechanics implemented** |
 
 ## Part V — Representation Learning and Vision Foundation Models
 
 | Module | Topic | Status |
 |---|---|---|
-| 26 | Contrastive learning and CLIP-style image/text alignment | **Implemented** |
-| 27 | Masked-image modeling | **Implemented** |
-| 28 | Self-supervised distillation and DINO-family ideas | **Implemented** |
-| 29 | Universal/foundation visual backbones and dense features | **Implemented** |
-| 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Implemented** |
-| 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Implemented** |
+| 26 | Contrastive learning and CLIP-style image/text alignment | **Mechanics implemented** |
+| 27 | Masked-image modeling | **Mechanics implemented** |
+| 28 | Self-supervised distillation and DINO-family ideas | **Mechanics implemented** |
+| 29 | Universal/foundation visual backbones and dense features | **Mechanics implemented** |
+| 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Mechanics implemented** |
+| 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Mechanics implemented** |
 
 # ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision
 
