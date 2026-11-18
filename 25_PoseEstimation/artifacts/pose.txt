@@ -1,0 +1,11 @@
+version=1
+heatmap_h=3
+heatmap_w=3
+image_h=6
+image_w=6
+keypoints=3
+heatmaps=0.1,0.2,0.1,0.2,0.9,0.2,0.1,0.2,0.1;0.8,0.2,0.1,0.2,0.1,0.1,0.1,0.1,0.1;0.1,0.1,0.1,0.1,0.1,0.2,0.1,0.2,0.95
+ground_truth=2.5,2.5;0.5,0.5;4.5,4.5
+visible=1,1,1
+normalization=6
+pck_alpha=0.2

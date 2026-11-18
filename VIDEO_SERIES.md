@@ -30,6 +30,9 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 21 | DETR-Style Set Prediction | **Implementation-ready** |
 | 22 | Semantic Segmentation | **Implementation-ready** |
 | 23 | Instance and Panoptic Segmentation | **Implementation-ready** |
+| 24 | Promptable / Foundation Segmentation | **Implementation-ready** |
+| 25 | Keypoints and Pose Estimation | **Implementation-ready** |
+| 26 | Contrastive Learning and CLIP | **Implementation-ready** |
 
 ## Major series arcs
 

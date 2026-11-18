@@ -82,6 +82,15 @@ python 22_SemanticSegmentation/python/semantic_native_parity.py \
 python 23_InstancePanoptic/python/panoptic_native_parity.py \
   "${BUILD_DIR}/23_InstancePanoptic/cv9x_panoptic_compose" \
   23_InstancePanoptic/artifacts/panoptic.txt
+python 24_PromptableSegmentation/python/promptable_native_parity.py \
+  "${BUILD_DIR}/24_PromptableSegmentation/cv9x_promptable_mask" \
+  24_PromptableSegmentation/artifacts/promptable.txt
+python 25_PoseEstimation/python/pose_native_parity.py \
+  "${BUILD_DIR}/25_PoseEstimation/cv9x_pose_decode" \
+  25_PoseEstimation/artifacts/pose.txt
+python 26_ContrastiveCLIP/python/clip_native_parity.py \
+  "${BUILD_DIR}/26_ContrastiveCLIP/cv9x_clip_similarity" \
+  26_ContrastiveCLIP/artifacts/embeddings.txt
 
 echo "==> CTest"
 ctest --test-dir "${BUILD_DIR}" --output-on-failure

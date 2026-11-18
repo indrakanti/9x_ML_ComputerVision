@@ -83,14 +83,14 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 21 | DETR-family set prediction and transformer detection | **Implemented** |
 | 22 | Semantic segmentation | **Implemented** |
 | 23 | Instance/panoptic segmentation | **Implemented** |
-| 24 | Promptable/foundation segmentation concepts + deployment constraints | Planned |
-| 25 | Keypoints and human/object pose estimation | Planned |
+| 24 | Promptable/foundation segmentation concepts + deployment constraints | **Implemented** |
+| 25 | Keypoints and human/object pose estimation | **Implemented** |
 
 ## Part V — Representation Learning and Vision Foundation Models
 
 | Module | Topic | Status |
 |---|---|---|
-| 26 | Contrastive learning and CLIP-style image/text alignment | Planned |
+| 26 | Contrastive learning and CLIP-style image/text alignment | **Implemented** |
 | 27 | Masked-image modeling | Planned |
 | 28 | Self-supervised distillation and DINO-family ideas | Planned |
 | 29 | Universal/foundation visual backbones and dense features | Planned |
