@@ -30,7 +30,11 @@ def test_manual_matches_pytorch() -> None:
         artifact
     )
 
-    assert torch_reconstruction.tolist() == pytest.approx(
-        manual_reconstruction
-    )
+    manual_flat = [
+        value
+        for row in manual_reconstruction
+        for value in row
+    ]
+    torch_flat = torch_reconstruction.reshape(-1).tolist()
+    assert torch_flat == pytest.approx(manual_flat)
     assert float(torch_loss.item()) == pytest.approx(manual_loss)
