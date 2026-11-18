@@ -27,6 +27,9 @@ Each numbered roadmap module maps to a long-form episode by default. Some advanc
 | 18 | Detection Fundamentals — Boxes, IoU, NMS & mAP | **Implementation-ready** |
 | 19 | YOLO-Style One-Stage Detection + GPU Checkpoint | **Implementation-ready** |
 | 20 | Two-Stage Detection and Region Proposals | **Implementation-ready** |
+| 21 | DETR-Style Set Prediction | **Implementation-ready** |
+| 22 | Semantic Segmentation | **Implementation-ready** |
+| 23 | Instance and Panoptic Segmentation | **Implementation-ready** |
 
 ## Major series arcs
 
