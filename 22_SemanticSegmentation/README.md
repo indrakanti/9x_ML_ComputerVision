@@ -115,6 +115,14 @@ python 22_SemanticSegmentation/python/semantic_native_parity.py \
   22_SemanticSegmentation/artifacts/segmentation.txt
 ```
 
+## Stage 1.5 applied lab
+
+This module's deterministic implementation remains the mechanics reference. The real-data companion is:
+
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+
+The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
+
 ## Next
 
 Module 23 extends dense labels into instance-aware and panoptic outputs.
