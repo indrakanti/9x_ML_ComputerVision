@@ -37,7 +37,7 @@ Real-data evidence:
 
 **Status: Implemented**
 
-Target mechanics:
+Extends mechanics:
 
 - 18 — detection metrics
 - 19 — YOLO-style one-stage detection
@@ -46,7 +46,7 @@ Target mechanics:
 - 22 — semantic segmentation
 - 23 — instance/panoptic segmentation
 
-Planned real-data layer:
+Implemented real-data layer:
 
 - Oxford-IIIT Pet under CC BY-SA 4.0
 - derived full-pet boxes from real trimap masks
@@ -61,14 +61,14 @@ CPU users will have sample/epoch limits; full experiments remain optional.
 
 **Status: Implemented**
 
-Target mechanics:
+Extends mechanics:
 
 - 26 — CLIP-style contrastive learning
 - 27 — masked image modeling
 - 28 — DINO-style self-supervision
 - 29 — foundation backbones
 
-Planned real-data layer:
+Implemented real-data layer:
 
 - CIFAR-10 real images
 - trainable CLIP-style class-prompt alignment
@@ -81,7 +81,7 @@ Planned real-data layer:
 
 **Status: Implemented**
 
-Target mechanics:
+Extends mechanics:
 
 - 30 — PEFT / LoRA
 - 31 — distillation, pruning, quantization
