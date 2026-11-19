@@ -172,22 +172,22 @@ Panoptic outputs can provide a unified scene representation: drivable stuff regi
 ## Reproducible commands
 
 ```bash
-python 23_InstancePanoptic/python/panoptic_walkthrough.py
-pytest 23_InstancePanoptic/tests
-cmake -S 23_InstancePanoptic -B build-m23 -G Ninja \
+python 01_Foundations_to_Modern_Vision/23_InstancePanoptic/python/panoptic_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/23_InstancePanoptic/tests
+cmake -S 01_Foundations_to_Modern_Vision/23_InstancePanoptic -B build-m23 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m23
 ctest --test-dir build-m23 --output-on-failure
-python 23_InstancePanoptic/python/panoptic_native_parity.py \
+python 01_Foundations_to_Modern_Vision/23_InstancePanoptic/python/panoptic_native_parity.py \
   build-m23/cv9x_panoptic_compose \
-  23_InstancePanoptic/artifacts/panoptic.txt
+  01_Foundations_to_Modern_Vision/23_InstancePanoptic/artifacts/panoptic.txt
 ```
 
 ## Stage 1.5 applied lab
 
 This module's deterministic implementation remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
 
 The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
 
