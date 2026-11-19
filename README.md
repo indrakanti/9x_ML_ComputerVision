@@ -143,23 +143,20 @@ For NVIDIA/AMD GPU installs, use the current PyTorch platform selector rather th
 
 ~~~text
 9x_ML_ComputerVision/
-├── 00_Setup/
-│   ├── python/
-│   ├── cpp/
-│   └── tests/
-├── 01_TensorsMemory/
-│   ├── python/
-│   ├── cpp/
-│   └── tests/
-├── 02_ProbabilityStatistics/
-│   ├── python/
-│   └── tests/
+├── 01_Foundations_to_Modern_Vision/
+│   ├── 00_Setup/
+│   ├── 01_TensorsMemory/
+│   ├── ...
+│   └── 31_Compression/
+├── 02_Multimodal_3D_and_Generative_Vision/
+│   └── README.md
+├── 03_Embodied_Vision_and_Production/
+│   └── README.md
+├── applied_labs/
 ├── requirements/
+├── locks/
 ├── CMakeLists.txt
 ├── COURSE_ROADMAP.md
-├── VIDEO_SERIES.md
-├── LINUX_SETUP.md
-├── pyproject.toml
 └── .github/workflows/
 ~~~
 
@@ -167,6 +164,9 @@ Future course modules will be added as focused pull requests.
 
 ## Course resources
 
+- [Part I — Foundations to Modern Vision](01_Foundations_to_Modern_Vision/README.md)
+- [Part II — Multimodal, 3D and Generative Vision](02_Multimodal_3D_and_Generative_Vision/README.md)
+- [Part III — Embodied Vision and Production](03_Embodied_Vision_and_Production/README.md)
 - [Course roadmap](COURSE_ROADMAP.md)
 - [Stage 1 completion review](STAGE1_REVIEW.md)
 - [Stage 1.5 applied labs](STAGE1_5_APPLIED_LABS.md)
