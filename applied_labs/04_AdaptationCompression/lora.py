@@ -71,7 +71,7 @@ def inject_lora(
     """Replace Linear children recursively and return number replaced."""
     replaced = 0
     for name, child in list(module.named_children()):
-        if isinstance(child, nn.Linear):
+        if isinstance(child, nn.Linear) and name != "out_proj":
             setattr(
                 module,
                 name,
