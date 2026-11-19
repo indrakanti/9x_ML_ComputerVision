@@ -149,7 +149,7 @@ Numerical gradients are slower and approximate, but they are extremely useful fo
 ## 7. What this module implements
 
 ~~~text
-04_Autograd/
+01_Foundations_to_Modern_Vision/04_Autograd/
 ├── README.md
 ├── VIDEO.md
 ├── CMakeLists.txt
@@ -178,14 +178,14 @@ The scalar engine supports:
 ~~~bash
 source .venv/bin/activate
 
-python 04_Autograd/python/autograd_walkthrough.py
-pytest 04_Autograd/tests -q
+python 01_Foundations_to_Modern_Vision/04_Autograd/python/autograd_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/04_Autograd/tests -q
 
-cmake -S 04_Autograd -B build/module04 -DCMAKE_BUILD_TYPE=Release
+cmake -S 01_Foundations_to_Modern_Vision/04_Autograd -B build/module04 -DCMAKE_BUILD_TYPE=Release
 cmake --build build/module04 --parallel
 ctest --test-dir build/module04 --output-on-failure
 
-python 04_Autograd/python/autodiff_native_parity.py \
+python 01_Foundations_to_Modern_Vision/04_Autograd/python/autodiff_native_parity.py \
   build/module04/cv9x_autodiff
 ~~~
 
