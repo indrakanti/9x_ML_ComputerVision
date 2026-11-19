@@ -177,15 +177,15 @@ This module uses CPU as the correctness baseline. GPU-specific performance comes
 ~~~bash
 source .venv/bin/activate
 
-python 01_TensorsMemory/python/tensor_walkthrough.py
-pytest 01_TensorsMemory/tests -q
+python 01_Foundations_to_Modern_Vision/01_TensorsMemory/python/tensor_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/01_TensorsMemory/tests -q
 ~~~
 
 Native C++:
 
 ~~~bash
 # Standalone module build
-cmake -S 01_TensorsMemory -B build/module01 -DCMAKE_BUILD_TYPE=Release
+cmake -S 01_Foundations_to_Modern_Vision/01_TensorsMemory -B build/module01 -DCMAKE_BUILD_TYPE=Release
 cmake --build build/module01 --parallel
 ./build/module01/cv9x_tensor_contract --self-test
 ctest --test-dir build/module01 --output-on-failure
