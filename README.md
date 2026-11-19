@@ -1,6 +1,6 @@
 # 9x ML Computer Vision
 
-**From ML foundations to modern multimodal and embodied vision — Python/PyTorch for training, C++ for production runtime, GPU-aware from day one.**
+**From ML foundations to modern multimodal and embodied vision — first-principles mechanics, real-data PyTorch labs, C++ native contracts, and GPU-aware engineering.**
 
 This repository is the learned/deep-vision continuation of the classical C++ course in `9x_ComputerVision_-`.
 
