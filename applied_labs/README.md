@@ -1,5 +1,7 @@
 # Stage 1.5 — Applied Labs
 
+See the [Applied Labs roadmap](ROADMAP.md) for status and completion criteria.
+
 Stage 1 teaches mechanics with tiny deterministic examples, PyTorch references, native C++ counterparts, and numerical parity.
 
 Stage 1.5 adds a second layer:
