@@ -164,22 +164,22 @@ Two-stage detection is useful for understanding the accuracy/latency trade-space
 ## Reproducible commands
 
 ```bash
-python 20_TwoStageDetection/python/two_stage_walkthrough.py
-pytest 20_TwoStageDetection/tests
-cmake -S 20_TwoStageDetection -B build-m20 -G Ninja \
+python 01_Foundations_to_Modern_Vision/20_TwoStageDetection/python/two_stage_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/20_TwoStageDetection/tests
+cmake -S 01_Foundations_to_Modern_Vision/20_TwoStageDetection -B build-m20 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m20
 ctest --test-dir build-m20 --output-on-failure
-python 20_TwoStageDetection/python/two_stage_native_parity.py \
+python 01_Foundations_to_Modern_Vision/20_TwoStageDetection/python/two_stage_native_parity.py \
   build-m20/cv9x_two_stage \
-  20_TwoStageDetection/artifacts/proposals.txt
+  01_Foundations_to_Modern_Vision/20_TwoStageDetection/artifacts/proposals.txt
 ```
 
 ## Stage 1.5 applied lab
 
 This module's deterministic implementation remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
 
 The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
 
