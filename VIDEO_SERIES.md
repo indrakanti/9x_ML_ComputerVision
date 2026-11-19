@@ -2,7 +2,7 @@
 
 Each numbered roadmap module maps to a long-form episode by default. Some advanced modules may later split into multiple episodes if hands-on scope requires it.
 
-## Foundation
+## Part I — Foundations to Modern Vision
 
 | Episode | Topic | Status |
 |---|---|---|
