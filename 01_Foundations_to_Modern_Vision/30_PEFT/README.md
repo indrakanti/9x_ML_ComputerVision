@@ -175,21 +175,21 @@ PEFT is useful when a large shared visual backbone must adapt to new domains or 
 ## Reproducible commands
 
 ```bash
-python 30_PEFT/python/peft_walkthrough.py
-pytest 30_PEFT/tests
-cmake -S 30_PEFT -B build-m30 -G Ninja -DCV9X_WARNINGS_AS_ERRORS=ON
+python 01_Foundations_to_Modern_Vision/30_PEFT/python/peft_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/30_PEFT/tests
+cmake -S 01_Foundations_to_Modern_Vision/30_PEFT -B build-m30 -G Ninja -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m30
 ctest --test-dir build-m30 --output-on-failure
-python 30_PEFT/python/peft_native_parity.py \
+python 01_Foundations_to_Modern_Vision/30_PEFT/python/peft_native_parity.py \
   build-m30/cv9x_peft_math \
-  30_PEFT/artifacts/peft.txt
+  01_Foundations_to_Modern_Vision/30_PEFT/artifacts/peft.txt
 ```
 
 ## Stage 1.5 applied lab
 
 The deterministic module above remains the mechanics reference. The real-model companion is:
 
-- [Applied Lab 04 — PEFT, Distillation, Pruning and Quantization](../applied_labs/04_AdaptationCompression/README.md)
+- [Applied Lab 04 — PEFT, Distillation, Pruning and Quantization](../../applied_labs/04_AdaptationCompression/README.md)
 
 It consumes trained CIFAR-10 checkpoints and measures adaptation/compression effects on accuracy, trainable parameters, sparsity, serialized size, and CPU latency.
 
