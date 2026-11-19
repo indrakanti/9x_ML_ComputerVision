@@ -83,7 +83,10 @@ def set_seed(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
-def limited(dataset: Dataset[tuple[Tensor, int]], maximum: int | None) -> Dataset[tuple[Tensor, int]]:
+def limited(
+    dataset: Dataset[tuple[Tensor, int]],
+    maximum: int | None,
+) -> Dataset[tuple[Tensor, int]]:
     if maximum is None or maximum >= len(dataset):
         return dataset
     return Subset(dataset, range(maximum))
