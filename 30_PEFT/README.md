@@ -185,6 +185,14 @@ python 30_PEFT/python/peft_native_parity.py \
   30_PEFT/artifacts/peft.txt
 ```
 
+## Stage 1.5 applied lab
+
+The deterministic module above remains the mechanics reference. The real-model companion is:
+
+- [Applied Lab 04 — PEFT, Distillation, Pruning and Quantization](../applied_labs/04_AdaptationCompression/README.md)
+
+It consumes trained CIFAR-10 checkpoints and measures adaptation/compression effects on accuracy, trainable parameters, sparsity, serialized size, and CPU latency.
+
 ## Next
 
 Module 31 compresses trained models through distillation, pruning, and quantization.
