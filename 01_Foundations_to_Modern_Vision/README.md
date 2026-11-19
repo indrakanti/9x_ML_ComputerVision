@@ -21,7 +21,7 @@ Part I has two complementary layers:
 1. **Mechanics modules** in this directory — deterministic examples, first-principles math, PyTorch references, C++17 native counterparts, and parity.
 2. **Applied Labs** in [../applied_labs](../applied_labs) — optional real-data training, checkpoints, held-out metrics, and runtime evidence.
 
-See the repository [course roadmap](../COURSE_ROADMAP.md) and [Part-I review](../STAGE1_REVIEW.md).
+See the repository [course roadmap](../COURSE_ROADMAP.md) and [Part-I review](PART1_REVIEW.md).
 
 ## Module groups
 
