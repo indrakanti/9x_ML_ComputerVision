@@ -175,7 +175,7 @@ This extends the deployment contract introduced in Module 06.
 ## 8. Structure
 
 ```text
-07_MLPs/
+01_Foundations_to_Modern_Vision/07_MLPs/
 ├── README.md
 ├── VIDEO.md
 ├── CMakeLists.txt
