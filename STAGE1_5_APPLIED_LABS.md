@@ -59,7 +59,7 @@ CPU users will have sample/epoch limits; full experiments remain optional.
 
 ## Applied Lab 03 — Foundation Representation Learning
 
-**Status: Planned**
+**Status: Implemented**
 
 Target mechanics:
 
@@ -70,12 +70,12 @@ Target mechanics:
 
 Planned real-data layer:
 
-- CIFAR-10 / STL-10-style public image data
-- zero-shot prompt experiment
-- masked pretraining experiment
-- teacher/student self-supervised experiment
-- linear-probe evaluation
-- embedding visualization
+- CIFAR-10 real images
+- trainable CLIP-style class-prompt alignment
+- masked-image pretraining
+- DINO-style student/EMA-teacher pretraining
+- frozen linear-probe evaluation
+- reusable representation checkpoints
 
 ## Applied Lab 04 — Adaptation and Compression
 
