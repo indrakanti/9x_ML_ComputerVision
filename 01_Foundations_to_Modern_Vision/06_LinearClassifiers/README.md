@@ -272,7 +272,7 @@ This is the first module where the course proves a real **model parameter artifa
 ## 13. Module structure
 
 ```text
-06_LinearClassifiers/
+01_Foundations_to_Modern_Vision/06_LinearClassifiers/
 ├── README.md
 ├── VIDEO.md
 ├── CMakeLists.txt
@@ -296,14 +296,14 @@ This is the first module where the course proves a real **model parameter artifa
 ```bash
 source .venv/bin/activate
 
-python 06_LinearClassifiers/python/linear_classifier_walkthrough.py
-pytest 06_LinearClassifiers/tests -q
+python 01_Foundations_to_Modern_Vision/06_LinearClassifiers/python/linear_classifier_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/06_LinearClassifiers/tests -q
 ```
 
 ### Native C++17
 
 ```bash
-cmake -S 06_LinearClassifiers -B build/module06 \
+cmake -S 01_Foundations_to_Modern_Vision/06_LinearClassifiers -B build/module06 \
   -DCMAKE_BUILD_TYPE=Release \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 
@@ -314,9 +314,9 @@ ctest --test-dir build/module06 --output-on-failure
 ### Python ↔ C++ parity
 
 ```bash
-python 06_LinearClassifiers/python/linear_classifier_native_parity.py \
+python 01_Foundations_to_Modern_Vision/06_LinearClassifiers/python/linear_classifier_native_parity.py \
   build/module06/cv9x_linear_classifier \
-  06_LinearClassifiers/artifacts/linear_binary_model.txt
+  01_Foundations_to_Modern_Vision/06_LinearClassifiers/artifacts/linear_binary_model.txt
 ```
 
 ## 15. Worked example
