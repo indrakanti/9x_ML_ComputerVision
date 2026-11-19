@@ -168,6 +168,14 @@ python 18_DetectionFundamentals/python/detection_native_parity.py \
   18_DetectionFundamentals/artifacts/detections.txt
 ```
 
+## Stage 1.5 applied lab
+
+This module's deterministic implementation remains the mechanics reference. The real-data companion is:
+
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+
+The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
+
 ## Next
 
 Module 19 builds a YOLO-style one-stage detector decode path.
