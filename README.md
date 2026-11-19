@@ -4,15 +4,26 @@
 
 This repository is the learned/deep-vision continuation of the classical C++ course in `9x_ComputerVision_-`.
 
+## Repository map
+
+```text
+01_Foundations_to_Modern_Vision/          Part I — Modules 00–31
+02_Multimodal_3D_and_Generative_Vision/  Part II — Modules 32–60
+03_Embodied_Vision_and_Production/        Part III — Modules 61–85
+applied_labs/                             optional real-data companion labs
+```
+
+Only implemented modules get lesson directories. Planned modules stay in the roadmap until development begins, keeping the repository root compact and navigable.
+
 ## Course series and completion boundaries
 
 The 86 planned modules are intentionally split into three independently completable courses:
 
 | Course | Modules | Student outcome |
 |---|---:|---|
-| **ML Computer Vision — Part 1: Foundations to Modern Perception** | 00–31 | Train, evaluate, export and deploy modern image models |
-| **ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision** | 32–60 | Work with VLMs, open-vocabulary vision, video, learned 3-D and generative vision |
-| **ML Computer Vision — Part 3: Embodied AI & Production Vision Systems** | 61–85 | Understand world/VLA models and build production inference/runtime systems |
+| **ML Computer Vision — Part 1: Foundations to Modern Vision** | 00–31 | Train, evaluate, export and deploy modern image models |
+| **ML Computer Vision — Part 2: Multimodal, 3D & Generative Vision** | 32–60 | Work with VLMs, open-vocabulary vision, video, learned 3-D and generative vision |
+| **ML Computer Vision — Part 3: Embodied Vision & Production** | 61–85 | Understand world/VLA models and build production inference/runtime systems |
 
 Each part has a defined completion point. Learners do not need to finish all 86 modules before gaining a complete, useful skill set.
 
