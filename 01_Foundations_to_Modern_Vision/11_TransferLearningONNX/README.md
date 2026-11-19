@@ -333,7 +333,7 @@ For real models, ONNX becomes the primary deployable graph.
 ## 14. Module structure
 
 ```text
-11_TransferLearningONNX/
+01_Foundations_to_Modern_Vision/11_TransferLearningONNX/
 ├── README.md
 ├── VIDEO.md
 ├── CMakeLists.txt
