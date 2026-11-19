@@ -104,22 +104,22 @@ Semantic segmentation supports free-space, drivable-area, lane-region, curb, and
 ## Reproducible commands
 
 ```bash
-python 22_SemanticSegmentation/python/semantic_walkthrough.py
-pytest 22_SemanticSegmentation/tests
-cmake -S 22_SemanticSegmentation -B build-m22 -G Ninja \
+python 01_Foundations_to_Modern_Vision/22_SemanticSegmentation/python/semantic_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/22_SemanticSegmentation/tests
+cmake -S 01_Foundations_to_Modern_Vision/22_SemanticSegmentation -B build-m22 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m22
 ctest --test-dir build-m22 --output-on-failure
-python 22_SemanticSegmentation/python/semantic_native_parity.py \
+python 01_Foundations_to_Modern_Vision/22_SemanticSegmentation/python/semantic_native_parity.py \
   build-m22/cv9x_semantic_metrics \
-  22_SemanticSegmentation/artifacts/segmentation.txt
+  01_Foundations_to_Modern_Vision/22_SemanticSegmentation/artifacts/segmentation.txt
 ```
 
 ## Stage 1.5 applied lab
 
 This module's deterministic implementation remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
 
 The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
 
