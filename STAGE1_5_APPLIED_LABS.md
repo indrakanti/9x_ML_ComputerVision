@@ -79,7 +79,7 @@ Planned real-data layer:
 
 ## Applied Lab 04 — Adaptation and Compression
 
-**Status: Planned**
+**Status: Implemented**
 
 Target mechanics:
 
@@ -90,14 +90,14 @@ Input models:
 
 - checkpoints produced by Applied Lab 01 and/or Lab 03
 
-Planned evidence:
+Implemented evidence:
 
-- frozen linear probe
-- LoRA adaptation
-- parameter-count comparison
-- pruning sparsity
-- FP32 vs quantized accuracy
-- latency/model-size comparison on the actual runtime
+- LoRA adaptation of a trained TinyViT under grayscale domain shift
+- trainable-parameter and total-parameter accounting
+- ResNet-teacher → TinyCNN distillation on real CIFAR-10
+- unstructured pruning and achieved sparsity
+- CPU dynamic INT8 evaluation for supported Linear operators
+- baseline/pruned/INT8 accuracy, serialized size, and latency reports
 
 ## Optional visualization notebooks
 
@@ -120,3 +120,18 @@ Canonical reusable code stays in Python modules/scripts so it remains lintable, 
 ## Completion rule
 
 Stage 1.5 is complete when Labs 01–04 provide real-data evidence for the highest-value Part-1 model families while the root CPU CI remains network-independent.
+
+
+## Stage 1.5 completion
+
+With Applied Labs 01–04 implemented, the course now has two explicit layers:
+
+```text
+Modules 00–31
+deterministic mechanics + C++/parity
+        ↓
+Stage 1.5
+real public datasets + trainable PyTorch models + measured evidence
+```
+
+The applied labs remain optional and network-independent in CI.
