@@ -233,7 +233,7 @@ Later lessons will add real CUDA, ONNX Runtime GPU, and TensorRT C++ targets beh
 ## 13. Environment sanity check
 
 ~~~bash
-python 00_Setup/python/environment_check.py
+python 01_Foundations_to_Modern_Vision/00_Setup/python/environment_check.py
 ~~~
 
 Expected categories:
@@ -268,7 +268,7 @@ pytest
 
 ~~~bash
 ruff check .
-mypy 00_Setup/python 01_TensorsMemory/python 02_ProbabilityStatistics/python
+mypy 01_Foundations_to_Modern_Vision/[0-9][0-9]_*/python
 ~~~
 
 ## 16. CPU-first CI policy
