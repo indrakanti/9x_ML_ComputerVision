@@ -158,15 +158,15 @@ Keypoints are useful beyond human pose: articulated objects, trailer/hitch landm
 ## Reproducible commands
 
 ```bash
-python 25_PoseEstimation/python/pose_walkthrough.py
-pytest 25_PoseEstimation/tests
-cmake -S 25_PoseEstimation -B build-m25 -G Ninja \
+python 01_Foundations_to_Modern_Vision/25_PoseEstimation/python/pose_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/25_PoseEstimation/tests
+cmake -S 01_Foundations_to_Modern_Vision/25_PoseEstimation -B build-m25 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m25
 ctest --test-dir build-m25 --output-on-failure
-python 25_PoseEstimation/python/pose_native_parity.py \
+python 01_Foundations_to_Modern_Vision/25_PoseEstimation/python/pose_native_parity.py \
   build-m25/cv9x_pose_decode \
-  25_PoseEstimation/artifacts/pose.txt
+  01_Foundations_to_Modern_Vision/25_PoseEstimation/artifacts/pose.txt
 ```
 
 ## Next
