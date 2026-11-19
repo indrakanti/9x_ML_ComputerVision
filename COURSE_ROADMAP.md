@@ -77,12 +77,12 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 
 | Module | Topic | Status |
 |---|---|---|
-| 18 | Detection fundamentals: boxes, anchors, IoU, mAP | **Mechanics implemented** |
-| 19 | YOLO-family one-stage detection + native GPU inference checkpoint | **Mechanics implemented** |
-| 20 | Two-stage detection and region proposals | **Mechanics implemented** |
-| 21 | DETR-family set prediction and transformer detection | **Mechanics implemented** |
-| 22 | Semantic segmentation | **Mechanics implemented** |
-| 23 | Instance/panoptic segmentation | **Mechanics implemented** |
+| 18 | Detection fundamentals: boxes, anchors, IoU, mAP | **Mechanics + Applied Lab 02** |
+| 19 | YOLO-family one-stage detection + native GPU inference checkpoint | **Mechanics + Applied Lab 02** |
+| 20 | Two-stage detection and region proposals | **Mechanics + Applied Lab 02** |
+| 21 | DETR-family set prediction and transformer detection | **Mechanics + Applied Lab 02** |
+| 22 | Semantic segmentation | **Mechanics + Applied Lab 02** |
+| 23 | Instance/panoptic segmentation | **Mechanics + Applied Lab 02** |
 | 24 | Promptable/foundation segmentation concepts + deployment constraints | **Mechanics implemented** |
 | 25 | Keypoints and human/object pose estimation | **Mechanics implemented** |
 
