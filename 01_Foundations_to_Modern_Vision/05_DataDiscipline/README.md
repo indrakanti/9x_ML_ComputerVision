@@ -359,7 +359,7 @@ Later modules will turn this into experiment configuration and artifact metadata
 ## 10. Module structure
 
 ```text
-05_DataDiscipline/
+01_Foundations_to_Modern_Vision/05_DataDiscipline/
 ├── README.md
 ├── VIDEO.md
 ├── CMakeLists.txt
@@ -449,14 +449,14 @@ same sample IDs / labels
 ```bash
 source .venv/bin/activate
 
-python 05_DataDiscipline/python/data_discipline_walkthrough.py
-pytest 05_DataDiscipline/tests -q
+python 01_Foundations_to_Modern_Vision/05_DataDiscipline/python/data_discipline_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/05_DataDiscipline/tests -q
 ```
 
 ### Standalone C++ build
 
 ```bash
-cmake -S 05_DataDiscipline -B build/module05 \
+cmake -S 01_Foundations_to_Modern_Vision/05_DataDiscipline -B build/module05 \
   -DCMAKE_BUILD_TYPE=Release \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 
@@ -467,7 +467,7 @@ ctest --test-dir build/module05 --output-on-failure
 ### Python ↔ C++ parity
 
 ```bash
-python 05_DataDiscipline/python/data_discipline_native_parity.py \
+python 01_Foundations_to_Modern_Vision/05_DataDiscipline/python/data_discipline_native_parity.py \
   build/module05/cv9x_data_discipline
 ```
 
