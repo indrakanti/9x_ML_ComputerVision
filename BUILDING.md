@@ -30,7 +30,7 @@ Modules with C++ are independently buildable.
 Example:
 
 ```bash
-cmake -S 01_TensorsMemory -B build/module01 \
+cmake -S 01_Foundations_to_Modern_Vision/01_TensorsMemory -B build/module01 \
   -DCMAKE_BUILD_TYPE=Release \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build/module01 --parallel
