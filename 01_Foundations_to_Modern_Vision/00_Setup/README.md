@@ -100,7 +100,7 @@ python -m pip install -r requirements/onnx.txt
 python -m pip install torch torchvision   --index-url https://download.pytorch.org/whl/cpu
 
 
-python 00_Setup/python/environment_check.py
+python 01_Foundations_to_Modern_Vision/00_Setup/python/environment_check.py
 pytest
 
 cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
@@ -121,7 +121,7 @@ The course therefore keeps general dependencies stable while PyTorch installatio
 Run:
 
 ~~~bash
-python 00_Setup/python/environment_check.py
+python 01_Foundations_to_Modern_Vision/00_Setup/python/environment_check.py
 ~~~
 
 It checks:
