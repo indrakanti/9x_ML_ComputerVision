@@ -350,7 +350,7 @@ It makes the native runtime easier to inspect while still preserving a real CNN 
 ## 14. Module structure
 
 ```text
-09_CNNTraining/
+01_Foundations_to_Modern_Vision/09_CNNTraining/
 ├── README.md
 ├── VIDEO.md
 ├── CMakeLists.txt
@@ -470,7 +470,7 @@ Module 09 is the first complete miniature of that production path.
 
 The deterministic module above remains the mechanics reference. For a real-data run, continue with:
 
-- [Applied Lab 01 — CIFAR-10 Backbones](../applied_labs/01_CIFAR10Backbones/README.md)
+- [Applied Lab 01 — CIFAR-10 Backbones](../../applied_labs/01_CIFAR10Backbones/README.md)
 
 That lab trains actual CIFAR-10 models, records held-out accuracy, writes checkpoints/plots, and keeps the dataset download optional.
 
