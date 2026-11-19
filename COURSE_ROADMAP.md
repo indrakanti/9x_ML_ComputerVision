@@ -38,7 +38,7 @@ bash course.sh doctor
 
 and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a native C++ build/test pass.
 
-# ML Computer Vision — Part 1: Foundations to Modern Perception
+# ML Computer Vision — Part 1: Foundations to Modern Vision
 
 ## Part I — ML Foundations for Vision
 
@@ -97,7 +97,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Mechanics + Applied Lab 04** |
 | 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Mechanics + Applied Lab 04** |
 
-# ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision
+# ML Computer Vision — Part 2: Multimodal, 3D & Generative Vision
 
 ## Part VI — Vision-Language and Open-Vocabulary Vision
 
@@ -148,7 +148,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 59 | Image editing, inpainting, control/conditioning | Planned |
 | 60 | Video generation concepts and temporal consistency | Planned |
 
-# ML Computer Vision — Part 3: Embodied AI & Production Vision Systems
+# ML Computer Vision — Part 3: Embodied Vision & Production
 
 ## Part X — World Models, Embodied Vision and VLA
 
