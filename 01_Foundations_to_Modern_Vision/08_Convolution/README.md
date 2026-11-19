@@ -199,7 +199,7 @@ The course does not treat “CUDA ran” as sufficient evidence.
 ## 14. Structure
 
 ```text
-08_Convolution/
+01_Foundations_to_Modern_Vision/08_Convolution/
 ├── README.md
 ├── VIDEO.md
 ├── CMakeLists.txt
