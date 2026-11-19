@@ -193,6 +193,14 @@ python 26_ContrastiveCLIP/python/clip_native_parity.py \
   26_ContrastiveCLIP/artifacts/embeddings.txt
 ```
 
+## Stage 1.5 applied lab
+
+The deterministic module above remains the mechanics reference. The real-data companion is:
+
+- [Applied Lab 03 — CIFAR-10 Representation Learning](../applied_labs/03_CIFAR10RepresentationLearning/README.md)
+
+It trains compact CLIP-style, masked-image, and DINO-style representations on real CIFAR-10 images and evaluates frozen features with a linear probe.
+
 ## Next
 
 Module 27 introduces masked-image modeling.

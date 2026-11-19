@@ -90,10 +90,10 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 
 | Module | Topic | Status |
 |---|---|---|
-| 26 | Contrastive learning and CLIP-style image/text alignment | **Mechanics implemented** |
-| 27 | Masked-image modeling | **Mechanics implemented** |
-| 28 | Self-supervised distillation and DINO-family ideas | **Mechanics implemented** |
-| 29 | Universal/foundation visual backbones and dense features | **Mechanics implemented** |
+| 26 | Contrastive learning and CLIP-style image/text alignment | **Mechanics + Applied Lab 03** |
+| 27 | Masked-image modeling | **Mechanics + Applied Lab 03** |
+| 28 | Self-supervised distillation and DINO-family ideas | **Mechanics + Applied Lab 03** |
+| 29 | Universal/foundation visual backbones and dense features | **Mechanics + Applied Lab 03** |
 | 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Mechanics implemented** |
 | 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Mechanics implemented** |
 
