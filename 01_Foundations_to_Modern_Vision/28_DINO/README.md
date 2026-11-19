@@ -179,21 +179,21 @@ Self-supervised training can exploit enormous unlabeled driving datasets and can
 ## Reproducible commands
 
 ```bash
-python 28_DINO/python/dino_walkthrough.py
-pytest 28_DINO/tests
-cmake -S 28_DINO -B build-m28 -G Ninja -DCV9X_WARNINGS_AS_ERRORS=ON
+python 01_Foundations_to_Modern_Vision/28_DINO/python/dino_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/28_DINO/tests
+cmake -S 01_Foundations_to_Modern_Vision/28_DINO -B build-m28 -G Ninja -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m28
 ctest --test-dir build-m28 --output-on-failure
-python 28_DINO/python/dino_native_parity.py \
+python 01_Foundations_to_Modern_Vision/28_DINO/python/dino_native_parity.py \
   build-m28/cv9x_dino_math \
-  28_DINO/artifacts/dino.txt
+  01_Foundations_to_Modern_Vision/28_DINO/artifacts/dino.txt
 ```
 
 ## Stage 1.5 applied lab
 
 The deterministic module above remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 03 — CIFAR-10 Representation Learning](../applied_labs/03_CIFAR10RepresentationLearning/README.md)
+- [Applied Lab 03 — CIFAR-10 Representation Learning](../../applied_labs/03_CIFAR10RepresentationLearning/README.md)
 
 It trains compact CLIP-style, masked-image, and DINO-style representations on real CIFAR-10 images and evaluates frozen features with a linear probe.
 
