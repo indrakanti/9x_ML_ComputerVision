@@ -157,22 +157,22 @@ For autonomous perception, metric quality must be connected to operational failu
 ## Reproducible commands
 
 ```bash
-python 18_DetectionFundamentals/python/detection_walkthrough.py
-pytest 18_DetectionFundamentals/tests
-cmake -S 18_DetectionFundamentals -B build-m18 -G Ninja \
+python 01_Foundations_to_Modern_Vision/18_DetectionFundamentals/python/detection_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/18_DetectionFundamentals/tests
+cmake -S 01_Foundations_to_Modern_Vision/18_DetectionFundamentals -B build-m18 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m18
 ctest --test-dir build-m18 --output-on-failure
-python 18_DetectionFundamentals/python/detection_native_parity.py \
+python 01_Foundations_to_Modern_Vision/18_DetectionFundamentals/python/detection_native_parity.py \
   build-m18/cv9x_detection_fundamentals \
-  18_DetectionFundamentals/artifacts/detections.txt
+  01_Foundations_to_Modern_Vision/18_DetectionFundamentals/artifacts/detections.txt
 ```
 
 ## Stage 1.5 applied lab
 
 This module's deterministic implementation remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
 
 The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
 
