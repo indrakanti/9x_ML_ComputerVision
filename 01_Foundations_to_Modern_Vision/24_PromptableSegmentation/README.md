@@ -145,15 +145,15 @@ Promptable segmentation is useful for annotation, interactive debugging, bootstr
 ## Reproducible commands
 
 ```bash
-python 24_PromptableSegmentation/python/promptable_walkthrough.py
-pytest 24_PromptableSegmentation/tests
-cmake -S 24_PromptableSegmentation -B build-m24 -G Ninja \
+python 01_Foundations_to_Modern_Vision/24_PromptableSegmentation/python/promptable_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/24_PromptableSegmentation/tests
+cmake -S 01_Foundations_to_Modern_Vision/24_PromptableSegmentation -B build-m24 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m24
 ctest --test-dir build-m24 --output-on-failure
-python 24_PromptableSegmentation/python/promptable_native_parity.py \
+python 01_Foundations_to_Modern_Vision/24_PromptableSegmentation/python/promptable_native_parity.py \
   build-m24/cv9x_promptable_mask \
-  24_PromptableSegmentation/artifacts/promptable.txt
+  01_Foundations_to_Modern_Vision/24_PromptableSegmentation/artifacts/promptable.txt
 ```
 
 ## Next
