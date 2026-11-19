@@ -94,8 +94,8 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 27 | Masked-image modeling | **Mechanics + Applied Lab 03** |
 | 28 | Self-supervised distillation and DINO-family ideas | **Mechanics + Applied Lab 03** |
 | 29 | Universal/foundation visual backbones and dense features | **Mechanics + Applied Lab 03** |
-| 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Mechanics implemented** |
-| 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Mechanics implemented** |
+| 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Mechanics + Applied Lab 04** |
+| 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Mechanics + Applied Lab 04** |
 
 # ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision
 

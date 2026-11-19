@@ -1,23 +1,29 @@
 from __future__ import annotations
 
-import sys
+import importlib.util
 from pathlib import Path
+from types import ModuleType
 
 import torch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+ROOT = Path(__file__).resolve().parents[1]
 
-from models import (  # noqa: E402
-    DINOBackbone,
-    TinyCLIP,
-    TinyMIM,
-    ema_update,
-    make_teacher,
-)
+
+def load_models() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(
+        "cv9x_lab03_models",
+        ROOT / "models.py",
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError("unable to load Lab 03 models")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def test_clip_similarity_shape() -> None:
-    model = TinyCLIP(vocabulary_size=32)
+    models = load_models()
+    model = models.TinyCLIP(vocabulary_size=32)
     images = torch.randn(2, 3, 32, 32)
     prompts = torch.randint(1, 32, (10, 16))
 
@@ -27,7 +33,8 @@ def test_clip_similarity_shape() -> None:
 
 
 def test_mim_masked_loss_and_representation() -> None:
-    model = TinyMIM()
+    models = load_models()
+    model = models.TinyMIM()
     images = torch.randn(2, 3, 32, 32)
     mask = torch.zeros(2, model.tokens, dtype=torch.bool)
     mask[:, : model.tokens // 2] = True
@@ -45,15 +52,16 @@ def test_mim_masked_loss_and_representation() -> None:
 
 
 def test_dino_teacher_is_ema_updated() -> None:
-    student = DINOBackbone()
-    teacher = make_teacher(student)
+    models = load_models()
+    student = models.DINOBackbone()
+    teacher = models.make_teacher(student)
 
     with torch.no_grad():
         first_student = next(student.parameters())
         first_student.add_(1.0)
 
     first_teacher_before = next(teacher.parameters()).detach().clone()
-    ema_update(teacher, student, momentum=0.9)
+    models.ema_update(teacher, student, momentum=0.9)
     first_teacher_after = next(teacher.parameters()).detach()
 
     assert not torch.equal(first_teacher_before, first_teacher_after)

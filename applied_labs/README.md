@@ -40,7 +40,7 @@ The applied labs are intentionally **optional**. A learner can complete the mech
 | 01 | 09, 12, 14, 17 | CIFAR-10 | Train and compare CNN, ResNet, and ViT backbones |
 | 02 | 18–23 | Oxford-IIIT Pet | Train TinyYOLO, TinyDETR and TinyUNet on real boxes/masks |
 | 03 | 26–29 | CIFAR-10 | CLIP-style prompts, MIM, DINO and frozen linear probing |
-| 04 | 30–31 | Lab-01 checkpoints | LoRA/PEFT, pruning, PTQ/QAT, accuracy-vs-latency comparison |
+| 04 | 30–31 | Lab-01 CIFAR-10 checkpoints | LoRA adaptation, distillation, pruning and dynamic INT8 evaluation |
 
 See [DATASETS.md](DATASETS.md) before downloading data.
 

@@ -236,3 +236,12 @@ python 31_Compression/python/compression_native_parity.py \
 ## Stage 1 complete
 
 Modules 00–31 now cover the path from tensors and optimization through modern backbones, detection/segmentation, self-supervision, PEFT, and compression.
+
+## Stage 1.5 applied lab
+
+The deterministic module above remains the mechanics reference. The real-model companion is:
+
+- [Applied Lab 04 — PEFT, Distillation, Pruning and Quantization](../applied_labs/04_AdaptationCompression/README.md)
+
+It consumes trained CIFAR-10 checkpoints and measures adaptation/compression effects on accuracy, trainable parameters, sparsity, serialized size, and CPU latency.
+

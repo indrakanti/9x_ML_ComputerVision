@@ -255,3 +255,15 @@ When Modules 00–31 are merged and root CI is green:
 > **ML Computer Vision — Part 1: Foundations to Modern Perception is implementation-complete.**
 
 The next module is **32 — Text/Image Embeddings and Zero-Shot Classification**, beginning Part 2.
+
+
+## Stage 1.5 applied evidence
+
+Part 1 mechanics are complemented by optional real-data labs:
+
+- CIFAR-10 CNN/ResNet/ViT training and backbone benchmarking
+- Oxford-IIIT Pet TinyYOLO/TinyDETR/TinyUNet training
+- CIFAR-10 CLIP-style, MIM, DINO and linear-probe experiments
+- checkpoint-based LoRA, distillation, pruning and dynamic INT8 evaluation
+
+These labs do not replace deterministic module tests or native parity. They provide real-data training and measured evidence while remaining optional for CPU-only learners.
