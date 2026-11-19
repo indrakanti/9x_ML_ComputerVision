@@ -35,7 +35,7 @@ Real-data evidence:
 
 ## Applied Lab 02 — Detection and Segmentation
 
-**Status: Planned**
+**Status: Implemented**
 
 Target mechanics:
 
@@ -48,12 +48,12 @@ Target mechanics:
 
 Planned real-data layer:
 
-- small public pedestrian/detection dataset
-- end-to-end trainable YOLO-style model
-- small trainable DETR
-- real segmentation masks
-- mAP / IoU / mIoU evidence
-- visualization of boxes, masks, and matching
+- Oxford-IIIT Pet under CC BY-SA 4.0
+- derived full-pet boxes from real trimap masks
+- end-to-end trainable TinyYOLO
+- small trainable TinyDETR with learned queries/decoder
+- trainable TinyUNet binary segmentation
+- mean box IoU / recall@0.5 / mask IoU / Dice evidence
 
 CPU users will have sample/epoch limits; full experiments remain optional.
 

@@ -122,6 +122,14 @@ python 21_DETR/python/detr_native_parity.py \
   21_DETR/artifacts/matching.txt
 ```
 
+## Stage 1.5 applied lab
+
+This module's deterministic implementation remains the mechanics reference. The real-data companion is:
+
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+
+The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
+
 ## Next
 
 Module 22 moves from object sets to dense per-pixel semantic prediction.

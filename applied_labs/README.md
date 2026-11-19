@@ -38,7 +38,7 @@ The applied labs are intentionally **optional**. A learner can complete the mech
 | Lab | Mechanics modules | Dataset | Goal |
 |---|---|---|---|
 | 01 | 09, 12, 14, 17 | CIFAR-10 | Train and compare CNN, ResNet, and ViT backbones |
-| 02 | 18–23 | Penn-Fudan / small public detection-segmentation data | Train detector / segmentation models and evaluate real outputs |
+| 02 | 18–23 | Oxford-IIIT Pet | Train TinyYOLO, TinyDETR and TinyUNet on real boxes/masks |
 | 03 | 26–28 | CIFAR-10 / STL-10-style public data | CLIP-style zero-shot, masked modeling, DINO-style self-supervision |
 | 04 | 30–31 | Lab-01 checkpoints | LoRA/PEFT, pruning, PTQ/QAT, accuracy-vs-latency comparison |
 

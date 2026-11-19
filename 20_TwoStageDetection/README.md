@@ -175,6 +175,14 @@ python 20_TwoStageDetection/python/two_stage_native_parity.py \
   20_TwoStageDetection/artifacts/proposals.txt
 ```
 
+## Stage 1.5 applied lab
+
+This module's deterministic implementation remains the mechanics reference. The real-data companion is:
+
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+
+The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
+
 ## Next
 
 Module 21 introduces DETR-style set prediction and transformer detection.
