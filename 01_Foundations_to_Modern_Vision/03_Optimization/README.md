@@ -182,7 +182,7 @@ Adam adapts update magnitude using recent first- and second-moment estimates.
 The module contains:
 
 ~~~text
-03_Optimization/
+01_Foundations_to_Modern_Vision/03_Optimization/
 ├── README.md
 ├── VIDEO.md
 ├── CMakeLists.txt
@@ -204,14 +204,14 @@ The module implements the same optimizer-state mathematics in Python and C++17. 
 ~~~bash
 source .venv/bin/activate
 
-python 03_Optimization/python/optimization_walkthrough.py
-pytest 03_Optimization/tests -q
+python 01_Foundations_to_Modern_Vision/03_Optimization/python/optimization_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/03_Optimization/tests -q
 
-cmake -S 03_Optimization -B build/module03 -DCMAKE_BUILD_TYPE=Release
+cmake -S 01_Foundations_to_Modern_Vision/03_Optimization -B build/module03 -DCMAKE_BUILD_TYPE=Release
 cmake --build build/module03 --parallel
 ctest --test-dir build/module03 --output-on-failure
 
-python 03_Optimization/python/optimization_native_parity.py \
+python 01_Foundations_to_Modern_Vision/03_Optimization/python/optimization_native_parity.py \
   build/module03/cv9x_optimizer_state
 ~~~
 
