@@ -201,22 +201,22 @@ For a safety-critical AV platform, however, runtime sharing must be evaluated ag
 ## Reproducible commands
 
 ```bash
-python 29_FoundationBackbones/python/foundation_walkthrough.py
-pytest 29_FoundationBackbones/tests
-cmake -S 29_FoundationBackbones -B build-m29 -G Ninja \
+python 01_Foundations_to_Modern_Vision/29_FoundationBackbones/python/foundation_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/29_FoundationBackbones/tests
+cmake -S 01_Foundations_to_Modern_Vision/29_FoundationBackbones -B build-m29 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m29
 ctest --test-dir build-m29 --output-on-failure
-python 29_FoundationBackbones/python/foundation_native_parity.py \
+python 01_Foundations_to_Modern_Vision/29_FoundationBackbones/python/foundation_native_parity.py \
   build-m29/cv9x_foundation_adapters \
-  29_FoundationBackbones/artifacts/foundation.txt
+  01_Foundations_to_Modern_Vision/29_FoundationBackbones/artifacts/foundation.txt
 ```
 
 ## Stage 1.5 applied lab
 
 The deterministic module above remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 03 — CIFAR-10 Representation Learning](../applied_labs/03_CIFAR10RepresentationLearning/README.md)
+- [Applied Lab 03 — CIFAR-10 Representation Learning](../../applied_labs/03_CIFAR10RepresentationLearning/README.md)
 
 It trains compact CLIP-style, masked-image, and DINO-style representations on real CIFAR-10 images and evaluates frozen features with a linear probe.
 
