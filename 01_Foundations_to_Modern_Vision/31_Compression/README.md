@@ -222,15 +222,15 @@ Distillation and quantization are especially important when the same perception 
 ## Reproducible commands
 
 ```bash
-python 31_Compression/python/compression_walkthrough.py
-pytest 31_Compression/tests
-cmake -S 31_Compression -B build-m31 -G Ninja \
+python 01_Foundations_to_Modern_Vision/31_Compression/python/compression_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/31_Compression/tests
+cmake -S 01_Foundations_to_Modern_Vision/31_Compression -B build-m31 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m31
 ctest --test-dir build-m31 --output-on-failure
-python 31_Compression/python/compression_native_parity.py \
+python 01_Foundations_to_Modern_Vision/31_Compression/python/compression_native_parity.py \
   build-m31/cv9x_compression_math \
-  31_Compression/artifacts/compression.txt
+  01_Foundations_to_Modern_Vision/31_Compression/artifacts/compression.txt
 ```
 
 ## Stage 1 complete
@@ -241,7 +241,7 @@ Modules 00–31 now cover the path from tensors and optimization through modern 
 
 The deterministic module above remains the mechanics reference. The real-model companion is:
 
-- [Applied Lab 04 — PEFT, Distillation, Pruning and Quantization](../applied_labs/04_AdaptationCompression/README.md)
+- [Applied Lab 04 — PEFT, Distillation, Pruning and Quantization](../../applied_labs/04_AdaptationCompression/README.md)
 
 It consumes trained CIFAR-10 checkpoints and measures adaptation/compression effects on accuracy, trainable parameters, sparsity, serialized size, and CPU latency.
 
