@@ -251,14 +251,14 @@ This becomes important when comparing two models whose metrics differ only sligh
 ~~~bash
 source .venv/bin/activate
 
-python 02_ProbabilityStatistics/python/statistics_walkthrough.py
-pytest 02_ProbabilityStatistics/tests -q
+python 01_Foundations_to_Modern_Vision/02_ProbabilityStatistics/python/statistics_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/02_ProbabilityStatistics/tests -q
 
-cmake -S 02_ProbabilityStatistics -B build/module02 -DCMAKE_BUILD_TYPE=Release
+cmake -S 01_Foundations_to_Modern_Vision/02_ProbabilityStatistics -B build/module02 -DCMAKE_BUILD_TYPE=Release
 cmake --build build/module02 --parallel
 ctest --test-dir build/module02 --output-on-failure
 
-python 02_ProbabilityStatistics/python/statistics_native_parity.py \
+python 01_Foundations_to_Modern_Vision/02_ProbabilityStatistics/python/statistics_native_parity.py \
   build/module02/cv9x_statistics
 ~~~
 
