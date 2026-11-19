@@ -177,22 +177,22 @@ Self-supervised masked pretraining can exploit huge unlabeled driving-video data
 ## Reproducible commands
 
 ```bash
-python 27_MaskedImageModeling/python/mim_walkthrough.py
-pytest 27_MaskedImageModeling/tests
-cmake -S 27_MaskedImageModeling -B build-m27 -G Ninja \
+python 01_Foundations_to_Modern_Vision/27_MaskedImageModeling/python/mim_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/27_MaskedImageModeling/tests
+cmake -S 01_Foundations_to_Modern_Vision/27_MaskedImageModeling -B build-m27 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m27
 ctest --test-dir build-m27 --output-on-failure
-python 27_MaskedImageModeling/python/mim_native_parity.py \
+python 01_Foundations_to_Modern_Vision/27_MaskedImageModeling/python/mim_native_parity.py \
   build-m27/cv9x_mim_reconstruct \
-  27_MaskedImageModeling/artifacts/mim.txt
+  01_Foundations_to_Modern_Vision/27_MaskedImageModeling/artifacts/mim.txt
 ```
 
 ## Stage 1.5 applied lab
 
 The deterministic module above remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 03 — CIFAR-10 Representation Learning](../applied_labs/03_CIFAR10RepresentationLearning/README.md)
+- [Applied Lab 03 — CIFAR-10 Representation Learning](../../applied_labs/03_CIFAR10RepresentationLearning/README.md)
 
 It trains compact CLIP-style, masked-image, and DINO-style representations on real CIFAR-10 images and evaluates frozen features with a linear probe.
 
