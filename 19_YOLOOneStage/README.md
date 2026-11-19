@@ -191,6 +191,14 @@ cmake -S . -B build-cuda -G Ninja -DCV9X_ENABLE_CUDA=ON
 cmake --build build-cuda --target cv9x_yolo_decode_cuda
 ```
 
+## Stage 1.5 applied lab
+
+This module's deterministic implementation remains the mechanics reference. The real-data companion is:
+
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+
+The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
+
 ## Next
 
 Module 20 introduces region proposals and two-stage detection.
