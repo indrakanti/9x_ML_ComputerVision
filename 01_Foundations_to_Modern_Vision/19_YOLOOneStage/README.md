@@ -173,15 +173,15 @@ In surround perception, detector post-processing runs repeatedly across cameras.
 CPU reference and parity:
 
 ```bash
-python 19_YOLOOneStage/python/yolo_walkthrough.py
-pytest 19_YOLOOneStage/tests
-cmake -S 19_YOLOOneStage -B build-m19 -G Ninja \
+python 01_Foundations_to_Modern_Vision/19_YOLOOneStage/python/yolo_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/19_YOLOOneStage/tests
+cmake -S 01_Foundations_to_Modern_Vision/19_YOLOOneStage -B build-m19 -G Ninja \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m19
 ctest --test-dir build-m19 --output-on-failure
-python 19_YOLOOneStage/python/yolo_native_parity.py \
+python 01_Foundations_to_Modern_Vision/19_YOLOOneStage/python/yolo_native_parity.py \
   build-m19/cv9x_yolo_decode \
-  19_YOLOOneStage/artifacts/yolo_head.txt
+  01_Foundations_to_Modern_Vision/19_YOLOOneStage/artifacts/yolo_head.txt
 ```
 
 From the repository root, the optional CUDA checkpoint can be enabled on a CUDA-capable machine:
@@ -195,7 +195,7 @@ cmake --build build-cuda --target cv9x_yolo_decode_cuda
 
 This module's deterministic implementation remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
 
 The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
 
