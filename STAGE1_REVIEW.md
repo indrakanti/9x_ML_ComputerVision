@@ -1,8 +1,8 @@
-# Stage 1 Review — ML-CV Part 1 Complete
+# Part I Review — Foundations to Modern Vision
 
 ## Scope
 
-Stage 1 covers Modules **00–31**: from ML foundations through modern image perception, self-supervised representation learning, parameter-efficient adaptation, and compression.
+Part I covers Modules **00–31**: from ML foundations through modern image perception, self-supervised representation learning, parameter-efficient adaptation, and compression.
 
 The completion boundary is intentionally:
 
@@ -163,7 +163,7 @@ monitoring / drift
 
 ## Quality gates
 
-Stage-1 changes are expected to pass:
+Part-I changes are expected to pass:
 
 ```text
 Ruff
@@ -248,7 +248,7 @@ Still ahead:
 
 Those are explicit later-course topics, not hidden omissions.
 
-## Stage-1 completion checkpoint
+## Part-I completion checkpoint
 
 When Modules 00–31 are merged and root CI is green:
 
