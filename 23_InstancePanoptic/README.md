@@ -183,6 +183,14 @@ python 23_InstancePanoptic/python/panoptic_native_parity.py \
   23_InstancePanoptic/artifacts/panoptic.txt
 ```
 
+## Stage 1.5 applied lab
+
+This module's deterministic implementation remains the mechanics reference. The real-data companion is:
+
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+
+The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
+
 ## Next
 
 Module 24 introduces promptable/foundation segmentation.
