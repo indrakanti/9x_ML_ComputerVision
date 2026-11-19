@@ -112,21 +112,21 @@ Set-based detection is attractive for scenes with many interacting objects becau
 ## Reproducible commands
 
 ```bash
-python 21_DETR/python/detr_walkthrough.py
-pytest 21_DETR/tests
-cmake -S 21_DETR -B build-m21 -G Ninja -DCV9X_WARNINGS_AS_ERRORS=ON
+python 01_Foundations_to_Modern_Vision/21_DETR/python/detr_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/21_DETR/tests
+cmake -S 01_Foundations_to_Modern_Vision/21_DETR -B build-m21 -G Ninja -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build-m21
 ctest --test-dir build-m21 --output-on-failure
-python 21_DETR/python/detr_native_parity.py \
+python 01_Foundations_to_Modern_Vision/21_DETR/python/detr_native_parity.py \
   build-m21/cv9x_detr_match \
-  21_DETR/artifacts/matching.txt
+  01_Foundations_to_Modern_Vision/21_DETR/artifacts/matching.txt
 ```
 
 ## Stage 1.5 applied lab
 
 This module's deterministic implementation remains the mechanics reference. The real-data companion is:
 
-- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
+- [Applied Lab 02 — Oxford-IIIT Pet Detection and Segmentation](../../applied_labs/02_OxfordPetDetectionSegmentation/README.md)
 
 The lab trains TinyYOLO, TinyDETR, and TinyUNet end to end using real public images and trimap masks while keeping dataset download optional.
 
