@@ -2,7 +2,6 @@
 import math
 
 import pytest
-
 from zero_shot import normalize, scores
 
 
