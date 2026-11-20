@@ -29,3 +29,6 @@ enable_testing()
 
 # Root CMake is orchestration only. Part-specific orchestration lives in each part.
 add_subdirectory(01_Foundations_to_Modern_Vision)
+
+# Part 2 native modules are built and tested through the same root workflow.
+add_subdirectory(02_Multimodal_3D_and_Generative_Vision)
