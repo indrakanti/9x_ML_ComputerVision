@@ -4,14 +4,14 @@ import argparse
 import math
 
 
-def normalize(values):
+def normalize(values: list[float]) -> list[float]:
     norm = math.sqrt(sum(float(v) * float(v) for v in values))
     if norm <= 1e-12:
         raise ValueError("zero-norm embedding")
     return [float(v) / norm for v in values]
 
 
-def scores(image, texts, temperature=1.0):
+def scores(image: list[float], texts: list[list[float]], temperature: float = 1.0) -> list[float]:
     if not math.isfinite(temperature) or temperature <= 0:
         raise ValueError("temperature must be finite and positive")
     im = normalize(image)
@@ -24,7 +24,7 @@ def scores(image, texts, temperature=1.0):
     return result
 
 
-def real_example(image_path, labels):
+def real_example(image_path: str, labels: list[str]) -> None:
     from PIL import Image
     import torch
     from transformers import CLIPModel, CLIPProcessor
@@ -41,7 +41,7 @@ def real_example(image_path, labels):
         print(f"{label}: {probability:.6f}")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--synthetic", action="store_true")
     parser.add_argument("--image")
