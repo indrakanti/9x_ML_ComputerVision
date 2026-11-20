@@ -9,9 +9,9 @@
 ## Quick start (CPU, no dataset download)
 ```bash
 python3 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/zero_shot.py --synthetic
-cmake -S 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/cpp -B build/module32
-cmake --build build/module32
-ctest --test-dir build/module32 --output-on-failure
+cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release
+cmake --build build-native --parallel
+ctest --test-dir build-native --output-on-failure
 ```
 
 ## Real pretrained example (optional, requires internet on first run)
