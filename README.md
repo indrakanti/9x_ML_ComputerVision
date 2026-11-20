@@ -1,8 +1,19 @@
 # 9x ML Computer Vision
 
-**From ML foundations to modern multimodal and embodied vision — Python/PyTorch for training, C++ for production runtime, GPU-aware from day one.**
+**From ML foundations to modern multimodal and embodied vision — first-principles mechanics, real-data PyTorch labs, C++ native contracts, and GPU-aware engineering.**
 
 This repository is the learned/deep-vision continuation of the classical C++ course in `9x_ComputerVision_-`.
+
+## Repository map
+
+```text
+01_Foundations_to_Modern_Vision/          Part I — Modules 00–31
+02_Multimodal_3D_and_Generative_Vision/  Part II — Modules 32–60
+03_Embodied_Vision_and_Production/        Part III — Modules 61–85
+applied_labs/                             optional real-data companion labs
+```
+
+Only implemented modules get lesson directories. Planned modules stay in the roadmap until development begins, keeping the repository root compact and navigable.
 
 ## Course series and completion boundaries
 
@@ -10,9 +21,9 @@ The 86 planned modules are intentionally split into three independently completa
 
 | Course | Modules | Student outcome |
 |---|---:|---|
-| **ML Computer Vision — Part 1: Foundations to Modern Perception** | 00–31 | Train, evaluate, export and deploy modern image models |
-| **ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision** | 32–60 | Work with VLMs, open-vocabulary vision, video, learned 3-D and generative vision |
-| **ML Computer Vision — Part 3: Embodied AI & Production Vision Systems** | 61–85 | Understand world/VLA models and build production inference/runtime systems |
+| **ML Computer Vision — Part 1: Foundations to Modern Vision** | 00–31 | Train, evaluate, export and deploy modern image models |
+| **ML Computer Vision — Part 2: Multimodal, 3D & Generative Vision** | 32–60 | Work with VLMs, open-vocabulary vision, video, learned 3-D and generative vision |
+| **ML Computer Vision — Part 3: Embodied Vision & Production** | 61–85 | Understand world/VLA models and build production inference/runtime systems |
 
 Each part has a defined completion point. Learners do not need to finish all 86 modules before gaining a complete, useful skill set.
 
@@ -132,23 +143,20 @@ For NVIDIA/AMD GPU installs, use the current PyTorch platform selector rather th
 
 ~~~text
 9x_ML_ComputerVision/
-├── 00_Setup/
-│   ├── python/
-│   ├── cpp/
-│   └── tests/
-├── 01_TensorsMemory/
-│   ├── python/
-│   ├── cpp/
-│   └── tests/
-├── 02_ProbabilityStatistics/
-│   ├── python/
-│   └── tests/
+├── 01_Foundations_to_Modern_Vision/
+│   ├── 00_Setup/
+│   ├── 01_TensorsMemory/
+│   ├── ...
+│   └── 31_Compression/
+├── 02_Multimodal_3D_and_Generative_Vision/
+│   └── README.md
+├── 03_Embodied_Vision_and_Production/
+│   └── README.md
+├── applied_labs/
 ├── requirements/
+├── locks/
 ├── CMakeLists.txt
 ├── COURSE_ROADMAP.md
-├── VIDEO_SERIES.md
-├── LINUX_SETUP.md
-├── pyproject.toml
 └── .github/workflows/
 ~~~
 
@@ -156,9 +164,12 @@ Future course modules will be added as focused pull requests.
 
 ## Course resources
 
+- [Part I — Foundations to Modern Vision](01_Foundations_to_Modern_Vision/README.md)
+- [Part II — Multimodal, 3D and Generative Vision](02_Multimodal_3D_and_Generative_Vision/README.md)
+- [Part III — Embodied Vision and Production](03_Embodied_Vision_and_Production/README.md)
 - [Course roadmap](COURSE_ROADMAP.md)
-- [Stage 1 completion review](STAGE1_REVIEW.md)
-- [Stage 1.5 applied labs](STAGE1_5_APPLIED_LABS.md)
+- [Stage 1 completion review](01_Foundations_to_Modern_Vision/PART1_REVIEW.md)
+- [Stage 1.5 applied labs](applied_labs/ROADMAP.md)
 - [Linux setup](LINUX_SETUP.md)
 - [Building and testing](BUILDING.md)
 - [Runtime architecture](RUNTIME_ARCHITECTURE.md)

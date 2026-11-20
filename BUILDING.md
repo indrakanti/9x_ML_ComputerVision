@@ -13,7 +13,7 @@ Equivalent manual commands:
 
 ```bash
 ruff check .
-mypy [0-9][0-9]_*/python
+mypy 01_Foundations_to_Modern_Vision/[0-9][0-9]_*/python
 pytest
 
 cmake -S . -B build-native \
@@ -30,7 +30,7 @@ Modules with C++ are independently buildable.
 Example:
 
 ```bash
-cmake -S 01_TensorsMemory -B build/module01 \
+cmake -S 01_Foundations_to_Modern_Vision/01_TensorsMemory -B build/module01 \
   -DCMAKE_BUILD_TYPE=Release \
   -DCV9X_WARNINGS_AS_ERRORS=ON
 cmake --build build/module01 --parallel
@@ -40,8 +40,8 @@ ctest --test-dir build/module01 --output-on-failure
 Python-only module:
 
 ```bash
-pytest 02_ProbabilityStatistics/tests -q
-python 02_ProbabilityStatistics/python/statistics_walkthrough.py
+pytest 01_Foundations_to_Modern_Vision/02_ProbabilityStatistics/tests -q
+python 01_Foundations_to_Modern_Vision/02_ProbabilityStatistics/python/statistics_walkthrough.py
 ```
 
 ## Formatting and static analysis
@@ -50,7 +50,7 @@ Python:
 
 ```bash
 ruff check .
-mypy [0-9][0-9]_*/python
+mypy 01_Foundations_to_Modern_Vision/[0-9][0-9]_*/python
 ```
 
 C++:

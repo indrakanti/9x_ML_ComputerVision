@@ -39,3 +39,20 @@ Before a new dataset is added, record:
 8. checksum/version if the upstream project exposes one
 
 Possible future datasets include Penn-Fudan Pedestrian, Oxford-IIIT Pet, and other small public datasets exposed through torchvision or canonical project pages.
+
+## Oxford-IIIT Pet
+
+Used by Applied Lab 02.
+
+- Canonical source: https://www.robots.ox.ac.uk/~vgg/data/pets/
+- Loader: `torchvision.datasets.OxfordIIITPet`
+- Torchvision API: https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.OxfordIIITPet.html
+- License: Creative Commons Attribution-ShareAlike 4.0 International
+- Contents: roughly 200 images for each of 37 pet breeds
+- Annotations used here: pixel-level trimap segmentation
+- Detection target: full-pet bounding box derived from foreground trimap pixels
+- Binary segmentation policy: trimap labels 1 and 3 are foreground; label 2 is background
+- Split policy: official `trainval` is deterministically split into train/validation; official `test` remains held out
+- Repository policy: data is downloaded into the learner's local data directory and never committed
+
+The upstream dataset also provides breed/category information and a head ROI. This lab intentionally derives the detector box from the segmentation mask so detection and segmentation share one target geometry.

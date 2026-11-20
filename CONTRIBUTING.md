@@ -21,7 +21,7 @@ Run the complete portable gate:
 
 ## Module ownership
 
-Anything specific to a lesson belongs inside that module: Python, C++, tests, configs, metadata, examples and lesson artifacts. Root-level code is reserved for orchestration or infrastructure that is genuinely shared across modules.
+Anything specific to a lesson belongs inside that module under its course-part directory: Python, C++, tests, configs, metadata, examples and lesson artifacts. Root-level code is reserved for orchestration, course navigation, applied labs, or infrastructure that is genuinely shared across modules.
 
 ## Standard quality gate
 

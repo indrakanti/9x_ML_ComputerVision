@@ -38,7 +38,7 @@ bash course.sh doctor
 
 and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a native C++ build/test pass.
 
-# ML Computer Vision — Part 1: Foundations to Modern Perception
+# ML Computer Vision — Part 1: Foundations to Modern Vision
 
 ## Part I — ML Foundations for Vision
 
@@ -77,12 +77,12 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 
 | Module | Topic | Status |
 |---|---|---|
-| 18 | Detection fundamentals: boxes, anchors, IoU, mAP | **Mechanics implemented** |
-| 19 | YOLO-family one-stage detection + native GPU inference checkpoint | **Mechanics implemented** |
-| 20 | Two-stage detection and region proposals | **Mechanics implemented** |
-| 21 | DETR-family set prediction and transformer detection | **Mechanics implemented** |
-| 22 | Semantic segmentation | **Mechanics implemented** |
-| 23 | Instance/panoptic segmentation | **Mechanics implemented** |
+| 18 | Detection fundamentals: boxes, anchors, IoU, mAP | **Mechanics + Applied Lab 02** |
+| 19 | YOLO-family one-stage detection + native GPU inference checkpoint | **Mechanics + Applied Lab 02** |
+| 20 | Two-stage detection and region proposals | **Mechanics + Applied Lab 02** |
+| 21 | DETR-family set prediction and transformer detection | **Mechanics + Applied Lab 02** |
+| 22 | Semantic segmentation | **Mechanics + Applied Lab 02** |
+| 23 | Instance/panoptic segmentation | **Mechanics + Applied Lab 02** |
 | 24 | Promptable/foundation segmentation concepts + deployment constraints | **Mechanics implemented** |
 | 25 | Keypoints and human/object pose estimation | **Mechanics implemented** |
 
@@ -90,14 +90,14 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 
 | Module | Topic | Status |
 |---|---|---|
-| 26 | Contrastive learning and CLIP-style image/text alignment | **Mechanics implemented** |
-| 27 | Masked-image modeling | **Mechanics implemented** |
-| 28 | Self-supervised distillation and DINO-family ideas | **Mechanics implemented** |
-| 29 | Universal/foundation visual backbones and dense features | **Mechanics implemented** |
-| 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Mechanics implemented** |
-| 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Mechanics implemented** |
+| 26 | Contrastive learning and CLIP-style image/text alignment | **Mechanics + Applied Lab 03** |
+| 27 | Masked-image modeling | **Mechanics + Applied Lab 03** |
+| 28 | Self-supervised distillation and DINO-family ideas | **Mechanics + Applied Lab 03** |
+| 29 | Universal/foundation visual backbones and dense features | **Mechanics + Applied Lab 03** |
+| 30 | Linear probing, adapters, LoRA and parameter-efficient tuning | **Mechanics + Applied Lab 04** |
+| 31 | Distillation, pruning, quantization + native/GPU efficiency checkpoint | **Mechanics + Applied Lab 04** |
 
-# ML Computer Vision — Part 2: Foundation, Multimodal, Video & Generative Vision
+# ML Computer Vision — Part 2: Multimodal, 3D & Generative Vision
 
 ## Part VI — Vision-Language and Open-Vocabulary Vision
 
@@ -148,7 +148,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 59 | Image editing, inpainting, control/conditioning | Planned |
 | 60 | Video generation concepts and temporal consistency | Planned |
 
-# ML Computer Vision — Part 3: Embodied AI & Production Vision Systems
+# ML Computer Vision — Part 3: Embodied Vision & Production
 
 ## Part X — World Models, Embodied Vision and VLA
 
