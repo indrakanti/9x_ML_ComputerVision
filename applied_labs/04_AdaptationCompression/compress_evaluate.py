@@ -81,7 +81,7 @@ def apply_unstructured_pruning(
     zeros = 0
     total = 0
     for module in prunable:
-        weight = getattr(module, "weight")
+        weight = module.weight
         zeros += int((weight == 0).sum().item())
         total += weight.numel()
         prune.remove(module, "weight")
