@@ -20,7 +20,7 @@ def scores(image, texts, temperature=1.0):
         if len(text) != len(im):
             raise ValueError("embedding dimension mismatch")
         tx = normalize(text)
-        result.append(sum(a * b for a, b in zip(im, tx)) / temperature)
+        result.append(sum(a * b for a, b in zip(im, tx, strict=True)) / temperature)
     return result
 
 
@@ -37,7 +37,7 @@ def real_example(image_path, labels):
     with torch.inference_mode():
         logits = model(**inputs).logits_per_image[0]
         probabilities = logits.softmax(dim=-1)
-    for label, probability in sorted(zip(labels, probabilities.tolist()), key=lambda x: -x[1]):
+    for label, probability in sorted(zip(labels, probabilities.tolist(), strict=True), key=lambda x: -x[1]):
         print(f"{label}: {probability:.6f}")
 
 
