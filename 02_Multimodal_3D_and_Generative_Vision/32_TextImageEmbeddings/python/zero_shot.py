@@ -25,8 +25,8 @@ def scores(image: list[float], texts: list[list[float]], temperature: float = 1.
 
 
 def real_example(image_path: str, labels: list[str]) -> None:
-    from PIL import Image
     import torch
+    from PIL import Image
     from transformers import CLIPModel, CLIPProcessor
 
     checkpoint = "openai/clip-vit-base-patch32"
@@ -37,7 +37,10 @@ def real_example(image_path: str, labels: list[str]) -> None:
     with torch.inference_mode():
         logits = model(**inputs).logits_per_image[0]
         probabilities = logits.softmax(dim=-1)
-    for label, probability in sorted(zip(labels, probabilities.tolist(), strict=True), key=lambda x: -x[1]):
+    ranked = sorted(
+        zip(labels, probabilities.tolist(), strict=True), key=lambda item: -item[1]
+    )
+    for label, probability in ranked:
         print(f"{label}: {probability:.6f}")
 
 
