@@ -16,7 +16,7 @@ def main() -> None:
     expected = scores([3, 4], [[3, 4], [4, -3], [-3, -4]])
     if len(actual) != len(expected):
         raise AssertionError("native score count mismatch")
-    for a, b in zip(actual, expected):
+    for a, b in zip(actual, expected, strict=True):
         if not math.isclose(a, b, abs_tol=1e-6, rel_tol=1e-6):
             raise AssertionError(f"native/Python mismatch: {a} vs {b}")
     print("Module 32 Python/C++ parity: PASS")
