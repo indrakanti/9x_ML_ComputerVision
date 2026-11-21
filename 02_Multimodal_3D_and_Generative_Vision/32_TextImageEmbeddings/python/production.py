@@ -10,7 +10,9 @@ import argparse
 import hashlib
 import json
 import random
+from collections.abc import Sized
 from pathlib import Path
+from typing import cast
 
 import numpy as np
 import torch
@@ -109,9 +111,9 @@ def make_dataset(name: str, root: Path, train: bool, download: bool) -> Dataset[
 def subset(
     dataset: Dataset[tuple[Tensor, int]], limit: int, seed: int
 ) -> Dataset[tuple[Tensor, int]]:
-    if limit <= 0 or limit >= len(dataset):
+    if limit <= 0 or limit >= len(cast(Sized, dataset)):
         return dataset
-    indices = np.random.default_rng(seed).permutation(len(dataset))[:limit].tolist()
+    indices = np.random.default_rng(seed).permutation(len(cast(Sized, dataset)))[:limit].tolist()
     return Subset(dataset, indices)
 
 
@@ -186,8 +188,8 @@ def train(args: argparse.Namespace) -> None:
          "preprocessing": "RGB float32 CHW / 255, 32x32; ASCII fixed 32 tokens"},
         args.output / "model.pt",
     )
-    report = {"dataset": args.dataset, "seed": args.seed, "train_samples": len(training),
-              "test_samples": len(testing), "epochs": args.epochs, "history": history,
+    report = {"dataset": args.dataset, "seed": args.seed, "train_samples": len(cast(Sized, training)),
+              "test_samples": len(cast(Sized, testing)), "epochs": args.epochs, "history": history,
               "metrics": metrics}
     (args.output / "metrics.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
@@ -217,7 +219,7 @@ def export(checkpoint: Path, output: Path) -> None:
         (model.text, tokens, "tokens", text_path),
     ]:
         torch.onnx.export(
-            tower, example, str(dest), input_names=[name], output_names=["embeddings"],
+            tower, (example,), str(dest), input_names=[name], output_names=["embeddings"],
             dynamic_axes={name: {0: "batch"}, "embeddings": {0: "batch"}},
             opset_version=17, dynamo=False,
         )
