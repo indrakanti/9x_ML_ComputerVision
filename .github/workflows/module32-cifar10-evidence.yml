@@ -1,6 +1,11 @@
 name: Module 32 Real CIFAR-10 Evidence
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/**'
+      - '.github/workflows/module32-cifar10-evidence.yml'
   workflow_dispatch:
     inputs:
       epochs:
@@ -40,6 +45,23 @@ jobs:
           python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py export \
             --checkpoint runs/module32-cifar10/model.pt \
             --output runs/module32-cifar10/export
+      - name: Evaluate a held-out real image and benchmark ONNX CPU
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from torchvision import datasets
+          root = Path("runs/module32-cifar10")
+          dataset = datasets.CIFAR10(root="data/cifar10", train=False, download=False)
+          image, label = dataset[0]
+          image.save(root / "heldout_sample.png")
+          (root / "heldout_label.txt").write_text(str(label) + "\n")
+          PY
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/infer_benchmark.py \
+            --export-dir runs/module32-cifar10/export \
+            --image runs/module32-cifar10/heldout_sample.png --warmup 3 --repeats 30 \
+            > runs/module32-cifar10/cpu_benchmark.json
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/artifact_contract.py \
+            --export-dir runs/module32-cifar10/export
       - name: Save trained weights, metrics and reproducibility manifest
         uses: actions/upload-artifact@v4
         with:
@@ -47,6 +69,8 @@ jobs:
           path: |
             runs/module32-cifar10/model.pt
             runs/module32-cifar10/metrics.json
+            runs/module32-cifar10/cpu_benchmark.json
+            runs/module32-cifar10/heldout_label.txt
             runs/module32-cifar10/export/manifest.json
             runs/module32-cifar10/export/image.onnx
             runs/module32-cifar10/export/text.onnx
