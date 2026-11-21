@@ -43,7 +43,19 @@ python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/prod
 
 Synthetic patterns are **only CI smoke inputs**; their accuracy is not a real-world measure. Exports: `image.onnx` (float32 NCHW 32×32, variable batch), `text.onnx` (int64 [N,32], variable batch), input fixtures, `manifest.json` with SHA-256 checksums and preprocessing/tokenizer contracts. The export step validates ONNX and PyTorch–ONNX Runtime numeric parity.
 
-## Real-image inference and CPU performance\n\nAfter exporting a CIFAR-trained checkpoint, run:\n\n```bash\npython 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/infer_benchmark.py \\\n  --export-dir runs/module32-cifar10/export --image path/to/rgb.jpg \\\n  --warmup 5 --repeats 100\n```\n\nThis produces ranked class probabilities, p50/p95/mean **warm image-tower CPU latency**, and peak process RSS. Preprocessing and text-embedding creation are excluded from the timed region and must be accounted for in end-to-end application benchmarks. These measurements are platform-specific; do not publish sample numbers as universal performance.\n\n## Real C++17 inference
+## Real-image inference and CPU performance
+
+After exporting a CIFAR-trained checkpoint, run:
+
+```bash
+python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/infer_benchmark.py \
+  --export-dir runs/module32-cifar10/export --image path/to/rgb.jpg \
+  --warmup 5 --repeats 100
+```
+
+This produces ranked class probabilities, p50/p95/mean **warm image-tower CPU latency**, and peak process RSS. Preprocessing and text-embedding creation are excluded from the timed region and must be accounted for in end-to-end application benchmarks. These measurements are platform-specific; do not publish sample numbers as universal performance.
+
+## Real C++17 inference
 
 Use the native ONNX Runtime C++ SDK (tested CI target version 1.20.1 on Linux x86-64). This is a real execution backend, not an imitation of a neural network in C++.
 
