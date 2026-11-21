@@ -123,6 +123,8 @@ def evaluate(model: DualEncoder, loader: DataLoader, device: torch.device) -> di
     correct = 0
     top5 = 0
     per_class = [[0, 0] for _ in CLASSES]
+    confusion = [[0 for _ in CLASSES] for _ in CLASSES]
+    failure_cases: list[dict[str, int]] = []
     tokens = prompt_tokens(device)
     with torch.inference_mode():
         for images, labels in loader:
@@ -131,18 +133,15 @@ def evaluate(model: DualEncoder, loader: DataLoader, device: torch.device) -> di
             prediction = logits.argmax(dim=1)
             correct += int((prediction == labels).sum())
             top5 += int((logits.topk(5, dim=1).indices == labels[:, None]).any(dim=1).sum())
-            total += int(labels.numel())
-            for cls in range(len(CLASSES)):
+            for offset, (truth, predicted) in enumerate(\n                zip(labels.tolist(), prediction.tolist(), strict=True)\n            ):\n                confusion[truth][predicted] += 1\n                if truth != predicted and len(failure_cases) < 20:\n                    failure_cases.append(\n                        {"eval_index": total + offset, "actual": truth, "predicted": predicted}\n                    )\n            total += int(labels.numel())\n            for cls in range(len(CLASSES)):
                 selected = labels == cls
                 per_class[cls][1] += int(selected.sum())
                 per_class[cls][0] += int(((prediction == labels) & selected).sum())
-    if not total:
-        raise ValueError("empty evaluation set")
-    return {
+    if not total:\n        raise ValueError("empty evaluation set")\n    f1_values = []\n    for cls in range(len(CLASSES)):\n        tp = confusion[cls][cls]\n        fp = sum(confusion[other][cls] for other in range(len(CLASSES))) - tp\n        fn = sum(confusion[cls]) - tp\n        denominator = 2 * tp + fp + fn\n        f1_values.append(2 * tp / denominator if denominator else 0.0)\n    return {
         "dataset_samples": total,
         "top1": correct / total,
         "top5": top5 / total,
-        "chance_top1": 1.0 / len(CLASSES),
+        "chance_top1": 1.0 / len(CLASSES),\n        "macro_f1": sum(f1_values) / len(f1_values),\n        "confusion_matrix": confusion,\n        "failure_examples": failure_cases,\n        "label_order": list(CLASSES),
         "per_class_top1": {
             label: (hits / count if count else None)
             for label, (hits, count) in zip(CLASSES, per_class, strict=True)
