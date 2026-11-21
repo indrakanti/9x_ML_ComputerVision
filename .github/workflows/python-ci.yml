@@ -165,5 +165,8 @@ jobs:
           python 02_Multimodal_3D_and_Generative_Vision/34_VisualQuestionAnswering/python/vqa_native_parity.py \
             build-native/02_Multimodal_3D_and_Generative_Vision/34_VisualQuestionAnswering/cpp/cv9x_module34_vqa
 
+          python 02_Multimodal_3D_and_Generative_Vision/35_VisionLanguageModels/python/vlm_native_parity.py \
+            build-native/02_Multimodal_3D_and_Generative_Vision/35_VisionLanguageModels/cpp/cv9x_module35_vlm
+
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
