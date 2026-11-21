@@ -10,8 +10,8 @@ from pathlib import Path
 
 import numpy as np
 import onnxruntime as ort
-from PIL import Image
 from artifact_contract import validate_bundle
+from PIL import Image
 from production import CLASSES, PROMPTS, encode_text
 
 
