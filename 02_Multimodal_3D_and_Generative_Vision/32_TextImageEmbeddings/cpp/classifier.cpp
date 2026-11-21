@@ -138,16 +138,20 @@ std::vector<float> infer(Ort::Session& session, const char* input_name,
 }
 }  // namespace
 
+std::string validated_directory(const std::string& directory) {
+    check_bundle(directory);
+    return directory;
+}
+
 class Classifier::Impl {
 public:
     explicit Impl(const std::string& dir)
-        : environment_(ORT_LOGGING_LEVEL_WARNING, "cv9x-module32"),
-          image_session_(environment_, (std::filesystem::path(dir) / "image.onnx").c_str(),
+        : directory_(validated_directory(dir)),
+          environment_(ORT_LOGGING_LEVEL_WARNING, "cv9x-module32"),
+          image_session_(environment_, (std::filesystem::path(directory_) / "image.onnx").c_str(),
                          options()),
-          text_session_(environment_, (std::filesystem::path(dir) / "text.onnx").c_str(),
+          text_session_(environment_, (std::filesystem::path(directory_) / "text.onnx").c_str(),
                         options()) {
-        // Fail closed before any model execution; library sessions cannot execute in constructor.
-        check_bundle(dir);
         const auto image_input = image_session_.GetInputNameAllocated(0, allocator_);
         const auto image_output = image_session_.GetOutputNameAllocated(0, allocator_);
         const auto text_input = text_session_.GetInputNameAllocated(0, allocator_);
@@ -210,6 +214,7 @@ private:
         return result;
     }
 
+    std::string directory_;
     Ort::Env environment_;
     Ort::Session image_session_;
     Ort::Session text_session_;
