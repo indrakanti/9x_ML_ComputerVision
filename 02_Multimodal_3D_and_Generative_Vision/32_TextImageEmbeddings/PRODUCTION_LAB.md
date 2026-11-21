@@ -71,6 +71,71 @@ python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/prod
 
 The C++ binary loads both ONNX models as needed, accepts a precisely formatted float32 image tensor or int64 ASCII token tensor, and emits 32-dimensional embeddings. The parity script compares **both models** against ONNX Runtime Python. Your application can compute cosine logits from these embeddings, using the original Module 32 scoring kernel. For arbitrary production images, resize to RGB 32×32, scale bytes by 1/255, and convert HWC→CHW; identical preprocessing is essential.
 
+## Reusable native image classification (Module 32 completion)
+
+The new **`cv9x_module32_classifier` C++17 library** exposes a reusable
+`cv9x::module32::Classifier(export_directory)` and
+`predict(image_path) → ranked labels/probabilities` API in
+[`cpp/classifier.hpp`](cpp/classifier.hpp). Its `cv9x_module32_classify`
+executable accepts real PNG/JPEG images. It decodes and resizes with OpenCV,
+converts BGR→RGB and HWC→NCHW, executes both real ONNX encoders, and computes
+ranked ten-class predictions.
+
+Native dependencies: ONNX Runtime 1.20.1 C++ SDK, OpenCV (core/imgproc/imgcodecs),
+OpenSSL Crypto (SHA-256), and nlohmann-json 3.10+.
+On Ubuntu, install `libopencv-dev libssl-dev nlohmann-json3-dev` plus a
+matching native ONNX Runtime SDK, then configure with `-DCV9X_ONNXRUNTIME_ROOT`.
+
+```bash
+cmake -S . -B build-native -DCV9X_ONNXRUNTIME_ROOT=/absolute/path/to/ort-sdk
+cmake --build build-native --parallel
+
+build-native/02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/cpp/cv9x_module32_classify \
+  --export-dir runs/module32-cifar10/export \
+  --image /path/to/real-photo.png --warmup 3 --repeats 30
+```
+
+The CLI outputs JSON containing the top prediction, all ten ranked
+probabilities, and p50/p95/mean latency and process RSS. Latency includes
+**image decode, preprocessing, image-tower inference and scoring**, with
+session initialization and text-tower inference cached before timing.
+Measurements are host-specific and not embedded-hardware evidence.
+
+### Versioned artifact contract
+
+Bundle `image.onnx`, `text.onnx` and `manifest.json` in one directory.
+The manifest fixes schema version 1, ONNX opset, input/output dimensions,
+`logit_scale=10`, ordered labels, exact prompts, ASCII tokenizer and RGB
+preprocessing, and SHA-256 checksums for both model files. Native construction
+**rejects a missing, modified or incompatible model before loading sessions**.
+
+```bash
+python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/artifact_contract.py \
+  --export-dir runs/module32-cifar10/export
+```
+
+CI creates a lossless 32×32 RGB PNG, compares the complete native ranked
+probabilities against Python ONNX Runtime, and confirms corrupted ONNX bytes
+are rejected. **Cross-language preprocessing parity for resized non-32×32
+images is not yet guaranteed pixel-exact** (OpenCV versus PIL interpolation);
+application-level acceptance tests should include target camera resolutions.
+
+### Real-data evaluation evidence
+
+The separately runnable **Module 32 Real CIFAR-10 Evidence** workflow now
+also runs automatically on Module 32 PRs. It trains on a seeded
+2,000-image CIFAR-10 training subset and evaluates a distinct 500-image
+official test subset, then uploads the actual checkpoint, ONNX models,
+`metrics.json`, a held-out-image CPU inference benchmark and artifact
+manifest. `metrics.json` includes top-1, top-5, macro-F1, confusion matrix,
+class accuracy, and representative misclassifications (sample indices are
+within the evaluation subset).
+
+These subset results are evidence of *execution and a small experiment*;
+they are **not** full CIFAR-10 leaderboard metrics. To evaluate the entire
+dataset, rerun with `--max-train 0 --max-test 0` and more epochs. Do not
+claim an accuracy number until its GitHub artifact has actually been produced.
+
 ### Deployment targets and evidence
 
 | Target | Status |
