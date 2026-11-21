@@ -2,7 +2,7 @@ name: ML CV CPU CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "part2/module32-production-pipeline"]
   pull_request:
     branches: [main]
 
