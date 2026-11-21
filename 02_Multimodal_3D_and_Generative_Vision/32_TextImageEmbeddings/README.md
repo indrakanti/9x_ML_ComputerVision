@@ -1,6 +1,6 @@
 # Module 32 — Text/Image Embeddings and Zero-Shot Classification
 
-## Learning objectives
+**Production-quality expansion:** [Train → Evaluate → Export → C++ ONNX Runtime Deployment](PRODUCTION_LAB.md). The original synthetic similarity example remains a mathematical primer; the production lab contains trainable PyTorch encoders, real-data evaluation, and actual exported-model execution.\n\n## Learning objectives
 - Understand aligned image/text embedding spaces and contrastive learning.
 - Compute normalized cosine similarity and temperature-scaled logits.
 - Run an optional real pretrained CLIP zero-shot example with PyTorch/Transformers.
