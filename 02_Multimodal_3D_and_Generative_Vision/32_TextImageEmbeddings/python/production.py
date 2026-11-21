@@ -188,9 +188,15 @@ def train(args: argparse.Namespace) -> None:
          "preprocessing": "RGB float32 CHW / 255, 32x32; ASCII fixed 32 tokens"},
         args.output / "model.pt",
     )
-    report = {"dataset": args.dataset, "seed": args.seed, "train_samples": len(cast(Sized, training)),
-              "test_samples": len(cast(Sized, testing)), "epochs": args.epochs, "history": history,
-              "metrics": metrics}
+    report = {
+        "dataset": args.dataset,
+        "seed": args.seed,
+        "train_samples": len(cast(Sized, training)),
+        "test_samples": len(cast(Sized, testing)),
+        "epochs": args.epochs,
+        "history": history,
+        "metrics": metrics,
+    }
     (args.output / "metrics.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
 
