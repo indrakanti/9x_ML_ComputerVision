@@ -106,7 +106,9 @@ def make_dataset(name: str, root: Path, train: bool, download: bool) -> Dataset[
     )
 
 
-def subset(\n    dataset: Dataset[tuple[Tensor, int]], limit: int, seed: int\n) -> Dataset[tuple[Tensor, int]]:
+def subset(
+    dataset: Dataset[tuple[Tensor, int]], limit: int, seed: int
+) -> Dataset[tuple[Tensor, int]]:
     if limit <= 0 or limit >= len(dataset):
         return dataset
     indices = np.random.default_rng(seed).permutation(len(dataset))[:limit].tolist()
@@ -152,8 +154,14 @@ def train(args: argparse.Namespace) -> None:
     torch.manual_seed(args.seed)
     torch.set_num_threads(1)
     device = torch.device("cpu")
-    training = subset(\n        make_dataset(args.dataset, args.data_root, True, args.download),\n        args.max_train, args.seed,\n    )
-    testing = subset(\n        make_dataset(args.dataset, args.data_root, False, args.download),\n        args.max_test, args.seed + 1,\n    )
+    training = subset(
+        make_dataset(args.dataset, args.data_root, True, args.download),
+        args.max_train, args.seed,
+    )
+    testing = subset(
+        make_dataset(args.dataset, args.data_root, False, args.download),
+        args.max_test, args.seed + 1,
+    )
     train_loader = DataLoader(training, batch_size=args.batch_size, shuffle=True)
     test_loader = DataLoader(testing, batch_size=args.batch_size, shuffle=False)
     model = DualEncoder().to(device)
