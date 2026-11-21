@@ -11,6 +11,7 @@ import shutil
 import subprocess
 import tempfile
 from pathlib import Path
+from typing import Any, cast
 
 import numpy as np
 from infer_benchmark import infer, load_image
@@ -34,12 +35,13 @@ def check(binary: Path, directory: Path) -> None:
         actual = json.loads(subprocess.run(args, capture_output=True, text=True, check=True).stdout)
         expected = infer(directory.resolve(), load_image(picture), warmup=1, repeats=3)
         assert actual["prediction"] == expected["class"]
+        expected_ranked = cast(list[dict[str, Any]], expected["ranked"])
         actual_labels = [item["label"] for item in actual["ranked"]]
-        expected_labels = [item["label"] for item in expected["ranked"]]
+        expected_labels = [item["label"] for item in expected_ranked]
         assert actual_labels == expected_labels
         np.testing.assert_allclose(
             [item["probability"] for item in actual["ranked"]],
-            [item["probability"] for item in expected["ranked"]],
+            [item["probability"] for item in expected_ranked],
             rtol=1e-4,
             atol=1e-5,
         )
