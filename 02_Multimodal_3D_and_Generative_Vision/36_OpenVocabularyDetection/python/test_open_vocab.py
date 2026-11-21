@@ -13,7 +13,9 @@ def test_iou() -> None:
 
 
 def test_nms_and_open_label() -> None:
-    assert synthetic() == pytest.approx([(0, 0, 1.0), (2, 1, 1.0)])
+    detections = synthetic()
+    assert [(index, label) for index, label, _ in detections] == [(0, 0), (2, 1)]
+    assert [score for _, _, score in detections] == pytest.approx([1.0, 1.0])
 
 
 def test_different_classes_not_suppressed() -> None:
