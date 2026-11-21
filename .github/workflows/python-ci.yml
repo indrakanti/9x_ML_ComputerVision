@@ -50,7 +50,9 @@ jobs:
         run: ruff check .
 
       - name: Mypy
-        run: mypy 01_Foundations_to_Modern_Vision/[0-9][0-9]_*/python
+        run: |
+          mypy 01_Foundations_to_Modern_Vision/[0-9][0-9]_*/python
+          mypy 02_Multimodal_3D_and_Generative_Vision/[0-9][0-9]_*/python
 
       - name: Pytest / CPU PyTorch correctness
         run: pytest
@@ -151,6 +153,11 @@ jobs:
           python 01_Foundations_to_Modern_Vision/31_Compression/python/compression_native_parity.py \
             build-native/01_Foundations_to_Modern_Vision/31_Compression/cv9x_compression_math \
             01_Foundations_to_Modern_Vision/31_Compression/artifacts/compression.txt
+
+      - name: Part 2 Python ↔ C++ numerical parity
+        run: |
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/zero_shot_native_parity.py \
+            build-native/02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/cpp/cv9x_module32_zero_shot
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
