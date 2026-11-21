@@ -159,5 +159,8 @@ jobs:
           python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/zero_shot_native_parity.py \
             build-native/02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/cpp/cv9x_module32_zero_shot
 
+          python 02_Multimodal_3D_and_Generative_Vision/33_ImageCaptioning/python/captioning_native_parity.py \
+            build-native/02_Multimodal_3D_and_Generative_Vision/33_ImageCaptioning/cpp/cv9x_module33_captioning
+
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
