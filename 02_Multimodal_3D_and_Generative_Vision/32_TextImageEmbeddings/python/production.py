@@ -133,15 +133,37 @@ def evaluate(model: DualEncoder, loader: DataLoader, device: torch.device) -> di
             prediction = logits.argmax(dim=1)
             correct += int((prediction == labels).sum())
             top5 += int((logits.topk(5, dim=1).indices == labels[:, None]).any(dim=1).sum())
-            for offset, (truth, predicted) in enumerate(\n                zip(labels.tolist(), prediction.tolist(), strict=True)\n            ):\n                confusion[truth][predicted] += 1\n                if truth != predicted and len(failure_cases) < 20:\n                    failure_cases.append(\n                        {"eval_index": total + offset, "actual": truth, "predicted": predicted}\n                    )\n            total += int(labels.numel())\n            for cls in range(len(CLASSES)):
+            for offset, (truth, predicted) in enumerate(
+                zip(labels.tolist(), prediction.tolist(), strict=True)
+            ):
+                confusion[truth][predicted] += 1
+                if truth != predicted and len(failure_cases) < 20:
+                    failure_cases.append(
+                        {"eval_index": total + offset, "actual": truth, "predicted": predicted}
+                    )
+            total += int(labels.numel())
+            for cls in range(len(CLASSES)):
                 selected = labels == cls
                 per_class[cls][1] += int(selected.sum())
                 per_class[cls][0] += int(((prediction == labels) & selected).sum())
-    if not total:\n        raise ValueError("empty evaluation set")\n    f1_values = []\n    for cls in range(len(CLASSES)):\n        tp = confusion[cls][cls]\n        fp = sum(confusion[other][cls] for other in range(len(CLASSES))) - tp\n        fn = sum(confusion[cls]) - tp\n        denominator = 2 * tp + fp + fn\n        f1_values.append(2 * tp / denominator if denominator else 0.0)\n    return {
+    if not total:
+        raise ValueError("empty evaluation set")
+    f1_values = []
+    for cls in range(len(CLASSES)):
+        tp = confusion[cls][cls]
+        fp = sum(confusion[other][cls] for other in range(len(CLASSES))) - tp
+        fn = sum(confusion[cls]) - tp
+        denominator = 2 * tp + fp + fn
+        f1_values.append(2 * tp / denominator if denominator else 0.0)
+    return {
         "dataset_samples": total,
         "top1": correct / total,
         "top5": top5 / total,
-        "chance_top1": 1.0 / len(CLASSES),\n        "macro_f1": sum(f1_values) / len(f1_values),\n        "confusion_matrix": confusion,\n        "failure_examples": failure_cases,\n        "label_order": list(CLASSES),
+        "chance_top1": 1.0 / len(CLASSES),
+        "macro_f1": sum(f1_values) / len(f1_values),
+        "confusion_matrix": confusion,
+        "failure_examples": failure_cases,
+        "label_order": list(CLASSES),
         "per_class_top1": {
             label: (hits / count if count else None)
             for label, (hits, count) in zip(CLASSES, per_class, strict=True)
@@ -236,7 +258,8 @@ def export(checkpoint: Path, output: Path) -> None:
     np.savetxt(output / "image_input.txt", images.numpy().ravel(), fmt="%.9g")
     np.savetxt(output / "text_input.txt", tokens.numpy().ravel(), fmt="%d")
     manifest = {
-        "schema_version": 1, "format": "onnx", "opset": 17,\n        "logit_scale": 10.0, "image_shape": [1, 3, 32, 32],
+        "schema_version": 1, "format": "onnx", "opset": 17,
+        "logit_scale": 10.0, "image_shape": [1, 3, 32, 32],
         "text_shape": [10, MAX_TOKENS], "embedding_width": EMBED_DIM,
         "labels": list(CLASSES), "prompts": list(PROMPTS),
         "image_preprocessing": "RGB; resize to 32x32; float32 CHW in [0,1]",
