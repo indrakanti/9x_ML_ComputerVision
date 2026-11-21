@@ -2,7 +2,7 @@ name: ML CV CPU CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "part2/module32-production-pipeline"]
   pull_request:
     branches: [main]
 
@@ -57,11 +57,30 @@ jobs:
       - name: Pytest / CPU PyTorch correctness
         run: pytest
 
+      - name: Install native ONNX Runtime SDK from NuGet (pinned)
+        run: |
+          sudo apt-get install -y unzip
+          mkdir -p build-deps/ort-nuget build-deps/onnxruntime-linux-x64-1.20.1/include
+          mkdir -p build-deps/onnxruntime-linux-x64-1.20.1/lib
+          curl --fail --location --silent --show-error --retry 3 \
+            https://api.nuget.org/v3-flatcontainer/microsoft.ml.onnxruntime/1.20.1/microsoft.ml.onnxruntime.1.20.1.nupkg \
+            --output build-deps/onnxruntime.nupkg
+          unzip -q build-deps/onnxruntime.nupkg -d build-deps/ort-nuget
+          cp build-deps/ort-nuget/build/native/include/* \
+            build-deps/onnxruntime-linux-x64-1.20.1/include/
+          cp build-deps/ort-nuget/runtimes/linux-x64/native/libonnxruntime.so \
+            build-deps/onnxruntime-linux-x64-1.20.1/lib/
+          ln -sf libonnxruntime.so \
+            build-deps/onnxruntime-linux-x64-1.20.1/lib/libonnxruntime.so.1
+          test -f build-deps/onnxruntime-linux-x64-1.20.1/include/onnxruntime_cxx_api.h
+          test -f build-deps/onnxruntime-linux-x64-1.20.1/lib/libonnxruntime.so
+
       - name: Configure native C++
         run: |
           cmake -S . -B build-native -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
-            -DCV9X_WARNINGS_AS_ERRORS=ON
+            -DCV9X_WARNINGS_AS_ERRORS=ON \
+            -DCV9X_ONNXRUNTIME_ROOT=$GITHUB_WORKSPACE/build-deps/onnxruntime-linux-x64-1.20.1
 
       - name: Build native C++
         run: cmake --build build-native --parallel
@@ -170,6 +189,16 @@ jobs:
 
           python 02_Multimodal_3D_and_Generative_Vision/36_OpenVocabularyDetection/python/open_vocab_native_parity.py \
             build-native/02_Multimodal_3D_and_Generative_Vision/36_OpenVocabularyDetection/cpp/cv9x_module36_open_vocab
+
+      - name: Module 32 train/export/native deployment smoke
+        run: |
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py train \
+            --dataset synthetic --epochs 1 --batch-size 20 --output build-native/module32-smoke
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py export \
+            --checkpoint build-native/module32-smoke/model.pt --output build-native/module32-smoke/export
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production_native_parity.py \
+            build-native/02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/cpp/cv9x_module32_onnx \
+            build-native/module32-smoke/export
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
