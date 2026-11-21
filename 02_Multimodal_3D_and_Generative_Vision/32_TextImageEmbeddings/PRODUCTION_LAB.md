@@ -136,6 +136,22 @@ they are **not** full CIFAR-10 leaderboard metrics. To evaluate the entire
 dataset, rerun with `--max-train 0 --max-test 0` and more epochs. Do not
 claim an accuracy number until its GitHub artifact has actually been produced.
 
+### First measured real-data result (November 21, 2026)
+
+**GitHub Actions run [#44935121242](https://github.com/indrakanti/9x_ML_ComputerVision/actions/runs/44935121242) passed** on commit `d6ed407` using the pinned CIFAR-10 Python archive with TorchVision's original MD5 checksum verification. This is a **limited CPU reference experiment**, not a competitive CIFAR-10 model or a claim of unseen-category generalization.
+
+| Measurement | Actual result |
+|---|---:|
+| Train / held-out test examples | 2,000 / 500 |
+| Epochs / random seed | 3 / 42 |
+| Top-1 test accuracy | **26.4%** |
+| Top-5 test accuracy | 72.4% |
+| Macro-F1 | 0.1842 |
+| Uniform random chance top-1 | 10% |
+| Training loss (epochs 1 → 3) | 2.3011 → 2.1132 |
+
+The completed workflow also validated PyTorch → ONNX numerical parity, produced a real held-out-image ONNX Runtime CPU benchmark, validated the model bundle contract, and uploaded checkpoint, models and metrics as a time-limited Actions artifact. The 26.4% test result leaves considerable room for architecture, training-data, and augmentation improvements. To make stronger accuracy claims, run the full official split, include a train-only validation protocol, repeat seeds and compare a stronger image-only baseline.
+
 ### Deployment targets and evidence
 
 | Target | Status |
