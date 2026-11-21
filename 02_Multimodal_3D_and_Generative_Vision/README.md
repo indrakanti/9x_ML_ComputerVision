@@ -13,6 +13,6 @@ This part will cover:
 - NeRF, Gaussian Splatting and neural rendering
 - autoencoders, diffusion, flow matching and video generation
 
-Implemented: [Module 32 — Text/Image Embeddings](32_TextImageEmbeddings/README.md) and [Module 33 — Image Captioning](33_ImageCaptioning/README.md).\n\nModule folders will be added only when implementation begins; the repository does not pre-create dozens of empty lesson directories.
+Implemented: [Module 32 — Text/Image Embeddings](32_TextImageEmbeddings/README.md) and [Module 33 — Image Captioning](33_ImageCaptioning/README.md).\n\nNext: [Module 34 — Visual Question Answering](34_VisualQuestionAnswering/README.md).\n\nModule folders will be added only when implementation begins; the repository does not pre-create dozens of empty lesson directories.
 
 See [COURSE_ROADMAP.md](../COURSE_ROADMAP.md) for the detailed sequence.
