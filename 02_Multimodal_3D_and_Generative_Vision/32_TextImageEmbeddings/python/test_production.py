@@ -3,6 +3,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from typing import cast
 
 import numpy as np
 import pytest
@@ -74,8 +75,8 @@ def test_real_evaluation_metrics_structure() -> None:
     torch.manual_seed(4)
     model = DualEncoder().eval()
     metrics = evaluate(model, DataLoader(SyntheticImages(20), batch_size=5), torch.device("cpu"))
-    confusion = metrics["confusion_matrix"]
+    confusion = cast(list[list[int]], metrics["confusion_matrix"])
     assert sum(sum(row) for row in confusion) == 20
     assert len(metrics["label_order"]) == 10
-    assert 0.0 <= metrics["macro_f1"] <= 1.0
+    assert 0.0 <= cast(float, metrics["macro_f1"]) <= 1.0
     assert metrics["dataset_samples"] == 20
