@@ -11,7 +11,8 @@ from pathlib import Path
 import numpy as np
 import onnxruntime as ort
 from PIL import Image
-from artifact_contract import validate_bundle\nfrom production import CLASSES, PROMPTS, encode_text
+from artifact_contract import validate_bundle
+from production import CLASSES, PROMPTS, encode_text
 
 
 def load_image(path: Path) -> np.ndarray:
@@ -28,7 +29,8 @@ def infer(
 ) -> dict[str, object]:
     if warmup < 0 or repeats < 1 or image.shape != (1, 3, 32, 32):
         raise ValueError("invalid image or benchmark settings")
-    validate_bundle(directory)\n    image_model = ort.InferenceSession(
+    validate_bundle(directory)
+    image_model = ort.InferenceSession(
         str(directory / "image.onnx"), providers=["CPUExecutionProvider"]
     )
     text_model = ort.InferenceSession(
