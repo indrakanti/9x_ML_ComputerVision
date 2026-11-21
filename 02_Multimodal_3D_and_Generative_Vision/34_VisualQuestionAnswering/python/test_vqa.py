@@ -2,6 +2,7 @@
 import math
 
 import pytest
+
 from vqa import ground, softmax, synthetic
 
 
