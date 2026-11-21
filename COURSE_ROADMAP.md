@@ -107,7 +107,7 @@ and receive **COURSE ENVIRONMENT READY** after Python/PyTorch/ONNX tests and a n
 | 33 | Image captioning and multimodal encoders/decoders | Planned |
 | 34 | Visual question answering and multimodal reasoning | Planned |
 | 35 | Vision-language models / multimodal LLM architecture patterns | Planned |
-| 36 | Open-vocabulary detection | Planned |
+| 36 | Open-vocabulary detection | Implemented — Python/C++17 fixture and optional OWL-ViT inference |
 | 37 | Visual grounding / referring expressions | Planned |
 | 38 | Retrieval-augmented multimodal systems | Planned |
 | 39 | Tool-using / agentic visual systems | Planned |
