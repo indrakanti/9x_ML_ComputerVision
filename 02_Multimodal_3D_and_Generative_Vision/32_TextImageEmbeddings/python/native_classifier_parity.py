@@ -13,9 +13,8 @@ import tempfile
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
-
 from infer_benchmark import infer, load_image
+from PIL import Image
 
 
 def check(binary: Path, directory: Path) -> None:
