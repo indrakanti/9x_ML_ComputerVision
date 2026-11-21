@@ -2,6 +2,7 @@
 import math
 
 import pytest
+
 from captioning import attend, softmax, synthetic
 
 
