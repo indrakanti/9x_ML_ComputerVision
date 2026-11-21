@@ -57,11 +57,11 @@ jobs:
       - name: Pytest / CPU PyTorch correctness
         run: pytest
 
-      - name: Configure native C++
+      - name: Download native ONNX Runtime SDK (pinned)\n        run: |\n          mkdir -p build-deps\n          curl --fail --location --silent --show-error --retry 3 \\\n            https://github.com/microsoft/onnxruntime/releases/download/v1.20.1/onnxruntime-linux-x64-1.20.1.tgz \\\n            --output build-deps/onnxruntime.tgz\n          tar -xzf build-deps/onnxruntime.tgz -C build-deps\n\n      - name: Configure native C++
         run: |
           cmake -S . -B build-native -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
-            -DCV9X_WARNINGS_AS_ERRORS=ON
+            -DCV9X_WARNINGS_AS_ERRORS=ON \\\n            -DCV9X_ONNXRUNTIME_ROOT=$GITHUB_WORKSPACE/build-deps/onnxruntime-linux-x64-1.20.1
 
       - name: Build native C++
         run: cmake --build build-native --parallel
@@ -168,5 +168,5 @@ jobs:
           python 02_Multimodal_3D_and_Generative_Vision/35_VisionLanguageModels/python/vlm_native_parity.py \
             build-native/02_Multimodal_3D_and_Generative_Vision/35_VisionLanguageModels/cpp/cv9x_module35_vlm
 
-      - name: Test native C++
+      - name: Module 32 train/export/native deployment smoke\n        run: |\n          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py train \\\n            --dataset synthetic --epochs 1 --batch-size 20 --output build-native/module32-smoke\n          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py export \\\n            --checkpoint build-native/module32-smoke/model.pt --output build-native/module32-smoke/export\n          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production_native_parity.py \\\n            build-native/02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/cpp/cv9x_module32_onnx \\\n            build-native/module32-smoke/export\n\n      - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
