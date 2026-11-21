@@ -24,6 +24,35 @@ if(CV9X_ONNXRUNTIME_ROOT)
   target_include_directories(cv9x_module32_onnx PRIVATE "${CV9X_ONNXRUNTIME_ROOT}/include")
   target_link_libraries(cv9x_module32_onnx PRIVATE "${CV9X_ONNXRUNTIME_LIB}")
   set_target_properties(cv9x_module32_onnx PROPERTIES BUILD_RPATH "${CV9X_ONNXRUNTIME_ROOT}/lib")
+  # Native reusable image classifier with verified ONNX bundles.
+  find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs)
+  find_package(OpenSSL REQUIRED COMPONENTS Crypto)
+  find_package(nlohmann_json 3.10 REQUIRED)
+  add_library(cv9x_module32_classifier STATIC classifier.cpp)
+  target_compile_features(cv9x_module32_classifier PUBLIC cxx_std_17)
+  target_include_directories(cv9x_module32_classifier PUBLIC
+    "${CMAKE_CURRENT_SOURCE_DIR}"
+    "${CV9X_ONNXRUNTIME_ROOT}/include")
+  target_link_libraries(cv9x_module32_classifier PUBLIC
+    "${CV9X_ONNXRUNTIME_LIB}"
+    ${OpenCV_LIBS} OpenSSL::Crypto nlohmann_json::nlohmann_json)
+  add_executable(cv9x_module32_classify classify_cli.cpp)
+  target_link_libraries(cv9x_module32_classify PRIVATE cv9x_module32_classifier)
+  set_target_properties(cv9x_module32_classify PROPERTIES
+    BUILD_RPATH "${CV9X_ONNXRUNTIME_ROOT}/lib")
+  set_target_properties(cv9x_module32_classifier PROPERTIES
+    BUILD_RPATH "${CV9X_ONNXRUNTIME_ROOT}/lib")
+  if(MSVC)
+    target_compile_options(cv9x_module32_classifier PRIVATE /W4)
+    target_compile_options(cv9x_module32_classify PRIVATE /W4)
+  else()
+    foreach(_target cv9x_module32_classifier cv9x_module32_classify)
+      target_compile_options(${_target} PRIVATE -Wall -Wextra -Wpedantic)
+      if(CV9X_WARNINGS_AS_ERRORS)
+        target_compile_options(${_target} PRIVATE -Werror)
+      endif()
+    endforeach()
+  endif()
   if(MSVC)
     target_compile_options(cv9x_module32_onnx PRIVATE /W4)
   else()
