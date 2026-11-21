@@ -37,8 +37,8 @@ jobs:
       - name: Train and evaluate official CIFAR-10 split
         run: |
           python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py train \
-            --dataset cifar10 --download --epochs "${{ inputs.epochs }}" \
-            --max-train "${{ inputs.max_train }}" --max-test "${{ inputs.max_test }}" \
+            --dataset cifar10 --download --epochs "${{ inputs.epochs || '3' }}" \
+            --max-train "${{ inputs.max_train || '2000' }}" --max-test "${{ inputs.max_test || '500' }}" \
             --seed 42 --output runs/module32-cifar10
       - name: Validate ONNX export against trained PyTorch checkpoint
         run: |
