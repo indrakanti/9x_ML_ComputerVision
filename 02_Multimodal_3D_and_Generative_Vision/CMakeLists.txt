@@ -2,3 +2,4 @@
 add_subdirectory(32_TextImageEmbeddings/cpp)
 add_subdirectory(33_ImageCaptioning/cpp)
 add_subdirectory(34_VisualQuestionAnswering/cpp)
+add_subdirectory(35_VisionLanguageModels/cpp)
