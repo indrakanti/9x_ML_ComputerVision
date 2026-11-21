@@ -3,11 +3,21 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from typing import cast
 
 import numpy as np
 import pytest
 import torch
-from production import CLASSES, DualEncoder, SyntheticImages, encode_text, load_model, prompt_tokens
+from production import (
+    CLASSES,
+    DualEncoder,
+    SyntheticImages,
+    encode_text,
+    evaluate,
+    load_model,
+    prompt_tokens,
+)
+from torch.utils.data import DataLoader
 
 
 def test_tokenizer_contract() -> None:
@@ -59,3 +69,14 @@ def test_train_checkpoint_evaluate(tmp_path: Path) -> None:
         values = model(torch.rand(1, 3, 32, 32), prompt_tokens())
     assert values.shape == (1, 10)
     assert np.isfinite(values.numpy()).all()
+
+
+def test_real_evaluation_metrics_structure() -> None:
+    torch.manual_seed(4)
+    model = DualEncoder().eval()
+    metrics = evaluate(model, DataLoader(SyntheticImages(20), batch_size=5), torch.device("cpu"))
+    confusion = cast(list[list[int]], metrics["confusion_matrix"])
+    assert sum(sum(row) for row in confusion) == 20
+    assert len(cast(list[str], metrics["label_order"])) == 10
+    assert 0.0 <= cast(float, metrics["macro_f1"]) <= 1.0
+    assert metrics["dataset_samples"] == 20

@@ -10,6 +10,7 @@ from pathlib import Path
 
 import numpy as np
 import onnxruntime as ort
+from artifact_contract import validate_bundle
 from PIL import Image
 from production import CLASSES, PROMPTS, encode_text
 
@@ -28,6 +29,7 @@ def infer(
 ) -> dict[str, object]:
     if warmup < 0 or repeats < 1 or image.shape != (1, 3, 32, 32):
         raise ValueError("invalid image or benchmark settings")
+    validate_bundle(directory)
     image_model = ort.InferenceSession(
         str(directory / "image.onnx"), providers=["CPUExecutionProvider"]
     )
