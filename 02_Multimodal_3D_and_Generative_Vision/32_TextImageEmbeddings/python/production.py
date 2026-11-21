@@ -237,7 +237,7 @@ def export(checkpoint: Path, output: Path) -> None:
     np.savetxt(output / "image_input.txt", images.numpy().ravel(), fmt="%.9g")
     np.savetxt(output / "text_input.txt", tokens.numpy().ravel(), fmt="%d")
     manifest = {
-        "format": "onnx", "opset": 17, "image_shape": [1, 3, 32, 32],
+        "schema_version": 1, "format": "onnx", "opset": 17,\n        "logit_scale": 10.0, "image_shape": [1, 3, 32, 32],
         "text_shape": [10, MAX_TOKENS], "embedding_width": EMBED_DIM,
         "labels": list(CLASSES), "prompts": list(PROMPTS),
         "image_preprocessing": "RGB; resize to 32x32; float32 CHW in [0,1]",
