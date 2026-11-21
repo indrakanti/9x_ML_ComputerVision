@@ -57,11 +57,20 @@ jobs:
       - name: Pytest / CPU PyTorch correctness
         run: pytest
 
+      - name: Download native ONNX Runtime SDK (pinned)
+        run: |
+          mkdir -p build-deps
+          curl --fail --location --silent --show-error --retry 3 \
+            https://github.com/microsoft/onnxruntime/releases/download/v1.20.1/onnxruntime-linux-x64-1.20.1.tgz \
+            --output build-deps/onnxruntime.tgz
+          tar -xzf build-deps/onnxruntime.tgz -C build-deps
+
       - name: Configure native C++
         run: |
           cmake -S . -B build-native -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
-            -DCV9X_WARNINGS_AS_ERRORS=ON
+            -DCV9X_WARNINGS_AS_ERRORS=ON \
+            -DCV9X_ONNXRUNTIME_ROOT=$GITHUB_WORKSPACE/build-deps/onnxruntime-linux-x64-1.20.1
 
       - name: Build native C++
         run: cmake --build build-native --parallel
@@ -167,6 +176,16 @@ jobs:
 
           python 02_Multimodal_3D_and_Generative_Vision/35_VisionLanguageModels/python/vlm_native_parity.py \
             build-native/02_Multimodal_3D_and_Generative_Vision/35_VisionLanguageModels/cpp/cv9x_module35_vlm
+
+      - name: Module 32 train/export/native deployment smoke
+        run: |
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py train \
+            --dataset synthetic --epochs 1 --batch-size 20 --output build-native/module32-smoke
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py export \
+            --checkpoint build-native/module32-smoke/model.pt --output build-native/module32-smoke/export
+          python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production_native_parity.py \
+            build-native/02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/cpp/cv9x_module32_onnx \
+            build-native/module32-smoke/export
 
       - name: Test native C++
         run: ctest --test-dir build-native --output-on-failure
