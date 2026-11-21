@@ -187,6 +187,9 @@ jobs:
           python 02_Multimodal_3D_and_Generative_Vision/35_VisionLanguageModels/python/vlm_native_parity.py \
             build-native/02_Multimodal_3D_and_Generative_Vision/35_VisionLanguageModels/cpp/cv9x_module35_vlm
 
+          python 02_Multimodal_3D_and_Generative_Vision/36_OpenVocabularyDetection/python/open_vocab_native_parity.py \
+            build-native/02_Multimodal_3D_and_Generative_Vision/36_OpenVocabularyDetection/cpp/cv9x_module36_open_vocab
+
       - name: Module 32 train/export/native deployment smoke
         run: |
           python 02_Multimodal_3D_and_Generative_Vision/32_TextImageEmbeddings/python/production.py train \
